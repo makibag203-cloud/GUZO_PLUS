@@ -1,0 +1,788 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Smart Journey AI{% endblock %}
+
+{% block content %}
+
+<section class="smart-journey-page">
+
+<!-- ================= HERO ================= -->
+
+<div class="journey-hero">
+
+    <div class="journey-hero-content">
+
+        <span class="journey-badge">
+            GUZO PLUS • SMART JOURNEY AI
+        </span>
+
+        <h1>
+            Plan Your Journey
+            <span>With AI</span>
+        </h1>
+
+        <p>
+            Enter your journey information and GUZO PLUS
+            will analyze simulated traffic, passenger demand,
+            routes and vehicle availability.
+        </p>
+
+        <div class="journey-hero-status">
+            <span class="pulse-dot"></span>
+            AI TRANSPORTATION ENGINE ONLINE
+        </div>
+
+    </div>
+
+
+    <div class="journey-ai-orb">
+
+        <div class="orb-ring ring-one"></div>
+        <div class="orb-ring ring-two"></div>
+
+        <div class="orb-core">
+            AI
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TRIP INPUT ================= -->
+
+<div class="journey-card">
+
+    <div class="journey-card-header">
+
+        <div>
+
+            <span class="journey-label">
+                STEP 01 • JOURNEY INFORMATION
+            </span>
+
+            <h2>
+                Tell GUZO PLUS About Your Trip
+            </h2>
+
+            <p>
+                The information below will be used only
+                with simulated prototype data.
+            </p>
+
+        </div>
+
+        <div class="demo-tag">
+            DEMO MODE
+        </div>
+
+    </div>
+
+
+    <form id="journeyForm">
+
+        <div class="journey-input-grid">
+
+            <div class="journey-input">
+
+                <label for="journeyStart">
+                    Initial Location
+                </label>
+
+                <input
+                    type="text"
+                    id="journeyStart"
+                    placeholder="Example: Bole"
+                    required
+                >
+
+                <small>
+                    Where are you starting?
+                </small>
+
+            </div>
+
+
+            <div class="journey-input">
+
+                <label for="journeyDestination">
+                    Destination
+                </label>
+
+                <input
+                    type="text"
+                    id="journeyDestination"
+                    placeholder="Example: Piazza"
+                    required
+                >
+
+                <small>
+                    Where do you want to go?
+                </small>
+
+            </div>
+
+
+            <div class="journey-input">
+
+                <label for="passengerCount">
+                    Passenger Count
+                </label>
+
+                <select id="passengerCount">
+
+                    <option value="1">
+                        1 Passenger
+                    </option>
+
+                    <option value="2">
+                        2 Passengers
+                    </option>
+
+                    <option value="3">
+                        3 Passengers
+                    </option>
+
+                    <option value="4">
+                        4 Passengers
+                    </option>
+
+                    <option value="5+">
+                        5+ Passengers
+                    </option>
+
+                </select>
+
+                <small>
+                    Helps estimate passenger demand.
+                </small>
+
+            </div>
+
+
+            <div class="journey-input">
+
+                <label for="travelTime">
+                    Preferred Travel Time
+                </label>
+
+                <select id="travelTime">
+
+                    <option value="morning">
+                        Morning
+                    </option>
+
+                    <option value="afternoon">
+                        Afternoon
+                    </option>
+
+                    <option value="evening">
+                        Evening
+                    </option>
+
+                </select>
+
+                <small>
+                    Select your preferred period.
+                </small>
+
+            </div>
+
+
+            <div class="journey-input">
+
+                <label for="vehiclePreference">
+                    Vehicle Preference
+                </label>
+
+                <select id="vehiclePreference">
+
+                    <option>
+                        Any Available
+                    </option>
+
+                    <option>
+                        Minibus
+                    </option>
+
+                    <option>
+                        Bus
+                    </option>
+
+                    <option>
+                        Taxi
+                    </option>
+
+                </select>
+
+                <small>
+                    Choose your preferred vehicle.
+                </small>
+
+            </div>
+
+
+            <div class="journey-input">
+
+                <label for="priority">
+                    Journey Priority
+                </label>
+
+                <select id="priority">
+
+                    <option>
+                        Fastest Route
+                    </option>
+
+                    <option>
+                        Lowest Fare
+                    </option>
+
+                    <option>
+                        Less Traffic
+                    </option>
+
+                    <option>
+                        Balanced
+                    </option>
+
+                </select>
+
+                <small>
+                    Tell AI what matters most.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="journey-ai-button">
+
+            <span>
+                Analyze My Journey
+            </span>
+
+            <strong>
+                →
+            </strong>
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- ================= AI ANALYSIS ================= -->
+
+<div
+    id="journeyAnalysis"
+    class="journey-analysis"
+    style="display:none;">
+
+    <div class="analysis-header">
+
+        <div>
+
+            <span class="journey-label">
+                STEP 02 • AI ANALYSIS
+            </span>
+
+            <h2>
+                GUZO PLUS Intelligence Report
+            </h2>
+
+            <p>
+                Simulated AI analysis completed successfully.
+            </p>
+
+        </div>
+
+        <div class="analysis-status">
+            ANALYSIS COMPLETE
+        </div>
+
+    </div>
+
+
+    <div class="analysis-row">
+
+        <div class="analysis-box">
+
+            <span>
+                TRAFFIC
+            </span>
+
+            <strong id="trafficResult">
+                Medium
+            </strong>
+
+            <small>
+                Simulated congestion
+            </small>
+
+        </div>
+
+
+        <div class="analysis-box">
+
+            <span>
+                DEMAND
+            </span>
+
+            <strong id="demandResult">
+                Moderate
+            </strong>
+
+            <small>
+                Passenger demand
+            </small>
+
+        </div>
+
+
+        <div class="analysis-box">
+
+            <span>
+                ROUTE
+            </span>
+
+            <strong>
+                Optimized
+            </strong>
+
+            <small>
+                AI route selection
+            </small>
+
+        </div>
+
+
+        <div class="analysis-box">
+
+            <span>
+                CONFIDENCE
+            </span>
+
+            <strong>
+                92%
+            </strong>
+
+            <small>
+                Prediction confidence
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RECOMMENDATION ================= -->
+
+    <div class="recommendation-card">
+
+        <div class="recommendation-heading">
+
+            <div>
+
+                <span class="journey-label">
+                    AI RECOMMENDATION
+                </span>
+
+                <h2>
+                    Best Vehicle For Your Journey
+                </h2>
+
+            </div>
+
+            <span class="recommended-tag">
+                RECOMMENDED
+            </span>
+
+        </div>
+
+
+        <div class="recommended-main">
+
+            <div class="recommended-vehicle">
+
+                <div class="vehicle-glow">
+                    BUS
+                </div>
+
+                <div>
+
+                    <span>
+                        VEHICLE
+                    </span>
+
+                    <h3 id="recommendedBus">
+                        GUZO BUS 101
+                    </h3>
+
+                    <p id="recommendedRoute">
+                        Bole → Piazza
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="recommendation-reason">
+
+                <span>
+                    AI REASON
+                </span>
+
+                <p>
+                    Selected because it provides a
+                    balanced combination of estimated
+                    travel time, traffic conditions,
+                    passenger demand and fare.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TRIP RESULTS ================= -->
+
+    <div class="journey-results">
+
+        <div class="result-box">
+
+            <span>
+                BUS LOCATION
+            </span>
+
+            <strong>
+                1.8 km
+            </strong>
+
+            <small>
+                From your location
+            </small>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <span>
+                ARRIVAL
+            </span>
+
+            <strong id="etaResult">
+                12 min
+            </strong>
+
+            <small>
+                Estimated arrival
+            </small>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <span>
+                JOURNEY DISTANCE
+            </span>
+
+            <strong>
+                6.4 km
+            </strong>
+
+            <small>
+                Estimated route distance
+            </small>
+
+        </div>
+
+
+        <div class="result-box">
+
+            <span>
+                ESTIMATED FARE
+            </span>
+
+            <strong>
+                25 ETB
+            </strong>
+
+            <small>
+                Simulated fare
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FAKE GPS ================= -->
+
+    <div class="journey-map-card">
+
+        <div class="journey-card-header">
+
+            <div>
+
+                <span class="journey-label">
+                    STEP 03 • GPS SIMULATION
+                </span>
+
+                <h2>
+                    Live Journey Tracking
+                </h2>
+
+                <p>
+                    Simulated GPS visualization for the prototype.
+                </p>
+
+            </div>
+
+            <span class="demo-tag">
+                FAKE GPS
+            </span>
+
+        </div>
+
+
+        <div class="journey-map">
+
+            <div class="map-grid"></div>
+
+            <div class="map-road map-road-one"></div>
+            <div class="map-road map-road-two"></div>
+            <div class="map-road map-road-three"></div>
+
+            <div class="user-location">
+                YOU
+            </div>
+
+            <div class="moving-bus">
+                BUS
+            </div>
+
+            <div class="destination-location">
+                DESTINATION
+            </div>
+
+            <div class="map-route-line"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ALTERNATIVE ================= -->
+
+    <div class="alternative-card">
+
+        <div>
+
+            <span class="journey-label">
+                ALTERNATIVE OPTION
+            </span>
+
+            <h2>
+                Another Available Vehicle
+            </h2>
+
+            <p>
+                A second simulated option is available
+                if you prefer another route or vehicle.
+            </p>
+
+        </div>
+
+        <div class="alternative-info">
+
+            <strong>
+                GUZO MINIBUS 204
+            </strong>
+
+            <span>
+                18 min • 7.1 km • 20 ETB
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FINAL SUMMARY ================= -->
+
+    <div class="journey-summary">
+
+        <span class="journey-label">
+            FINAL JOURNEY SUMMARY
+        </span>
+
+        <h2>
+            Your Smart Journey
+        </h2>
+
+        <div class="summary-row">
+
+            <div>
+
+                <small>
+                    FROM
+                </small>
+
+                <strong id="summaryStart">
+                    Bole
+                </strong>
+
+            </div>
+
+
+            <div class="summary-arrow">
+                →
+            </div>
+
+
+            <div>
+
+                <small>
+                    TO
+                </small>
+
+                <strong id="summaryDestination">
+                    Piazza
+                </strong>
+
+            </div>
+
+        </div>
+
+        <p>
+            GUZO PLUS selected the recommended vehicle
+            using simulated traffic, demand, distance,
+            route and fare information.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= DEMO NOTICE ================= -->
+
+<div class="journey-notice">
+
+    <div class="notice-line"></div>
+
+    <div>
+
+        <strong>
+            GUZO PLUS Prototype
+        </strong>
+
+        <p>
+            This system currently uses fake/demo GPS,
+            traffic, passenger demand, route, ETA and
+            fare data. It is designed to demonstrate
+            the GUZO PLUS AI transportation concept.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<script>
+
+document
+    .getElementById("journeyForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const start =
+            document.getElementById("journeyStart").value;
+
+        const destination =
+            document.getElementById("journeyDestination").value;
+
+
+        document.getElementById("recommendedRoute")
+            .textContent =
+            start + " → " + destination;
+
+
+        document.getElementById("summaryStart")
+            .textContent = start;
+
+
+        document.getElementById("summaryDestination")
+            .textContent = destination;
+
+
+        const eta =
+            Math.floor(Math.random() * 9) + 8;
+
+        document.getElementById("etaResult")
+            .textContent =
+            eta + " min";
+
+
+        const trafficOptions = [
+            "Low",
+            "Medium",
+            "High"
+        ];
+
+        const demandOptions = [
+            "Low",
+            "Moderate",
+            "High"
+        ];
+
+
+        document.getElementById("trafficResult")
+            .textContent =
+            trafficOptions[
+                Math.floor(
+                    Math.random() *
+                    trafficOptions.length
+                )
+            ];
+
+
+        document.getElementById("demandResult")
+            .textContent =
+            demandOptions[
+                Math.floor(
+                    Math.random() *
+                    demandOptions.length
+                )
+            ];
+
+
+        const analysis =
+            document.getElementById("journeyAnalysis");
+
+        analysis.style.display = "block";
+
+
+        analysis.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+
+</script>
+
+{% endblock %}

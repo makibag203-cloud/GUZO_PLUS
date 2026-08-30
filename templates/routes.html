@@ -1,0 +1,648 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Smart Routes{% endblock %}
+
+{% block content %}
+
+<section class="routes-page">
+
+
+<!-- HERO -->
+<div class="routes-hero">
+
+    <div class="routes-hero-content">
+
+        <span class="routes-badge">
+            GUZO PLUS • ROUTE AI
+        </span>
+
+        <h1>
+            Smart Route Intelligence
+        </h1>
+
+        <p>
+            AI የመንገድ፣ Traffic፣ Distance እና
+            የጉዞ ጊዜ መረጃን በመተንተን
+            የተሻለውን መንገድ ይመክራል።
+        </p>
+
+        <div class="routes-actions">
+
+            <button
+                class="route-primary-btn"
+                onclick="findBestRoute()">
+                Find Best Route
+            </button>
+
+            <button
+                class="route-secondary-btn"
+                onclick="refreshRoutes()">
+                Refresh Routes
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI CORE -->
+    <div class="route-ai-core">
+
+        <div class="route-ring ring-a"></div>
+        <div class="route-ring ring-b"></div>
+        <div class="route-ring ring-c"></div>
+
+        <div class="route-core-center">
+            AI
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SEARCH PANEL -->
+<div class="route-search-card">
+
+    <div class="route-section-label">
+        SMART ROUTE SEARCH
+    </div>
+
+    <h2>
+        Plan Your Route
+    </h2>
+
+    <p>
+        የመነሻ እና የመድረሻ ቦታዎን ያስገቡ።
+    </p>
+
+
+    <div class="route-input-grid">
+
+        <div class="route-input-group">
+
+            <label>
+                Initial Location
+            </label>
+
+            <input
+                id="routeStart"
+                type="text"
+                placeholder="ለምሳሌ: Bole"
+                value="Bole">
+
+        </div>
+
+
+        <div class="route-input-group">
+
+            <label>
+                Destination
+            </label>
+
+            <input
+                id="routeDestination"
+                type="text"
+                placeholder="ለምሳሌ: Piazza"
+                value="Piazza">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AI STATUS -->
+<div class="route-status-card">
+
+    <div>
+
+        <span class="route-section-label">
+            AI ROUTE ANALYSIS
+        </span>
+
+        <h2 id="routeStatus">
+            READY FOR ANALYSIS
+        </h2>
+
+        <p id="routeMessage">
+            የተሻለውን መንገድ ለመተንተን
+            system ዝግጁ ነው።
+        </p>
+
+    </div>
+
+
+    <div class="route-ai-status">
+
+        <span></span>
+
+        AI READY
+
+    </div>
+
+</div>
+
+
+<!-- ROUTE OVERVIEW -->
+<div class="route-stats">
+
+    <div class="route-stat-card">
+
+        <span>
+            DISTANCE
+        </span>
+
+        <strong id="distanceValue">
+            6.4 km
+        </strong>
+
+        <small>
+            Simulated distance
+        </small>
+
+    </div>
+
+
+    <div class="route-stat-card">
+
+        <span>
+            ESTIMATED TIME
+        </span>
+
+        <strong id="timeValue">
+            24 min
+        </strong>
+
+        <small>
+            Traffic-adjusted
+        </small>
+
+    </div>
+
+
+    <div class="route-stat-card">
+
+        <span>
+            TRAFFIC LEVEL
+        </span>
+
+        <strong id="trafficValue">
+            MEDIUM
+        </strong>
+
+        <small>
+            Simulated traffic
+        </small>
+
+    </div>
+
+
+    <div class="route-stat-card">
+
+        <span>
+            EFFICIENCY
+        </span>
+
+        <strong id="efficiencyValue">
+            88%
+        </strong>
+
+        <small>
+            Route efficiency
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- BEST ROUTE -->
+<div class="best-route-card">
+
+    <div class="best-route-heading">
+
+        <div>
+
+            <span class="route-section-label">
+                AI RECOMMENDATION
+            </span>
+
+            <h2>
+                Recommended Route
+            </h2>
+
+        </div>
+
+        <span class="route-demo-badge">
+            DEMO DATA
+        </span>
+
+    </div>
+
+
+    <div class="recommended-route">
+
+        <div class="route-location">
+
+            <span>
+                FROM
+            </span>
+
+            <strong id="bestStart">
+                Bole
+            </strong>
+
+        </div>
+
+
+        <div class="route-arrow">
+            →
+        </div>
+
+
+        <div class="route-location">
+
+            <span>
+                TO
+            </span>
+
+            <strong id="bestDestination">
+                Piazza
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="route-details">
+
+        <div>
+            <span>VEHICLE</span>
+            <strong>Minibus</strong>
+        </div>
+
+        <div>
+            <span>TRAFFIC</span>
+            <strong>Medium</strong>
+        </div>
+
+        <div>
+            <span>DISTANCE</span>
+            <strong>6.4 km</strong>
+        </div>
+
+        <div>
+            <span>TIME</span>
+            <strong>24 min</strong>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ALTERNATIVE ROUTES -->
+<div class="route-card">
+
+    <div class="route-card-heading">
+
+        <div>
+
+            <span class="route-section-label">
+                ROUTE COMPARISON
+            </span>
+
+            <h2>
+                Alternative Routes
+            </h2>
+
+            <p>
+                AI የተለያዩ የመንገድ አማራጮችን
+                እያነፃፀረ ነው።
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="alternative-routes">
+
+        <div class="alternative-route selected">
+
+            <div class="alternative-main">
+
+                <strong>
+                    Route A
+                </strong>
+
+                <span>
+                    Bole → Piazza
+                </span>
+
+            </div>
+
+            <div>
+                <strong>6.4 km</strong>
+                <span>24 min</span>
+            </div>
+
+            <div class="route-good">
+                BEST
+            </div>
+
+        </div>
+
+
+        <div class="alternative-route">
+
+            <div class="alternative-main">
+
+                <strong>
+                    Route B
+                </strong>
+
+                <span>
+                    Bole → Mexico → Piazza
+                </span>
+
+            </div>
+
+            <div>
+                <strong>7.8 km</strong>
+                <span>31 min</span>
+            </div>
+
+            <div class="route-medium">
+                MEDIUM
+            </div>
+
+        </div>
+
+
+        <div class="alternative-route">
+
+            <div class="alternative-main">
+
+                <strong>
+                    Route C
+                </strong>
+
+                <span>
+                    Bole → Saris → Piazza
+                </span>
+
+            </div>
+
+            <div>
+                <strong>9.1 km</strong>
+                <span>39 min</span>
+            </div>
+
+            <div class="route-busy">
+                BUSY
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AI TIP -->
+<div class="route-tip-card">
+
+    <div class="tip-icon">
+        TIP
+    </div>
+
+    <div>
+
+        <span class="route-section-label">
+            GUZO PLUS TRAVEL TIP
+        </span>
+
+        <h3>
+            Smart Travel Tip
+        </h3>
+
+        <p id="routeTip">
+            በPeak Hour ጊዜ ከፍተኛ Traffic ያለባቸውን
+            መንገዶች ከመጠቀም ይልቅ AI የሚመክረውን
+            አማራጭ መንገድ መጠቀም የጉዞ ጊዜን ሊቀንስ ይችላል።
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- FAKE MAP -->
+<div class="route-map-card">
+
+    <div class="route-card-heading">
+
+        <div>
+
+            <span class="route-section-label">
+                GPS SIMULATION
+            </span>
+
+            <h2>
+                Route Visualization
+            </h2>
+
+        </div>
+
+        <span class="route-demo-badge">
+            FAKE GPS
+        </span>
+
+    </div>
+
+
+    <div class="fake-route-map">
+
+        <div class="route-map-line"></div>
+
+        <div class="route-map-point start-point">
+            A
+        </div>
+
+        <div class="route-map-point middle-point">
+            AI
+        </div>
+
+        <div class="route-map-point end-point">
+            B
+        </div>
+
+        <span class="map-route-label start-route-label">
+            Bole
+        </span>
+
+        <span class="map-route-label middle-route-label">
+            AI Route
+        </span>
+
+        <span class="map-route-label end-route-label">
+            Piazza
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- PROTOTYPE NOTICE -->
+<div class="route-notice">
+
+    <div class="route-notice-line"></div>
+
+    <div>
+
+        <strong>
+            GUZO PLUS Prototype / Demo
+        </strong>
+
+        <p>
+            በዚህ page ላይ ያሉ Distance,
+            Traffic, GPS እና travel time መረጃዎች
+            ሁሉ simulated data ናቸው።
+            እውነተኛ GPS ወይም live transportation API
+            አልተገናኘም።
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<script>
+
+function findBestRoute() {
+
+    const start =
+        document.getElementById("routeStart").value;
+
+    const destination =
+        document.getElementById("routeDestination").value;
+
+    const status =
+        document.getElementById("routeStatus");
+
+    const message =
+        document.getElementById("routeMessage");
+
+    status.textContent =
+        "ANALYZING ROUTES...";
+
+    message.textContent =
+        "AI የTraffic እና Distance መረጃን እያነፃፀረ ነው።";
+
+    setTimeout(function() {
+
+        status.textContent =
+            "BEST ROUTE FOUND";
+
+        message.textContent =
+            "AI የተሻለውን የጉዞ አማራጭ ለይቷል።";
+
+        document.getElementById("bestStart")
+            .textContent = start;
+
+        document.getElementById("bestDestination")
+            .textContent = destination;
+
+    }, 1200);
+}
+
+
+function refreshRoutes() {
+
+    const distances = [
+        "5.8 km",
+        "6.4 km",
+        "7.1 km",
+        "6.9 km"
+    ];
+
+    const times = [
+        "21 min",
+        "24 min",
+        "27 min",
+        "29 min"
+    ];
+
+    const traffic = [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+    ];
+
+    const randomDistance =
+        distances[Math.floor(Math.random() * distances.length)];
+
+    const randomTime =
+        times[Math.floor(Math.random() * times.length)];
+
+    const randomTraffic =
+        traffic[Math.floor(Math.random() * traffic.length)];
+
+    const randomEfficiency =
+        Math.floor(Math.random() * 16) + 80;
+
+
+    document.getElementById("distanceValue")
+        .textContent = randomDistance;
+
+    document.getElementById("timeValue")
+        .textContent = randomTime;
+
+    document.getElementById("trafficValue")
+        .textContent = randomTraffic;
+
+    document.getElementById("efficiencyValue")
+        .textContent = randomEfficiency + "%";
+
+    document.getElementById("routeStatus")
+        .textContent = "DATA REFRESHED";
+
+}
+
+
+const tips = [
+
+    "Peak Hour ላይ ጉዞዎን በትንሹ ቀድመው ማቀድ የጉዞ ጊዜን ሊቀንስ ይችላል።",
+
+    "ከDistance በተጨማሪ Traffic ደረጃንም ማየት ጠቃሚ ነው።",
+
+    "ከፍተኛ Traffic ካለ አማራጭ Route መጠቀም ይችላሉ።",
+
+    "GUZO PLUS AI recommendation በDemo Data ላይ የተመሰረተ ነው።"
+
+];
+
+
+function changeRouteTip() {
+
+    const randomTip =
+        tips[Math.floor(Math.random() * tips.length)];
+
+    document.getElementById("routeTip")
+        .textContent = randomTip;
+
+}
+
+
+changeRouteTip();
+
+</script>
+
+{% endblock %}

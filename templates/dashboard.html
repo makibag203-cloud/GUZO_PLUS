@@ -1,0 +1,290 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <div class="page-label">GUZO PLUS • SMART TRANSPORTATION</div>
+
+    <h1>Smart Dashboard</h1>
+
+    <p>
+        የGUZO PLUS ዋና የመቆጣጠሪያ ገጽ።
+        ሁሉንም የtransportation features ከአንድ ቦታ ይቆጣጠሩ።
+    </p>
+
+</div>
+
+
+<!-- =========================
+     SYSTEM STATUS
+========================= -->
+
+<div class="grid">
+
+    <div class="card">
+
+        <div class="stat-label">TRAFFIC STATUS</div>
+
+        <div class="stat-value">68%</div>
+
+        <span class="status status-warning">
+            Moderate
+        </span>
+
+        <div class="progress">
+            <div class="progress-bar" style="width:68%"></div>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="stat-label">ACTIVE VEHICLES</div>
+
+        <div class="stat-value">248</div>
+
+        <span class="status status-good">
+            Operational
+        </span>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="stat-label">AI SYSTEM</div>
+
+        <div class="stat-value">94%</div>
+
+        <span class="status status-good">
+            Online
+        </span>
+
+    </div>
+
+</div>
+
+
+<br>
+
+
+<!-- =========================
+     7 FEATURES
+========================= -->
+
+<div class="page-header">
+
+    <div class="page-label">SMART FEATURES</div>
+
+    <h2>GUZO PLUS Intelligence</h2>
+
+    <p>
+        ከታች ያሉትን features በመጫን ወደ እያንዳንዱ
+        smart transportation service ይግቡ።
+    </p>
+
+</div>
+
+
+<div class="grid">
+
+
+    <!-- 1 -->
+
+    <div class="card">
+
+        <div class="page-label">01</div>
+
+        <h2>AI Traffic Prediction</h2>
+
+        <p>
+            AI የTraffic ሁኔታን ይተነብያል
+            እና የሚጠበቀውን congestion ያሳያል።
+        </p>
+
+        <br>
+
+        <a href="/traffic" class="btn btn-blue">
+            Open Traffic
+        </a>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="card">
+
+        <div class="page-label">02</div>
+
+        <h2>Smart ETA</h2>
+
+        <p>
+            AI በTraffic ሁኔታ ላይ ተመስርቶ
+            የመድረሻ ጊዜን ይገምታል።
+        </p>
+
+        <br>
+
+        <a href="/eta" class="btn btn-purple">
+            Check ETA
+        </a>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="card">
+
+        <div class="page-label">03</div>
+
+        <h2>Driver Management</h2>
+
+        <p>
+            Driver registration, vehicle information
+            እና driver status ያስተዳድሩ።
+        </p>
+
+        <br>
+
+        <a href="/driver-management" class="btn btn-green">
+            Manage Drivers
+        </a>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="card">
+
+        <div class="page-label">04</div>
+
+        <h2>Smart Scheduling</h2>
+
+        <p>
+            AI የDriver, Vehicle እና Route
+            schedule ያዘጋጃል።
+        </p>
+
+        <br>
+
+        <a href="/smart-schedule" class="btn btn-orange">
+            Smart Schedule
+        </a>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="card">
+
+        <div class="page-label">05</div>
+
+        <h2>Accident Detection</h2>
+
+        <p>
+            የአደጋ ሁኔታን ይከታተሉ
+            እና በአቅራቢያ ያሉ ተሽከርካሪዎችን ይመልከቱ።
+        </p>
+
+        <br>
+
+        <a href="/accident" class="btn btn-blue">
+            Monitor Accidents
+        </a>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="card">
+
+        <div class="page-label">06</div>
+
+        <h2>Passenger Demand</h2>
+
+        <p>
+            AI የPassenger demandን ይተነብያል
+            እና peak hours ያሳያል።
+        </p>
+
+        <br>
+
+        <a href="/demand" class="btn btn-purple">
+            View Demand
+        </a>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="card">
+
+        <div class="page-label">07</div>
+
+        <h2>Smart Routes</h2>
+
+        <p>
+            የተለያዩ routesን ያወዳድሩ
+            እና AI የሚመክረውን route ይመልከቱ።
+        </p>
+
+        <br>
+
+        <a href="/routes" class="btn btn-green">
+            Find Routes
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<br><br>
+
+
+<!-- =========================
+     SMART MAP
+========================= -->
+
+<div class="big-card">
+
+    <div class="page-label">
+        LIVE DEMO MAP
+    </div>
+
+    <h2>Smart Transportation Network</h2>
+
+    <p>
+        Demo visualization — ይህ እውነተኛ GPS/traffic data አይደለም።
+    </p>
+
+    <br>
+
+    <div class="map">
+
+        <div class="map-road"></div>
+
+        <div class="map-road two"></div>
+
+        <div class="map-dot dot-one"></div>
+
+        <div class="map-dot dot-two"></div>
+
+        <div class="map-dot dot-three"></div>
+
+    </div>
+
+</div>
+
+{% endblock %}

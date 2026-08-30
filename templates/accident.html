@@ -1,0 +1,582 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Accident Detection{% endblock %}
+
+{% block content %}
+
+<section class="accident-page">
+
+<!-- HERO -->
+<div class="accident-hero">
+
+    <div class="hero-content">
+
+        <span class="accident-badge">
+            GUZO PLUS • SAFETY AI
+        </span>
+
+        <h1>
+            AI Accident Detection
+        </h1>
+
+        <p>
+            GUZO PLUS continuously analyzes simulated
+            transportation data to identify possible
+            accident events and nearby vehicles.
+        </p>
+
+        <div class="hero-actions">
+
+            <button
+                class="primary-action"
+                onclick="runDetection()">
+                Run AI Detection
+            </button>
+
+            <button
+                class="secondary-action"
+                onclick="refreshSimulation()">
+                Refresh Simulation
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI RADAR -->
+    <div class="hero-visual">
+
+        <div class="radar-circle">
+
+            <div class="radar-line"></div>
+
+            <div class="radar-point"></div>
+
+        </div>
+
+        <div class="radar-text">
+            AI
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MONITOR STATUS -->
+<div class="monitor-card">
+
+    <div>
+
+        <span class="section-label">
+            SAFETY MONITOR
+        </span>
+
+        <h2 id="monitorText">
+            AI MONITORING
+        </h2>
+
+        <p>
+            Simulated vehicle movement and safety
+            information are being analyzed.
+        </p>
+
+    </div>
+
+    <div class="monitor-status">
+
+        <span class="status-dot"></span>
+
+        SYSTEM ACTIVE
+
+    </div>
+
+</div>
+
+
+<!-- STATISTICS -->
+<div class="accident-stats">
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+            ACTIVE VEHICLES
+            <span class="stat-symbol"></span>
+        </div>
+
+        <strong id="vehicleCount">
+            14
+        </strong>
+
+        <small>
+            Simulated nearby vehicles
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+            DETECTED ALERTS
+            <span class="stat-symbol"></span>
+        </div>
+
+        <strong id="alertCount">
+            00
+        </strong>
+
+        <small>
+            Current simulated alerts
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+            RESPONSE TIME
+            <span class="stat-symbol"></span>
+        </div>
+
+        <strong>
+            02 min
+        </strong>
+
+        <small>
+            Simulated response estimate
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="stat-top">
+            SYSTEM
+            <span class="stat-symbol"></span>
+        </div>
+
+        <strong>
+            READY
+        </strong>
+
+        <small>
+            Safety AI operational
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- INCIDENT -->
+<div class="incident-card">
+
+    <div class="card-heading">
+
+        <div>
+
+            <span class="section-label">
+                AI INCIDENT ANALYSIS
+            </span>
+
+            <h2>
+                Possible Traffic Incident
+            </h2>
+
+            <p>
+                A simulated safety event has been detected
+                for demonstration purposes.
+            </p>
+
+        </div>
+
+        <span class="priority-badge">
+            HIGH PRIORITY
+        </span>
+
+    </div>
+
+
+    <div class="incident-grid">
+
+        <div class="incident-detail">
+
+            <span>
+                LOCATION
+            </span>
+
+            <strong>
+                Bole Road
+            </strong>
+
+        </div>
+
+
+        <div class="incident-detail">
+
+            <span>
+                INCIDENT TYPE
+            </span>
+
+            <strong>
+                Vehicle Collision
+            </strong>
+
+        </div>
+
+
+        <div class="incident-detail">
+
+            <span>
+                DETECTION
+            </span>
+
+            <strong>
+                AI Simulation
+            </strong>
+
+        </div>
+
+
+        <div class="incident-detail">
+
+            <span>
+                STATUS
+            </span>
+
+            <strong>
+                Response Ready
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="incident-actions">
+
+        <button
+            class="alert-button"
+            onclick="sendAlert()">
+            Send Safety Alert
+        </button>
+
+        <button
+            class="route-button"
+            onclick="viewNearbyVehicles()">
+            View Nearby Vehicles
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FAKE MAP -->
+<div class="map-card">
+
+    <div class="card-heading">
+
+        <div>
+
+            <span class="section-label">
+                GPS SIMULATION
+            </span>
+
+            <h2>
+                Incident Location
+            </h2>
+
+            <p>
+                Simulated GPS map showing the incident
+                and nearby vehicles.
+            </p>
+
+        </div>
+
+        <span class="demo-badge">
+            FAKE GPS
+        </span>
+
+    </div>
+
+
+    <div class="fake-map">
+
+        <div class="grid-lines"></div>
+
+        <div class="road road-a"></div>
+        <div class="road road-b"></div>
+        <div class="road road-c"></div>
+
+
+        <div class="incident-marker">
+            !
+        </div>
+
+        <div class="vehicle-marker vehicle-a"></div>
+        <div class="vehicle-marker vehicle-b"></div>
+        <div class="vehicle-marker vehicle-c"></div>
+        <div class="vehicle-marker vehicle-d"></div>
+
+
+        <div class="map-label accident-label">
+            INCIDENT
+        </div>
+
+        <div class="map-label vehicle-label-a">
+            VEHICLE
+        </div>
+
+        <div class="map-label vehicle-label-b">
+            VEHICLE
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- NEARBY VEHICLES -->
+<div class="nearby-card">
+
+    <div class="card-heading">
+
+        <div>
+
+            <span class="section-label">
+                SAFETY RESPONSE
+            </span>
+
+            <h2>
+                Nearby Vehicles
+            </h2>
+
+            <p>
+                Vehicles that could be nearby the
+                simulated incident.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="vehicle-list">
+
+        <div class="nearby-vehicle">
+
+            <div class="vehicle-number">
+                01
+            </div>
+
+            <div class="vehicle-information">
+
+                <strong>
+                    GUZO BUS 101
+                </strong>
+
+                <span>
+                    0.8 km • Bole Road
+                </span>
+
+            </div>
+
+            <span class="available-status">
+                AVAILABLE
+            </span>
+
+        </div>
+
+
+        <div class="nearby-vehicle">
+
+            <div class="vehicle-number">
+                02
+            </div>
+
+            <div class="vehicle-information">
+
+                <strong>
+                    GUZO MINIBUS 204
+                </strong>
+
+                <span>
+                    1.2 km • Main Road
+                </span>
+
+            </div>
+
+            <span class="available-status">
+                AVAILABLE
+            </span>
+
+        </div>
+
+
+        <div class="nearby-vehicle">
+
+            <div class="vehicle-number">
+                03
+            </div>
+
+            <div class="vehicle-information">
+
+                <strong>
+                    GUZO TAXI 087
+                </strong>
+
+                <span>
+                    1.6 km • Bole Area
+                </span>
+
+            </div>
+
+            <span class="busy-status">
+                BUSY
+            </span>
+
+        </div>
+
+
+        <div class="nearby-vehicle">
+
+            <div class="vehicle-number">
+                04
+            </div>
+
+            <div class="vehicle-information">
+
+                <strong>
+                    GUZO BUS 118
+                </strong>
+
+                <span>
+                    2.1 km • Airport Road
+                </span>
+
+            </div>
+
+            <span class="available-status">
+                AVAILABLE
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- RESPONSE -->
+<div class="response-card">
+
+    <div>
+
+        <span class="section-label">
+            EMERGENCY RESPONSE SIMULATION
+        </span>
+
+        <h2>
+            Safety Response
+        </h2>
+
+        <p id="responseMessage">
+            AI response system is ready for simulated
+            safety alerts.
+        </p>
+
+    </div>
+
+    <div class="response-ready-badge">
+        RESPONSE READY
+    </div>
+
+</div>
+
+
+<!-- NOTICE -->
+<div class="prototype-notice">
+
+    <div class="notice-line"></div>
+
+    <div>
+
+        <strong>
+            GUZO PLUS Prototype / Demo
+        </strong>
+
+        <p>
+            This page uses simulated accident,
+            GPS, vehicle and response data.
+            It does not connect to real emergency
+            services or real-time GPS systems.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<script>
+
+function runDetection() {
+
+    const monitorText =
+        document.getElementById("monitorText");
+
+    monitorText.textContent =
+        "ANALYZING DEMO DATA...";
+
+    setTimeout(function() {
+
+        monitorText.textContent =
+            "AI MONITORING";
+
+        document.getElementById("alertCount")
+            .textContent = "01";
+
+    }, 1200);
+
+}
+
+
+function refreshSimulation() {
+
+    const vehicleCount =
+        Math.floor(Math.random() * 8) + 8;
+
+    document.getElementById("vehicleCount")
+        .textContent = vehicleCount;
+
+}
+
+
+function sendAlert() {
+
+    document.getElementById("responseMessage")
+        .textContent =
+        "Safety alert prepared successfully using simulated response data.";
+
+}
+
+
+function viewNearbyVehicles() {
+
+    document.querySelector(".nearby-card")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+</script>
+
+{% endblock %}
+

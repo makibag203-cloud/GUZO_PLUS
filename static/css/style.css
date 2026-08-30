@@ -1,0 +1,6256 @@
+/* =========================================
+   GUZO PLUS — GLOBAL BLUE AI DESIGN
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: #eaf6ff;
+
+    background:
+        radial-gradient(circle at 10% 10%, rgba(0, 174, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(0, 255, 210, 0.12), transparent 25%),
+        radial-gradient(circle at 50% 100%, rgba(30, 80, 180, 0.20), transparent 35%),
+        linear-gradient(135deg, #031525 0%, #062b49 45%, #03111f 100%);
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 6%;
+
+    background: rgba(3, 20, 35, 0.82);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(80, 210, 255, 0.20);
+
+    box-shadow:
+        0 8px 35px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(0, 170, 255, 0.06);
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #38d9ff;
+}
+
+
+/* NAV LINKS */
+
+.nav-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #ccecff;
+    text-decoration: none;
+
+    padding: 10px 15px;
+    border-radius: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    border: 1px solid transparent;
+
+    transition: all 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+
+    background: rgba(0, 190, 255, 0.12);
+
+    border-color: rgba(70, 210, 255, 0.35);
+
+    box-shadow:
+        0 0 18px rgba(0, 190, 255, 0.15);
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   GLOBAL PAGE CONTAINER
+   ========================================= */
+
+main {
+    min-height: calc(100vh - 150px);
+}
+
+.page-container,
+.driver-page,
+.dashboard-page,
+.passenger-page,
+.traffic-page,
+.eta-page,
+.schedule-page,
+.accident-page,
+.demand-page,
+.routes-page {
+    position: relative;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 55px 25px;
+}
+
+
+/* =========================================
+   AI DECORATION
+   ========================================= */
+
+main::before {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+
+    top: 180px;
+    left: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 190, 255, 0.08);
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+main::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    bottom: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 255, 200, 0.07);
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   HEADINGS
+   ========================================= */
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+}
+
+p {
+    color: #a9c7dc;
+}
+
+
+/* =========================================
+   AI BADGE
+   ========================================= */
+
+.badge {
+    display: inline-block;
+
+    color: #4de3ff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    background: rgba(0, 190, 255, 0.08);
+
+    border: 1px solid rgba(60, 210, 255, 0.25);
+
+    box-shadow:
+        0 0 18px rgba(0, 190, 255, 0.08);
+}
+
+
+/* =========================================
+   GLOBAL CARDS
+   ========================================= */
+
+.card,
+.registration-card,
+.drivers-section,
+.feature-card,
+.dashboard-card,
+.info-card,
+.stat-card {
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 45, 72, 0.92),
+            rgba(4, 26, 45, 0.94)
+        );
+
+    border: 1px solid rgba(77, 211, 255, 0.20);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 35px rgba(0, 160, 255, 0.05);
+
+    backdrop-filter: blur(14px);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover,
+.feature-card:hover,
+.dashboard-card:hover,
+.info-card:hover,
+.stat-card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(66, 218, 255, 0.45);
+
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.35),
+        0 0 35px rgba(0, 190, 255, 0.10);
+}
+
+
+/* =========================================
+   DRIVER HEADER
+   ========================================= */
+
+.driver-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 35px;
+
+    margin-bottom: 40px;
+}
+
+.driver-header h1 {
+    font-size: clamp(32px, 5vw, 48px);
+
+    margin: 12px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #61dcff,
+            #7fffe1
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.driver-header p {
+    max-width: 650px;
+
+    color: #a8c5d9;
+
+    line-height: 1.7;
+}
+
+/* =========================================
+   GUZO PLUS — SMART SCHEDULE
+   BLUE AI FUTURISTIC DESIGN
+   ========================================= */
+
+.schedule-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+    color: #eaf7ff;
+}
+
+/* HERO */
+
+.schedule-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding: 45px;
+    margin-bottom: 25px;
+
+    border-radius: 30px;
+    border: 1px solid rgba(65,190,255,.35);
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0,195,255,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #061b35,
+            #083b68,
+            #075f88
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,80,150,.30);
+}
+
+.schedule-badge,
+.schedule-label {
+    color: #54d9ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.schedule-hero h1 {
+    color: white;
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.schedule-hero p {
+    max-width: 700px;
+    color: #b9d8ec;
+    line-height: 1.7;
+}
+
+.schedule-hero-icon {
+    width: 110px;
+    height: 110px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(104,220,255,.45);
+
+    box-shadow:
+        0 0 35px rgba(0,190,255,.30),
+        inset 0 0 25px rgba(0,190,255,.08);
+}
+
+
+/* AI STATUS */
+
+.schedule-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    padding: 28px;
+    margin-bottom: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.97),
+            rgba(4,24,48,.97)
+        );
+
+    border: 1px solid rgba(72,197,255,.30);
+
+    box-shadow:
+        0 20px 60px rgba(0,60,120,.25);
+}
+
+.schedule-status h2 {
+    color: white;
+    margin: 7px 0;
+}
+
+.schedule-status p {
+    color: #91b5cd;
+    margin: 0;
+}
+
+.schedule-online {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    color: #62f5c0;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.25);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.schedule-online span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #45f0b0;
+
+    box-shadow: 0 0 12px #45f0b0;
+}
+
+
+/* SUMMARY */
+
+.schedule-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.schedule-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.95),
+            rgba(4,24,48,.95)
+        );
+
+    border: 1px solid rgba(72,197,255,.25);
+
+    transition: .25s ease;
+}
+
+.schedule-stat:hover {
+    transform: translateY(-5px);
+
+    border-color: #35cfff;
+
+    box-shadow:
+        0 15px 35px rgba(0,170,255,.20);
+}
+
+.schedule-stat-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,190,255,.20),
+            rgba(70,80,255,.18)
+        );
+
+    border: 1px solid rgba(60,200,255,.30);
+
+    box-shadow:
+        0 0 20px rgba(0,180,255,.12);
+}
+
+.schedule-stat span {
+    display: block;
+
+    color: #6e9bb5;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.schedule-stat strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    margin: 3px 0;
+}
+
+.schedule-stat small {
+    color: #51dcae;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* COMMON CARDS */
+
+.optimization-card,
+.vehicle-control-card,
+.calendar-card {
+    padding: 30px;
+    margin-bottom: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.97),
+            rgba(4,24,48,.97)
+        );
+
+    border: 1px solid rgba(72,197,255,.30);
+
+    box-shadow:
+        0 20px 60px rgba(0,60,120,.25);
+}
+
+
+/* HEADERS */
+
+.optimization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.optimization-header h2 {
+    color: white;
+
+    font-size: 26px;
+
+    margin: 7px 0;
+}
+
+.optimization-header p {
+    color: #91b5cd;
+
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.demo-tag {
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: #68dcff;
+
+    background: rgba(0,174,255,.10);
+
+    border: 1px solid rgba(0,174,255,.30);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* PROGRESS */
+
+.optimization-progress {
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(90,190,255,.12);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    color: #9dbbce;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.progress-info strong {
+    color: #55dfff;
+}
+
+.schedule-progress {
+    width: 100%;
+    height: 11px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+}
+
+.schedule-progress div {
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #12bfff,
+            #586cff
+        );
+
+    box-shadow:
+        0 0 15px rgba(30,190,255,.55);
+}
+
+.optimization-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    color: #668ba2;
+
+    font-size: 11px;
+}
+
+.schedule-good {
+    color: #55e3b1;
+
+    font-weight: 900;
+}
+
+
+/* LARGE VEHICLES */
+
+.control-icon {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 16px;
+
+    background: rgba(0,180,255,.08);
+
+    border: 1px solid rgba(60,200,255,.25);
+}
+
+.vehicle-rules {
+    display: grid;
+    gap: 15px;
+}
+
+.vehicle-rule {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(90,190,255,.12);
+}
+
+.rule-icon {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background: rgba(0,170,255,.10);
+
+    border: 1px solid rgba(60,200,255,.20);
+}
+
+.vehicle-rule strong {
+    color: white;
+
+    font-size: 14px;
+}
+
+.vehicle-rule p {
+    color: #7e9fb3;
+
+    margin: 5px 0 0;
+
+    font-size: 11px;
+}
+
+.rule-status {
+    margin-left: auto;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.restricted {
+    color: #ffb95c;
+
+    background: rgba(255,170,60,.10);
+
+    border: 1px solid rgba(255,170,60,.25);
+}
+
+.allowed {
+    color: #55e3b1;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.25);
+}
+
+
+/* CALENDAR TABLE */
+
+.schedule-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(70,190,255,.18);
+}
+
+.schedule-table {
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+    background: rgba(2,20,40,.35);
+}
+
+.schedule-table th {
+    padding: 15px;
+
+    text-align: left;
+
+    color: #6ca0bb;
+
+    background: rgba(0,150,220,.08);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.schedule-table td {
+    padding: 16px 15px;
+
+    color: #b5d0df;
+
+    border-top: 1px solid rgba(100,180,220,.10);
+
+    font-size: 12px;
+}
+
+.schedule-table tbody tr {
+    transition: .2s ease;
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(0,170,255,.06);
+}
+
+.schedule-status-good,
+.schedule-status-warning {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.schedule-status-good {
+    color: #55e3b1;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.20);
+}
+
+.schedule-status-warning {
+    color: #ffd15c;
+
+    background: rgba(255,190,50,.10);
+
+    border: 1px solid rgba(255,190,50,.20);
+}
+
+
+/* NOTICE */
+
+.schedule-notice {
+    padding: 18px 22px;
+
+    border-radius: 20px;
+
+    background: rgba(0,130,200,.08);
+
+    border: 1px solid rgba(60,190,255,.20);
+}
+
+.schedule-notice p {
+    margin: 0;
+
+    color: #8eafc5;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.schedule-notice strong {
+    color: #55dfff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    .schedule-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .schedule-page {
+        padding: 25px 15px 50px;
+    }
+
+    .schedule-hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 30px 25px;
+    }
+
+    .schedule-hero h1 {
+        font-size: 31px;
+    }
+
+    .schedule-hero-icon {
+        width: 80px;
+        height: 80px;
+
+        font-size: 38px;
+    }
+
+    .optimization-card,
+    .vehicle-control-card,
+    .calendar-card {
+        padding: 22px 18px;
+    }
+
+    .optimization-header {
+        flex-direction: column;
+    }
+
+    .optimization-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .vehicle-rule {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .rule-status {
+        margin-left: 63px;
+    }
+}
+/* =========================================
+   AI ICON
+   ========================================= */
+
+.driver-icon {
+    width: 115px;
+    height: 115px;
+
+    flex-shrink: 0;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #7ffff0,
+            transparent 15%
+        ),
+        linear-gradient(
+            135deg,
+            #087f8c,
+            #087fcb,
+            #074d91
+        );
+
+    border: 1px solid rgba(100, 230, 255, 0.45);
+
+    box-shadow:
+        0 0 35px rgba(0, 200, 255, 0.25),
+        0 20px 35px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+
+    animation: aiPulse 3s infinite ease-in-out;
+}
+
+.driver-icon::before,
+.driver-icon::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(120, 240, 255, 0.45);
+}
+
+.driver-icon::before {
+    inset: 18px;
+}
+
+.driver-icon::after {
+    inset: 34px;
+}
+
+@keyframes aiPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 25px rgba(0, 200, 255, 0.20),
+            0 20px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px rgba(0, 220, 255, 0.38),
+            0 20px 35px rgba(0, 0, 0, 0.25);
+    }
+}
+
+
+/* =========================================
+   REGISTRATION CARD
+   ========================================= */
+
+.registration-card,
+.drivers-section {
+    padding: 38px;
+}
+
+.registration-card h2,
+.section-title h2 {
+    font-size: 29px;
+
+    margin: 5px 0 8px;
+
+    color: #ffffff;
+}
+
+.subtitle {
+    color: #8fb1c8;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.form-group label {
+    color: #c8e5f5;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(90, 190, 230, 0.22);
+
+    background:
+        rgba(1, 19, 33, 0.75);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #66869c;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: rgba(60, 210, 255, 0.40);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #25cfff;
+
+    box-shadow:
+        0 0 0 4px rgba(0, 190, 255, 0.08),
+        0 0 20px rgba(0, 190, 255, 0.08);
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+button,
+.register-btn,
+.btn,
+.primary-btn {
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 14px 28px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #009dcc,
+            #087fcb,
+            #087f8c
+        );
+
+    border: 1px solid rgba(100, 230, 255, 0.30);
+
+    box-shadow:
+        0 10px 25px rgba(0, 160, 220, 0.20);
+
+    transition: all 0.25s ease;
+}
+
+button:hover,
+.register-btn:hover,
+.btn:hover,
+.primary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 190, 255, 0.30),
+        0 0 25px rgba(0, 190, 255, 0.15);
+}
+
+button:active,
+.register-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   SECTION TITLE
+   ========================================= */
+
+.section-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   DRIVER COUNT
+   ========================================= */
+
+.driver-count {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    color: #62e7ff;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    background:
+        rgba(0, 190, 255, 0.08);
+
+    border: 1px solid rgba(70, 215, 255, 0.25);
+
+    box-shadow:
+        0 0 25px rgba(0, 190, 255, 0.10);
+}
+
+
+/* =========================================
+   TABLE
+   ========================================= */
+
+.driver-table {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.table-header,
+.table-row {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 17px 18px;
+}
+
+.table-header {
+    background:
+        rgba(0, 180, 240, 0.09);
+
+    border:
+        1px solid rgba(70, 210, 255, 0.15);
+
+    border-radius: 13px;
+
+    color: #7fdfff;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.table-row {
+    color: #d9f2ff;
+
+    border-bottom:
+        1px solid rgba(100, 180, 220, 0.10);
+
+    transition: 0.2s ease;
+}
+
+.table-row:hover {
+    background:
+        rgba(0, 190, 255, 0.05);
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.verified,
+.pending {
+    width: fit-content;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+.verified {
+    color: #65ffc8;
+
+    background:
+        rgba(0, 255, 170, 0.10);
+
+    border:
+        1px solid rgba(50, 255, 190, 0.20);
+}
+
+.pending {
+    color: #ffd66b;
+
+    background:
+        rgba(255, 200, 60, 0.10);
+
+    border:
+        1px solid rgba(255, 200, 60, 0.20);
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.empty-state {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    border:
+        1px dashed rgba(70, 210, 255, 0.25);
+
+    border-radius: 20px;
+
+    background:
+        rgba(0, 20, 35, 0.35);
+}
+
+.empty-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 200, 255, 0.14),
+            rgba(0, 255, 190, 0.10)
+        );
+
+    border:
+        1px solid rgba(80, 220, 255, 0.20);
+
+    font-size: 30px;
+}
+
+.empty-state h3 {
+    color: #ffffff;
+}
+
+.empty-state p {
+    max-width: 500px;
+
+    margin: auto;
+
+    color: #8eafc3;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 30px 6%;
+
+    background:
+        rgba(2, 16, 28, 0.90);
+
+    border-top:
+        1px solid rgba(70, 210, 255, 0.15);
+
+    color: #7898ac;
+
+    font-size: 13px;
+}
+
+footer strong {
+    color: #45d9ff;
+}
+
+footer p {
+    margin: 5px 0 0;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .driver-page,
+    .page-container,
+    .dashboard-page,
+    .passenger-page,
+    .traffic-page,
+    .eta-page,
+    .schedule-page,
+    .accident-page,
+    .demand-page,
+    .routes-page {
+        padding: 30px 15px;
+    }
+
+    .driver-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .driver-icon {
+        width: 85px;
+        height: 85px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-card,
+    .drivers-section {
+        padding: 25px 20px;
+    }
+
+    .table-header,
+    .table-row {
+        min-width: 600px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .nav-links a {
+        padding: 8px 10px;
+
+        font-size: 11px;
+    }
+
+    .driver-header h1 {
+        font-size: 31px;
+    }
+
+    .registration-card h2,
+    .section-title h2 {
+        font-size: 23px;
+    }
+
+    .section-title {
+        align-items: flex-start;
+    }
+}
+/* =========================================
+   GUZO PLUS — TRAFFIC AI
+   BLUE FUTURISTIC DESIGN
+   ========================================= */
+
+.ai-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+    color: #eaf7ff;
+}
+
+/* HERO */
+.ai-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding: 45px;
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(65, 190, 255, .35);
+    border-radius: 30px;
+
+    background:
+        radial-gradient(circle at 85% 20%,
+        rgba(0, 195, 255, .25),
+        transparent 35%),
+        linear-gradient(135deg,
+        #061b35,
+        #083b68,
+        #075f88);
+
+    box-shadow: 0 25px 70px rgba(0,80,150,.30);
+}
+
+.ai-hero h1 {
+    margin: 10px 0;
+    color: white;
+    font-size: 42px;
+}
+
+.ai-hero p {
+    max-width: 680px;
+    margin: 0;
+    color: #b9d8ec;
+    line-height: 1.7;
+}
+
+.ai-badge,
+.small-label {
+    color: #54d9ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.ai-hero-icon {
+    width: 110px;
+    height: 110px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 30px;
+
+    font-size: 50px;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(104,220,255,.45);
+
+    box-shadow:
+        0 0 35px rgba(0,190,255,.30),
+        inset 0 0 25px rgba(0,190,255,.08);
+}
+
+
+/* COMMON CARDS */
+
+.ai-status-card,
+.prediction-card,
+.recommendation-card,
+.demo-notice {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.97),
+            rgba(4,24,48,.97)
+        );
+
+    border: 1px solid rgba(72,197,255,.30);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,60,120,.25);
+
+}
+
+
+/* AI STATUS */
+
+.ai-status-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+}
+
+.ai-status-card h2 {
+    margin: 7px 0;
+    color: white;
+}
+
+.ai-status-card p {
+    margin: 0;
+    color: #91b5cd;
+}
+
+.status-online {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    color: #62f5c0;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.25);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.status-online span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #45f0b0;
+
+    box-shadow: 0 0 12px #45f0b0;
+}
+
+
+/* TRAFFIC GRID */
+
+.traffic-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.traffic-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.95),
+            rgba(4,24,48,.95)
+        );
+
+    border: 1px solid rgba(72,197,255,.25);
+
+    transition: .25s ease;
+}
+
+.traffic-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #35cfff;
+
+    box-shadow:
+        0 15px 35px rgba(0,170,255,.20);
+}
+
+.traffic-icon {
+    font-size: 30px;
+}
+
+.area-label {
+    color: #5f91ad;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.traffic-card h3 {
+    margin: 5px 0;
+
+    color: white;
+}
+
+.traffic-card p {
+    margin: 0;
+
+    color: #86a9be;
+
+    font-size: 12px;
+}
+
+.traffic-card strong {
+    margin-left: auto;
+
+    font-size: 10px;
+}
+
+.low {
+    color: #50e6aa;
+}
+
+.medium {
+    color: #ffd45c;
+}
+
+.high {
+    color: #ff6678;
+}
+
+
+/* PREDICTION */
+
+.prediction-card {
+    padding: 30px;
+
+    margin-bottom: 25px;
+}
+
+.prediction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.prediction-header h2 {
+    margin: 7px 0;
+
+    color: white;
+    font-size: 27px;
+}
+
+.prediction-header p {
+    margin: 0;
+
+    color: #91b5cd;
+}
+
+.demo-tag {
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: #68dcff;
+
+    background: rgba(0,174,255,.10);
+
+    border: 1px solid rgba(0,174,255,.30);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.prediction-content {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+
+    gap: 35px;
+
+    align-items: center;
+}
+
+.prediction-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 170px;
+
+    border-radius: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,190,255,.18),
+            rgba(0,70,130,.10)
+        );
+
+    border: 1px solid rgba(60,200,255,.30);
+
+    box-shadow:
+        inset 0 0 35px rgba(0,180,255,.08);
+}
+
+.prediction-number strong {
+    color: #52dfff;
+
+    font-size: 45px;
+
+    text-shadow:
+        0 0 20px rgba(50,210,255,.45);
+}
+
+.prediction-number span {
+    color: #87a9bd;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* BARS */
+
+.prediction-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bar-row {
+    display: grid;
+
+    grid-template-columns: 70px 1fr 45px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #a8c6d8;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.bar {
+    height: 10px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+}
+
+.bar div {
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #12bfff,
+            #586cff
+        );
+
+    box-shadow:
+        0 0 12px rgba(30,190,255,.55);
+}
+
+.bar-row b {
+    color: #55dfff;
+}
+
+
+/* RECOMMENDATION */
+
+.recommendation-card {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+}
+
+.recommendation-icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    background: rgba(0,180,255,.10);
+
+    border: 1px solid rgba(50,200,255,.30);
+
+    box-shadow:
+        0 0 25px rgba(0,180,255,.15);
+}
+
+.recommendation-card h2 {
+    margin: 7px 0;
+
+    color: white;
+
+    font-size: 21px;
+}
+
+.recommendation-card p {
+    margin: 0;
+
+    color: #91b5cd;
+
+    line-height: 1.6;
+
+    font-size: 13px;
+}
+
+
+/* DEMO NOTICE */
+
+.demo-notice {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,130,200,.10),
+            rgba(0,50,110,.15)
+        );
+}
+
+.demo-notice > span {
+    font-size: 22px;
+}
+
+.demo-notice p {
+    margin: 0;
+
+    color: #8eafc5;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.demo-notice strong {
+    color: #55dfff;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .traffic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction-content {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction-number {
+        height: 140px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .ai-page {
+        padding: 25px 15px 50px;
+    }
+
+    .ai-hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 30px 25px;
+    }
+
+    .ai-hero h1 {
+        font-size: 31px;
+    }
+
+    .ai-hero-icon {
+        width: 80px;
+        height: 80px;
+
+        font-size: 38px;
+    }
+
+    .ai-status-card,
+    .prediction-header,
+    .recommendation-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .bar-row {
+        grid-template-columns: 55px 1fr 40px;
+    }
+}
+/* =========================================
+   GUZO PLUS — SMART SCHEDULE
+   BLUE AI FUTURISTIC DESIGN
+   ========================================= */
+
+.schedule-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+    color: #eaf7ff;
+}
+
+/* HERO */
+
+.schedule-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding: 45px;
+    margin-bottom: 25px;
+
+    border-radius: 30px;
+    border: 1px solid rgba(65,190,255,.35);
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(0,195,255,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #061b35,
+            #083b68,
+            #075f88
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,80,150,.30);
+}
+
+.schedule-badge,
+.schedule-label {
+    color: #54d9ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.schedule-hero h1 {
+    color: white;
+    font-size: 42px;
+    margin: 10px 0;
+}
+
+.schedule-hero p {
+    max-width: 700px;
+    color: #b9d8ec;
+    line-height: 1.7;
+}
+
+.schedule-hero-icon {
+    width: 110px;
+    height: 110px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(104,220,255,.45);
+
+    box-shadow:
+        0 0 35px rgba(0,190,255,.30),
+        inset 0 0 25px rgba(0,190,255,.08);
+}
+
+
+/* AI STATUS */
+
+.schedule-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    padding: 28px;
+    margin-bottom: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.97),
+            rgba(4,24,48,.97)
+        );
+
+    border: 1px solid rgba(72,197,255,.30);
+
+    box-shadow:
+        0 20px 60px rgba(0,60,120,.25);
+}
+
+.schedule-status h2 {
+    color: white;
+    margin: 7px 0;
+}
+
+.schedule-status p {
+    color: #91b5cd;
+    margin: 0;
+}
+
+.schedule-online {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 20px;
+
+    color: #62f5c0;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.25);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.schedule-online span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #45f0b0;
+
+    box-shadow: 0 0 12px #45f0b0;
+}
+
+
+/* SUMMARY */
+
+.schedule-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+.schedule-stat {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 24px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.95),
+            rgba(4,24,48,.95)
+        );
+
+    border: 1px solid rgba(72,197,255,.25);
+
+    transition: .25s ease;
+}
+
+.schedule-stat:hover {
+    transform: translateY(-5px);
+
+    border-color: #35cfff;
+
+    box-shadow:
+        0 15px 35px rgba(0,170,255,.20);
+}
+
+.schedule-stat-icon {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,190,255,.20),
+            rgba(70,80,255,.18)
+        );
+
+    border: 1px solid rgba(60,200,255,.30);
+
+    box-shadow:
+        0 0 20px rgba(0,180,255,.12);
+}
+
+.schedule-stat span {
+    display: block;
+
+    color: #6e9bb5;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.schedule-stat strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    margin: 3px 0;
+}
+
+.schedule-stat small {
+    color: #51dcae;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+
+/* COMMON CARDS */
+
+.optimization-card,
+.vehicle-control-card,
+.calendar-card {
+    padding: 30px;
+    margin-bottom: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7,38,70,.97),
+            rgba(4,24,48,.97)
+        );
+
+    border: 1px solid rgba(72,197,255,.30);
+
+    box-shadow:
+        0 20px 60px rgba(0,60,120,.25);
+}
+
+
+/* HEADERS */
+
+.optimization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 28px;
+}
+
+.optimization-header h2 {
+    color: white;
+
+    font-size: 26px;
+
+    margin: 7px 0;
+}
+
+.optimization-header p {
+    color: #91b5cd;
+
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+.demo-tag {
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: #68dcff;
+
+    background: rgba(0,174,255,.10);
+
+    border: 1px solid rgba(0,174,255,.30);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* PROGRESS */
+
+.optimization-progress {
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(90,190,255,.12);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    color: #9dbbce;
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.progress-info strong {
+    color: #55dfff;
+}
+
+.schedule-progress {
+    width: 100%;
+    height: 11px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+}
+
+.schedule-progress div {
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #12bfff,
+            #586cff
+        );
+
+    box-shadow:
+        0 0 15px rgba(30,190,255,.55);
+}
+
+.optimization-footer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 18px;
+
+    color: #668ba2;
+
+    font-size: 11px;
+}
+
+.schedule-good {
+    color: #55e3b1;
+
+    font-weight: 900;
+}
+
+
+/* LARGE VEHICLES */
+
+.control-icon {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 16px;
+
+    background: rgba(0,180,255,.08);
+
+    border: 1px solid rgba(60,200,255,.25);
+}
+
+.vehicle-rules {
+    display: grid;
+    gap: 15px;
+}
+
+.vehicle-rule {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(90,190,255,.12);
+}
+
+.rule-icon {
+    width: 45px;
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background: rgba(0,170,255,.10);
+
+    border: 1px solid rgba(60,200,255,.20);
+}
+
+.vehicle-rule strong {
+    color: white;
+
+    font-size: 14px;
+}
+
+.vehicle-rule p {
+    color: #7e9fb3;
+
+    margin: 5px 0 0;
+
+    font-size: 11px;
+}
+
+.rule-status {
+    margin-left: auto;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.restricted {
+    color: #ffb95c;
+
+    background: rgba(255,170,60,.10);
+
+    border: 1px solid rgba(255,170,60,.25);
+}
+
+.allowed {
+    color: #55e3b1;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.25);
+}
+
+
+/* CALENDAR TABLE */
+
+.schedule-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(70,190,255,.18);
+}
+
+.schedule-table {
+    width: 100%;
+
+    min-width: 850px;
+
+    border-collapse: collapse;
+
+    background: rgba(2,20,40,.35);
+}
+
+.schedule-table th {
+    padding: 15px;
+
+    text-align: left;
+
+    color: #6ca0bb;
+
+    background: rgba(0,150,220,.08);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.schedule-table td {
+    padding: 16px 15px;
+
+    color: #b5d0df;
+
+    border-top: 1px solid rgba(100,180,220,.10);
+
+    font-size: 12px;
+}
+
+.schedule-table tbody tr {
+    transition: .2s ease;
+}
+
+.schedule-table tbody tr:hover {
+    background: rgba(0,170,255,.06);
+}
+
+.schedule-status-good,
+.schedule-status-warning {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.schedule-status-good {
+    color: #55e3b1;
+
+    background: rgba(50,220,160,.10);
+
+    border: 1px solid rgba(50,220,160,.20);
+}
+
+.schedule-status-warning {
+    color: #ffd15c;
+
+    background: rgba(255,190,50,.10);
+
+    border: 1px solid rgba(255,190,50,.20);
+}
+
+
+/* NOTICE */
+
+.schedule-notice {
+    padding: 18px 22px;
+
+    border-radius: 20px;
+
+    background: rgba(0,130,200,.08);
+
+    border: 1px solid rgba(60,190,255,.20);
+}
+
+.schedule-notice p {
+    margin: 0;
+
+    color: #8eafc5;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.schedule-notice strong {
+    color: #55dfff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+    .schedule-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .schedule-page {
+        padding: 25px 15px 50px;
+    }
+
+    .schedule-hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 30px 25px;
+    }
+
+    .schedule-hero h1 {
+        font-size: 31px;
+    }
+
+    .schedule-hero-icon {
+        width: 80px;
+        height: 80px;
+
+        font-size: 38px;
+    }
+
+    .optimization-card,
+    .vehicle-control-card,
+    .calendar-card {
+        padding: 22px 18px;
+    }
+
+    .optimization-header {
+        flex-direction: column;
+    }
+
+    .optimization-footer {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .vehicle-rule {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .rule-status {
+        margin-left: 63px;
+    }
+}
+/* =========================================================
+GUZO PLUS — AI ACCIDENT DETECTION
+BLUE FUTURISTIC DESIGN
+========================================================= */
+
+.accident-page {
+min-height: 100vh;
+padding: 45px 5% 80px;
+color: #eaf7ff;
+background:
+radial-gradient(circle at 15% 20%, rgba(0, 174, 255, 0.16), transparent 28%),
+radial-gradient(circle at 85% 15%, rgba(0, 100, 255, 0.14), transparent 30%),
+linear-gradient(135deg, #03101f 0%, #061b32 48%, #020b18 100%);
+position: relative;
+overflow: hidden;
+}
+
+.accident-page::before {
+content: "";
+position: absolute;
+inset: 0;
+background-image:
+linear-gradient(rgba(0, 174, 255, 0.035) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 174, 255, 0.035) 1px, transparent 1px);
+background-size: 45px 45px;
+pointer-events: none;
+}
+
+.accident-page > * {
+position: relative;
+z-index: 1;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.accident-hero {
+max-width: 1250px;
+margin: 0 auto 30px;
+min-height: 360px;
+padding: 50px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 40px;
+
+
+border: 1px solid rgba(0, 174, 255, 0.35);
+border-radius: 28px;
+
+background:
+    linear-gradient(135deg,
+        rgba(7, 35, 62, 0.94),
+        rgba(2, 16, 32, 0.96));
+
+box-shadow:
+    0 0 45px rgba(0, 140, 255, 0.12),
+    inset 0 0 35px rgba(0, 140, 255, 0.04);
+
+
+}
+
+.hero-content {
+max-width: 760px;
+}
+
+.accident-badge,
+.section-label {
+display: inline-block;
+font-size: 12px;
+font-weight: 800;
+letter-spacing: 2px;
+color: #59d7ff;
+}
+
+.accident-badge {
+padding: 9px 16px;
+border: 1px solid rgba(0, 191, 255, 0.4);
+border-radius: 30px;
+background: rgba(0, 174, 255, 0.08);
+box-shadow: 0 0 18px rgba(0, 174, 255, 0.12);
+}
+
+.accident-hero h1 {
+margin: 20px 0 14px;
+font-size: clamp(38px, 5vw, 66px);
+line-height: 1.05;
+letter-spacing: -2px;
+}
+
+.accident-hero p {
+max-width: 720px;
+margin: 0;
+color: #9fc6df;
+font-size: 17px;
+line-height: 1.8;
+}
+
+/* =========================================================
+HERO BUTTONS
+========================================================= */
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+margin-top: 30px;
+}
+
+.primary-action,
+.secondary-action,
+.alert-button,
+.route-button {
+border-radius: 13px;
+padding: 13px 23px;
+font-size: 14px;
+font-weight: 800;
+cursor: pointer;
+transition: 0.25s ease;
+}
+
+.primary-action {
+border: 1px solid #36cfff;
+color: #00111f;
+background: linear-gradient(135deg, #6be1ff, #159eff);
+box-shadow: 0 0 24px rgba(0, 174, 255, 0.25);
+}
+
+.primary-action:hover {
+transform: translateY(-3px);
+box-shadow: 0 0 32px rgba(0, 174, 255, 0.55);
+}
+
+.secondary-action {
+border: 1px solid rgba(89, 215, 255, 0.4);
+color: #bfeeff;
+background: rgba(0, 120, 190, 0.08);
+}
+
+.secondary-action:hover {
+transform: translateY(-3px);
+border-color: #59d7ff;
+background: rgba(0, 174, 255, 0.15);
+}
+
+/* =========================================================
+RADAR
+========================================================= */
+
+.hero-visual {
+width: 230px;
+height: 230px;
+flex-shrink: 0;
+display: grid;
+place-items: center;
+position: relative;
+}
+
+.radar-circle {
+width: 210px;
+height: 210px;
+border-radius: 50%;
+position: absolute;
+border: 1px solid rgba(62, 210, 255, 0.55);
+
+
+background:
+    radial-gradient(circle,
+        rgba(0, 180, 255, 0.15) 0%,
+        rgba(0, 180, 255, 0.04) 42%,
+        transparent 70%);
+
+box-shadow:
+    0 0 25px rgba(0, 174, 255, 0.18),
+    inset 0 0 25px rgba(0, 174, 255, 0.08);
+
+overflow: hidden;
+
+}
+
+.radar-circle::before,
+.radar-circle::after {
+content: "";
+position: absolute;
+border: 1px solid rgba(89, 215, 255, 0.22);
+border-radius: 50%;
+}
+
+.radar-circle::before {
+inset: 25px;
+}
+
+.radar-circle::after {
+inset: 58px;
+}
+
+.radar-line {
+position: absolute;
+width: 50%;
+height: 2px;
+top: 50%;
+left: 50%;
+transform-origin: left center;
+background: linear-gradient(90deg, #64e7ff, transparent);
+animation: radarSpin 3s linear infinite;
+}
+
+.radar-point {
+position: absolute;
+width: 9px;
+height: 9px;
+top: 48px;
+left: 132px;
+border-radius: 50%;
+background: #5de5ff;
+box-shadow: 0 0 18px #5de5ff;
+}
+
+.radar-text {
+position: relative;
+z-index: 3;
+font-size: 38px;
+font-weight: 900;
+color: #7de8ff;
+text-shadow: 0 0 20px rgba(0, 190, 255, 0.7);
+}
+
+@keyframes radarSpin {
+from {
+transform: rotate(0deg);
+}
+
+
+to {
+    transform: rotate(360deg);
+}
+
+
+}
+
+/* =========================================================
+MONITOR
+========================================================= */
+
+.monitor-card,
+.incident-card,
+.map-card,
+.nearby-card,
+.response-card,
+.prototype-notice {
+max-width: 1250px;
+margin: 0 auto 25px;
+padding: 30px;
+
+
+border: 1px solid rgba(0, 174, 255, 0.22);
+border-radius: 22px;
+
+background:
+    linear-gradient(135deg,
+        rgba(8, 35, 59, 0.88),
+        rgba(3, 18, 34, 0.94));
+
+box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.24),
+    inset 0 0 25px rgba(0, 174, 255, 0.025);
+
+}
+
+.monitor-card {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 25px;
+}
+
+.monitor-card h2,
+.incident-card h2,
+.map-card h2,
+.nearby-card h2,
+.response-card h2 {
+margin: 8px 0;
+font-size: 25px;
+}
+
+.monitor-card p,
+.card-heading p,
+.response-card p {
+color: #8eb5cc;
+line-height: 1.7;
+margin: 8px 0 0;
+}
+
+.monitor-status {
+white-space: nowrap;
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 12px 17px;
+border-radius: 30px;
+border: 1px solid rgba(53, 221, 160, 0.35);
+background: rgba(53, 221, 160, 0.07);
+color: #62e8b0;
+font-size: 12px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.status-dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: #4deda8;
+box-shadow: 0 0 14px #4deda8;
+animation: statusPulse 1.5s infinite;
+}
+
+@keyframes statusPulse {
+50% {
+opacity: 0.35;
+transform: scale(0.75);
+}
+}
+
+/* =========================================================
+STATISTICS
+========================================================= */
+
+.accident-stats {
+max-width: 1250px;
+margin: 0 auto 25px;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+}
+
+.stat-card {
+padding: 25px;
+border-radius: 19px;
+border: 1px solid rgba(0, 174, 255, 0.2);
+background: rgba(5, 28, 48, 0.85);
+box-shadow: inset 0 0 22px rgba(0, 174, 255, 0.025);
+transition: 0.25s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-4px);
+border-color: rgba(0, 191, 255, 0.55);
+box-shadow: 0 12px 30px rgba(0, 150, 255, 0.12);
+}
+
+.stat-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: #79a8c1;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1.4px;
+}
+
+.stat-symbol {
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: #39cfff;
+box-shadow: 0 0 12px #39cfff;
+}
+
+.stat-card strong {
+display: block;
+margin: 13px 0 5px;
+font-size: 34px;
+color: #eafaff;
+}
+
+.stat-card small {
+color: #6e99b2;
+}
+
+.response-ready {
+color: #58e6ad !important;
+}
+
+/* =========================================================
+INCIDENT
+========================================================= */
+
+.card-heading {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+gap: 25px;
+}
+
+.priority-badge {
+padding: 10px 15px;
+border-radius: 30px;
+border: 1px solid rgba(255, 93, 115, 0.45);
+color: #ff8294;
+background: rgba(255, 70, 95, 0.08);
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1px;
+white-space: nowrap;
+}
+
+.incident-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+margin-top: 28px;
+}
+
+.incident-detail {
+padding: 19px;
+border-radius: 14px;
+border: 1px solid rgba(0, 174, 255, 0.14);
+background: rgba(0, 120, 190, 0.055);
+}
+
+.incident-detail span {
+display: block;
+color: #6d9bb5;
+font-size: 10px;
+font-weight: 800;
+letter-spacing: 1px;
+margin-bottom: 8px;
+}
+
+.incident-detail strong {
+color: #dff7ff;
+}
+
+.incident-actions {
+display: flex;
+gap: 13px;
+flex-wrap: wrap;
+margin-top: 25px;
+}
+
+.alert-button {
+border: 1px solid rgba(255, 105, 125, 0.5);
+color: #fff;
+background: linear-gradient(135deg, #d83d5b, #9d2742);
+box-shadow: 0 0 20px rgba(220, 55, 85, 0.15);
+}
+
+.alert-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 0 28px rgba(220, 55, 85, 0.35);
+}
+
+.route-button {
+border: 1px solid rgba(70, 205, 255, 0.4);
+color: #c9f3ff;
+background: rgba(0, 140, 210, 0.1);
+}
+
+.route-button:hover {
+transform: translateY(-3px);
+border-color: #55d9ff;
+}
+
+/* =========================================================
+MAP
+========================================================= */
+
+.map-card {
+overflow: hidden;
+}
+
+.demo-badge {
+padding: 9px 14px;
+border-radius: 20px;
+border: 1px solid rgba(0, 174, 255, 0.35);
+color: #66dfff;
+background: rgba(0, 174, 255, 0.07);
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.fake-map {
+height: 390px;
+margin-top: 25px;
+position: relative;
+overflow: hidden;
+border-radius: 18px;
+border: 1px solid rgba(0, 174, 255, 0.2);
+
+
+background:
+    radial-gradient(circle at 50% 50%, rgba(0, 174, 255, 0.12), transparent 35%),
+    #031525;
+
+
+}
+
+.grid-lines {
+position: absolute;
+inset: 0;
+background-image:
+linear-gradient(rgba(45, 188, 255, 0.07) 1px, transparent 1px),
+linear-gradient(90deg, rgba(45, 188, 255, 0.07) 1px, transparent 1px);
+background-size: 38px 38px;
+}
+
+.road {
+position: absolute;
+height: 9px;
+background: #123b55;
+border-top: 1px solid #2a789c;
+border-bottom: 1px solid #2a789c;
+box-shadow: 0 0 15px rgba(0, 150, 220, 0.08);
+}
+
+.road-a {
+width: 115%;
+top: 45%;
+left: -5%;
+transform: rotate(-13deg);
+}
+
+.road-b {
+width: 90%;
+top: 62%;
+left: 12%;
+transform: rotate(23deg);
+}
+
+.road-c {
+width: 80%;
+top: 25%;
+left: 10%;
+transform: rotate(55deg);
+}
+
+.incident-marker {
+position: absolute;
+top: 43%;
+left: 48%;
+width: 55px;
+height: 55px;
+display: grid;
+place-items: center;
+border-radius: 50%;
+color: #fff;
+font-size: 27px;
+font-weight: 900;
+background: #e9415f;
+border: 3px solid rgba(255, 255, 255, 0.7);
+box-shadow:
+0 0 0 12px rgba(233, 65, 95, 0.1),
+0 0 35px rgba(233, 65, 95, 0.75);
+animation: incidentPulse 1.7s infinite;
+}
+
+@keyframes incidentPulse {
+50% {
+box-shadow:
+0 0 0 25px rgba(233, 65, 95, 0.02),
+0 0 45px rgba(233, 65, 95, 0.85);
+}
+}
+
+.vehicle-marker {
+position: absolute;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+background: #45d8ff;
+border: 2px solid #d9f9ff;
+box-shadow: 0 0 18px rgba(69, 216, 255, 0.9);
+}
+
+.vehicle-a {
+top: 31%;
+left: 30%;
+}
+
+.vehicle-b {
+top: 67%;
+left: 36%;
+}
+
+.vehicle-c {
+top: 28%;
+left: 70%;
+}
+
+.vehicle-d {
+top: 72%;
+left: 75%;
+}
+
+.map-label {
+position: absolute;
+padding: 5px 9px;
+border-radius: 7px;
+background: rgba(2, 13, 25, 0.85);
+border: 1px solid rgba(0, 174, 255, 0.2);
+color: #a9eaff;
+font-size: 9px;
+font-weight: 800;
+letter-spacing: 1px;
+}
+
+.accident-label {
+top: 56%;
+left: 49%;
+}
+
+.vehicle-label-a {
+top: 26%;
+left: 27%;
+}
+
+.vehicle-label-b {
+top: 23%;
+left: 67%;
+}
+
+/* =========================================================
+NEARBY VEHICLES
+========================================================= */
+
+.vehicle-list {
+margin-top: 25px;
+display: grid;
+gap: 12px;
+}
+
+.nearby-vehicle {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 17px;
+border-radius: 15px;
+border: 1px solid rgba(0, 174, 255, 0.13);
+background: rgba(0, 120, 190, 0.045);
+transition: 0.2s ease;
+}
+
+.nearby-vehicle:hover {
+border-color: rgba(0, 174, 255, 0.4);
+background: rgba(0, 120, 190, 0.09);
+}
+
+.vehicle-number {
+width: 42px;
+height: 42px;
+display: grid;
+place-items: center;
+flex-shrink: 0;
+border-radius: 11px;
+color: #70ddff;
+background: rgba(0, 174, 255, 0.1);
+border: 1px solid rgba(0, 174, 255, 0.25);
+font-weight: 900;
+}
+
+.vehicle-information {
+flex: 1;
+}
+
+.vehicle-information strong {
+display: block;
+color: #e7f9ff;
+margin-bottom: 5px;
+}
+
+.vehicle-information span {
+color: #719bb1;
+font-size: 12px;
+}
+
+.available-status,
+.busy-status {
+padding: 8px 12px;
+border-radius: 20px;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.available-status {
+color: #5ce5ac;
+border: 1px solid rgba(92, 229, 172, 0.3);
+background: rgba(92, 229, 172, 0.07);
+}
+
+.busy-status {
+color: #ffb45f;
+border: 1px solid rgba(255, 180, 95, 0.3);
+background: rgba(255, 180, 95, 0.07);
+}
+
+/* =========================================================
+RESPONSE
+========================================================= */
+
+.response-card {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 25px;
+}
+
+.response-ready-badge {
+padding: 13px 18px;
+border-radius: 25px;
+color: #64e5ad;
+border: 1px solid rgba(64, 229, 173, 0.35);
+background: rgba(64, 229, 173, 0.07);
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1px;
+white-space: nowrap;
+}
+
+/* =========================================================
+PROTOTYPE NOTICE
+========================================================= */
+
+.prototype-notice {
+display: flex;
+gap: 17px;
+align-items: flex-start;
+border-color: rgba(0, 174, 255, 0.16);
+background: rgba(0, 100, 160, 0.06);
+}
+
+.notice-line {
+width: 4px;
+min-height: 70px;
+border-radius: 5px;
+background: linear-gradient(#35d5ff, #147aff);
+box-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
+}
+
+.prototype-notice strong {
+color: #83e6ff;
+}
+
+.prototype-notice p {
+margin: 7px 0 0;
+color: #779caf;
+font-size: 13px;
+line-height: 1.7;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+
+.accident-stats {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.incident-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.hero-visual {
+    display: none;
+}
+
+}
+
+@media (max-width: 650px) {
+
+
+.accident-page {
+    padding: 25px 14px 50px;
+}
+
+.accident-hero {
+    padding: 30px 22px;
+}
+
+.monitor-card,
+.response-card {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.accident-stats,
+.incident-grid {
+    grid-template-columns: 1fr;
+}
+
+.card-heading {
+    flex-direction: column;
+}
+
+.fake-map {
+    height: 300px;
+}
+
+.nearby-vehicle {
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+}
+/* =========================================================
+GUZO PLUS — ACCIDENT DETECTION
+FUTURISTIC BLUE AI DESIGN
+========================================================= */
+
+.accident-page {
+max-width: 1250px;
+margin: 0 auto;
+padding: 45px 22px 80px;
+color: #eaf7ff;
+}
+
+/* ================= HERO ================= */
+
+.accident-hero {
+position: relative;
+overflow: hidden;
+display: flex;
+justify-content: space-between;
+align-items: center;
+min-height: 360px;
+padding: 55px;
+margin-bottom: 28px;
+border: 1px solid rgba(0, 174, 255, 0.35);
+border-radius: 30px;
+background:
+radial-gradient(circle at 80% 20%, rgba(0, 174, 255, 0.18), transparent 30%),
+linear-gradient(135deg, #06152b, #081d38 55%, #03101f);
+box-shadow:
+0 25px 70px rgba(0, 0, 0, 0.35),
+inset 0 0 50px rgba(0, 174, 255, 0.04);
+}
+
+.accident-hero::before {
+content: "";
+position: absolute;
+width: 420px;
+height: 420px;
+right: -150px;
+top: -180px;
+border-radius: 50%;
+border: 1px solid rgba(0, 174, 255, 0.15);
+box-shadow:
+0 0 60px rgba(0, 174, 255, 0.12);
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+max-width: 720px;
+}
+
+.accident-badge {
+display: inline-block;
+padding: 9px 16px;
+border: 1px solid rgba(0, 174, 255, 0.45);
+border-radius: 50px;
+background: rgba(0, 174, 255, 0.08);
+color: #54d8ff;
+font-size: 12px;
+font-weight: 800;
+letter-spacing: 1.5px;
+}
+
+.accident-hero h1 {
+margin: 18px 0 15px;
+font-size: clamp(38px, 5vw, 68px);
+line-height: 1;
+letter-spacing: -2px;
+}
+
+.accident-hero p {
+max-width: 680px;
+color: #9eb9ce;
+font-size: 16px;
+line-height: 1.8;
+}
+
+/* ================= BUTTONS ================= */
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
+margin-top: 28px;
+}
+
+.primary-action,
+.secondary-action,
+.alert-button,
+.route-button {
+border: none;
+border-radius: 15px;
+padding: 14px 22px;
+font-size: 14px;
+font-weight: 800;
+cursor: pointer;
+transition: 0.25s ease;
+}
+
+.primary-action {
+color: #02111f;
+background: linear-gradient(135deg, #61ddff, #159fe4);
+box-shadow: 0 10px 30px rgba(0, 174, 255, 0.25);
+}
+
+.primary-action:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 40px rgba(0, 174, 255, 0.4);
+}
+
+.secondary-action {
+color: #cceeff;
+background: rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(0, 174, 255, 0.3);
+}
+
+.secondary-action:hover {
+transform: translateY(-3px);
+background: rgba(0, 174, 255, 0.1);
+}
+
+/* ================= AI RADAR ================= */
+
+.hero-visual {
+position: relative;
+width: 280px;
+height: 280px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.radar-circle {
+position: absolute;
+width: 230px;
+height: 230px;
+border: 1px solid rgba(70, 210, 255, 0.4);
+border-radius: 50%;
+box-shadow:
+0 0 30px rgba(0, 174, 255, 0.12),
+inset 0 0 35px rgba(0, 174, 255, 0.08);
+}
+
+.radar-circle::before,
+.radar-circle::after {
+content: "";
+position: absolute;
+border: 1px solid rgba(70, 210, 255, 0.18);
+border-radius: 50%;
+}
+
+.radar-circle::before {
+inset: 30px;
+}
+
+.radar-circle::after {
+inset: 65px;
+}
+
+.radar-line {
+position: absolute;
+width: 50%;
+height: 2px;
+left: 50%;
+top: 50%;
+transform-origin: left center;
+background: linear-gradient(90deg, #5ee7ff, transparent);
+animation: radarSpin 3s linear infinite;
+}
+
+@keyframes radarSpin {
+from {
+transform: rotate(0deg);
+}
+
+
+to {
+    transform: rotate(360deg);
+}
+
+
+}
+
+.radar-point {
+position: absolute;
+width: 10px;
+height: 10px;
+top: 65px;
+right: 58px;
+border-radius: 50%;
+background: #61ddff;
+box-shadow: 0 0 20px #61ddff;
+}
+
+.radar-text {
+position: relative;
+z-index: 3;
+width: 90px;
+height: 90px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+color: #65e4ff;
+font-size: 25px;
+font-weight: 900;
+background: #06192d;
+border: 1px solid rgba(0, 174, 255, 0.5);
+box-shadow: 0 0 45px rgba(0, 174, 255, 0.25);
+}
+
+/* ================= CARDS ================= */
+
+.monitor-card,
+.incident-card,
+.map-card,
+.nearby-card,
+.response-card,
+.prototype-notice {
+position: relative;
+margin-top: 24px;
+padding: 30px;
+border-radius: 24px;
+background:
+linear-gradient(145deg, rgba(8, 29, 53, 0.96), rgba(3, 16, 31, 0.98));
+border: 1px solid rgba(0, 174, 255, 0.2);
+box-shadow:
+0 18px 50px rgba(0, 0, 0, 0.28),
+inset 0 0 35px rgba(0, 174, 255, 0.025);
+}
+
+.monitor-card,
+.response-card {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 25px;
+}
+
+.section-label {
+display: inline-block;
+color: #4fdcff;
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1.7px;
+}
+
+.monitor-card h2,
+.incident-card h2,
+.map-card h2,
+.nearby-card h2,
+.response-card h2 {
+margin: 9px 0;
+}
+
+.monitor-card p,
+.incident-card p,
+.map-card p,
+.nearby-card p,
+.response-card p {
+color: #8faabd;
+line-height: 1.7;
+}
+
+.monitor-status,
+.response-ready-badge {
+white-space: nowrap;
+padding: 11px 16px;
+border-radius: 50px;
+color: #65e4ff;
+background: rgba(0, 174, 255, 0.08);
+border: 1px solid rgba(0, 174, 255, 0.25);
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.status-dot {
+display: inline-block;
+width: 8px;
+height: 8px;
+margin-right: 7px;
+border-radius: 50%;
+background: #51e1ff;
+box-shadow: 0 0 15px #51e1ff;
+}
+
+/* ================= STATISTICS ================= */
+
+.accident-stats {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 24px;
+}
+
+.stat-card {
+padding: 25px;
+border-radius: 21px;
+background: linear-gradient(145deg, #09213d, #041426);
+border: 1px solid rgba(0, 174, 255, 0.18);
+transition: 0.25s ease;
+}
+
+.stat-card:hover {
+transform: translateY(-5px);
+border-color: rgba(0, 174, 255, 0.45);
+box-shadow: 0 15px 40px rgba(0, 174, 255, 0.08);
+}
+
+.stat-top {
+display: flex;
+justify-content: space-between;
+color: #7594aa;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.2px;
+}
+
+.stat-symbol {
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: #4edfff;
+box-shadow: 0 0 12px #4edfff;
+}
+
+.stat-card strong {
+display: block;
+margin: 15px 0 7px;
+color: #f1fbff;
+font-size: 30px;
+}
+
+.stat-card small {
+color: #7794a9;
+}
+
+/* ================= INCIDENT ================= */
+
+.card-heading {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+}
+
+.priority-badge {
+padding: 10px 14px;
+border-radius: 50px;
+color: #ffd4d4;
+background: rgba(255, 70, 70, 0.08);
+border: 1px solid rgba(255, 80, 80, 0.3);
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.incident-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 14px;
+margin-top: 25px;
+}
+
+.incident-detail {
+padding: 19px;
+border-radius: 15px;
+background: rgba(0, 174, 255, 0.035);
+border: 1px solid rgba(0, 174, 255, 0.12);
+}
+
+.incident-detail span {
+display: block;
+margin-bottom: 8px;
+color: #6d8ba0;
+font-size: 10px;
+font-weight: 900;
+}
+
+.incident-detail strong {
+color: #e8f9ff;
+}
+
+.incident-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+margin-top: 25px;
+}
+
+.alert-button {
+color: white;
+background: linear-gradient(135deg, #e64d62, #b92742);
+box-shadow: 0 10px 30px rgba(220, 50, 70, 0.2);
+}
+
+.alert-button:hover {
+transform: translateY(-3px);
+box-shadow: 0 15px 35px rgba(220, 50, 70, 0.3);
+}
+
+.route-button {
+color: #bdefff;
+background: rgba(0, 174, 255, 0.07);
+border: 1px solid rgba(0, 174, 255, 0.25);
+}
+
+.route-button:hover {
+transform: translateY(-3px);
+}
+
+/* ================= FAKE MAP ================= */
+
+.fake-map {
+position: relative;
+height: 420px;
+overflow: hidden;
+margin-top: 25px;
+border-radius: 20px;
+background:
+linear-gradient(rgba(0, 174, 255, 0.035) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 174, 255, 0.035) 1px, transparent 1px),
+#03111f;
+background-size: 35px 35px;
+border: 1px solid rgba(0, 174, 255, 0.2);
+}
+
+.road {
+position: absolute;
+height: 12px;
+border-radius: 20px;
+background: rgba(85, 170, 205, 0.17);
+box-shadow: 0 0 12px rgba(0, 174, 255, 0.05);
+}
+
+.road-a {
+width: 90%;
+left: 5%;
+top: 47%;
+transform: rotate(-8deg);
+}
+
+.road-b {
+width: 75%;
+left: 12%;
+top: 35%;
+transform: rotate(42deg);
+}
+
+.road-c {
+width: 70%;
+left: 15%;
+top: 62%;
+transform: rotate(-38deg);
+}
+
+.incident-marker,
+.vehicle-marker {
+position: absolute;
+z-index: 5;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+}
+
+.incident-marker {
+left: 50%;
+top: 48%;
+width: 62px;
+height: 62px;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 25px;
+font-weight: 900;
+background: #d7354e;
+border: 3px solid rgba(255, 255, 255, 0.75);
+box-shadow:
+0 0 0 12px rgba(215, 53, 78, 0.1),
+0 0 40px rgba(215, 53, 78, 0.6);
+animation: incidentPulse 1.7s infinite;
+}
+
+@keyframes incidentPulse {
+0%, 100% {
+box-shadow:
+0 0 0 12px rgba(215, 53, 78, 0.08),
+0 0 40px rgba(215, 53, 78, 0.5);
+}
+
+
+50% {
+    box-shadow:
+        0 0 0 25px rgba(215, 53, 78, 0.02),
+        0 0 65px rgba(215, 53, 78, 0.7);
+}
+
+}
+
+.vehicle-marker {
+width: 22px;
+height: 22px;
+background: #51dcff;
+border: 3px solid #062038;
+box-shadow: 0 0 25px rgba(81, 220, 255, 0.75);
+}
+
+.vehicle-a {
+left: 20%;
+top: 27%;
+}
+
+.vehicle-b {
+right: 18%;
+top: 31%;
+}
+
+.vehicle-c {
+left: 27%;
+bottom: 20%;
+}
+
+.vehicle-d {
+right: 27%;
+bottom: 18%;
+}
+
+.map-label {
+position: absolute;
+z-index: 7;
+padding: 7px 10px;
+border-radius: 7px;
+color: #bcefff;
+background: rgba(2, 14, 27, 0.88);
+border: 1px solid rgba(0, 174, 255, 0.2);
+font-size: 9px;
+font-weight: 900;
+letter-spacing: 1px;
+}
+
+.accident-label {
+left: 50%;
+top: 60%;
+transform: translateX(-50%);
+}
+
+.vehicle-label-a {
+left: 20%;
+top: 33%;
+}
+
+.vehicle-label-b {
+right: 18%;
+top: 37%;
+}
+
+/* ================= VEHICLES ================= */
+
+.vehicle-list {
+display: grid;
+gap: 12px;
+margin-top: 22px;
+}
+
+.nearby-vehicle {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 17px;
+border-radius: 15px;
+background: rgba(0, 174, 255, 0.035);
+border: 1px solid rgba(0, 174, 255, 0.12);
+transition: 0.2s ease;
+}
+
+.nearby-vehicle:hover {
+transform: translateX(5px);
+border-color: rgba(0, 174, 255, 0.35);
+}
+
+.vehicle-number {
+width: 42px;
+height: 42px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 12px;
+color: #59dcff;
+background: rgba(0, 174, 255, 0.08);
+font-weight: 900;
+}
+
+.vehicle-information {
+flex: 1;
+}
+
+.vehicle-information strong {
+display: block;
+margin-bottom: 5px;
+}
+
+.vehicle-information span {
+color: #7895a8;
+font-size: 12px;
+}
+
+.available-status,
+.busy-status {
+padding: 7px 11px;
+border-radius: 50px;
+font-size: 9px;
+font-weight: 900;
+}
+
+.available-status {
+color: #7de8ff;
+background: rgba(0, 174, 255, 0.08);
+}
+
+.busy-status {
+color: #ffc7c7;
+background: rgba(255, 70, 70, 0.08);
+}
+
+/* ================= NOTICE ================= */
+
+.prototype-notice {
+display: flex;
+gap: 18px;
+align-items: flex-start;
+}
+
+.notice-line {
+width: 4px;
+min-height: 65px;
+border-radius: 10px;
+background: #43d9ff;
+box-shadow: 0 0 18px rgba(67, 217, 255, 0.5);
+}
+
+.prototype-notice strong {
+color: #bdefff;
+}
+
+.prototype-notice p {
+margin-bottom: 0;
+color: #718fa4;
+line-height: 1.7;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+
+.accident-hero {
+    padding: 40px;
+}
+
+.hero-visual {
+    display: none;
+}
+
+.accident-stats,
+.incident-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+}
+
+@media (max-width: 650px) {
+
+
+.accident-page {
+    padding: 25px 14px 55px;
+}
+
+.accident-hero {
+    padding: 30px 22px;
+    border-radius: 22px;
+}
+
+.accident-hero h1 {
+    font-size: 40px;
+}
+
+.monitor-card,
+.response-card,
+.card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.accident-stats,
+.incident-grid {
+    grid-template-columns: 1fr;
+}
+
+.monitor-card,
+.incident-card,
+.map-card,
+.nearby-card,
+.response-card,
+.prototype-notice {
+    padding: 22px;
+}
+
+.fake-map {
+    height: 320px;
+}
+
+.nearby-vehicle {
+    flex-wrap: wrap;
+}
+
+
+}
+/* =========================================================
+GUZO PLUS — PASSENGER DEMAND AI
+FUTURISTIC BLUE DESIGN
+========================================================= */
+
+.demand-page {
+max-width: 1250px;
+margin: 0 auto;
+padding: 45px 22px 80px;
+color: #eaf7ff;
+}
+
+/* ================= HERO ================= */
+
+.demand-hero {
+position: relative;
+overflow: hidden;
+min-height: 370px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 55px;
+border-radius: 30px;
+background:
+radial-gradient(circle at 80% 30%, rgba(0, 174, 255, 0.18), transparent 30%),
+linear-gradient(135deg, #06172d, #08213e 55%, #03101f);
+border: 1px solid rgba(0, 174, 255, 0.3);
+box-shadow:
+0 25px 70px rgba(0, 0, 0, 0.35),
+inset 0 0 50px rgba(0, 174, 255, 0.04);
+}
+
+.demand-hero::before,
+.demand-hero::after {
+content: "";
+position: absolute;
+border-radius: 50%;
+pointer-events: none;
+}
+
+.demand-hero::before {
+width: 450px;
+height: 450px;
+right: -180px;
+top: -180px;
+border: 1px solid rgba(70, 215, 255, 0.15);
+}
+
+.demand-hero::after {
+width: 650px;
+height: 650px;
+right: -280px;
+top: -280px;
+border: 1px solid rgba(70, 215, 255, 0.07);
+}
+
+.demand-hero-content {
+position: relative;
+z-index: 2;
+max-width: 720px;
+}
+
+.demand-badge {
+display: inline-block;
+padding: 9px 16px;
+border-radius: 50px;
+color: #60dcff;
+background: rgba(0, 174, 255, 0.08);
+border: 1px solid rgba(0, 174, 255, 0.35);
+font-size: 11px;
+font-weight: 900;
+letter-spacing: 1.5px;
+}
+
+.demand-hero h1 {
+margin: 18px 0 15px;
+font-size: clamp(38px, 5vw, 66px);
+line-height: 1;
+letter-spacing: -2px;
+}
+
+.demand-hero p {
+color: #9bb6ca;
+line-height: 1.8;
+font-size: 16px;
+}
+
+/* ================= HERO BUTTONS ================= */
+
+.demand-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+margin-top: 28px;
+}
+
+.demand-primary-btn,
+.demand-secondary-btn,
+.recommendation-btn {
+padding: 14px 23px;
+border-radius: 15px;
+font-weight: 900;
+font-size: 13px;
+cursor: pointer;
+transition: 0.25s ease;
+}
+
+.demand-primary-btn {
+border: none;
+color: #02121f;
+background: linear-gradient(135deg, #69e5ff, #159ee1);
+box-shadow: 0 10px 30px rgba(0, 174, 255, 0.25);
+}
+
+.demand-primary-btn:hover {
+transform: translateY(-4px);
+box-shadow: 0 17px 42px rgba(0, 174, 255, 0.4);
+}
+
+.demand-secondary-btn {
+color: #c9efff;
+background: rgba(255, 255, 255, 0.035);
+border: 1px solid rgba(0, 174, 255, 0.3);
+}
+
+.demand-secondary-btn:hover {
+transform: translateY(-4px);
+background: rgba(0, 174, 255, 0.09);
+}
+
+/* ================= AI CORE ================= */
+
+.demand-ai-core {
+position: relative;
+width: 290px;
+height: 290px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.core-ring {
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(74, 220, 255, 0.35);
+}
+
+.ring-one {
+width: 250px;
+height: 250px;
+animation: demandRotate 12s linear infinite;
+}
+
+.ring-two {
+width: 190px;
+height: 190px;
+border-style: dashed;
+animation: demandRotateReverse 9s linear infinite;
+}
+
+.ring-three {
+width: 125px;
+height: 125px;
+box-shadow: 0 0 35px rgba(0, 174, 255, 0.15);
+}
+
+.core-center {
+position: relative;
+z-index: 5;
+width: 92px;
+height: 92px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+color: #65e4ff;
+background: #061b31;
+border: 1px solid rgba(0, 174, 255, 0.5);
+box-shadow:
+0 0 30px rgba(0, 174, 255, 0.3),
+inset 0 0 25px rgba(0, 174, 255, 0.1);
+font-size: 25px;
+font-weight: 900;
+}
+
+@keyframes demandRotate {
+from {
+transform: rotate(0deg);
+}
+
+
+to {
+    transform: rotate(360deg);
+}
+
+}
+
+@keyframes demandRotateReverse {
+from {
+transform: rotate(360deg);
+}
+
+
+to {
+    transform: rotate(0deg);
+}
+
+
+}
+
+/* ================= STATUS ================= */
+
+.demand-status-card,
+.demand-card,
+.recommendation-card,
+.demand-explanation,
+.demand-notice {
+margin-top: 24px;
+padding: 30px;
+border-radius: 24px;
+background:
+linear-gradient(145deg, rgba(8, 29, 53, 0.97), rgba(3, 16, 31, 0.99));
+border: 1px solid rgba(0, 174, 255, 0.2);
+box-shadow:
+0 18px 50px rgba(0, 0, 0, 0.27),
+inset 0 0 35px rgba(0, 174, 255, 0.025);
+}
+
+.demand-status-card {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 25px;
+}
+
+.demand-section-label {
+color: #51dcff;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.6px;
+}
+
+.demand-status-card h2 {
+margin: 10px 0;
+}
+
+.demand-status-card p,
+.demand-card-heading p,
+.recommendation-content p,
+.demand-explanation p,
+.demand-notice p {
+color: #8ba8bb;
+line-height: 1.7;
+}
+
+.demand-live-status {
+white-space: nowrap;
+padding: 11px 16px;
+border-radius: 50px;
+color: #64e3ff;
+background: rgba(0, 174, 255, 0.07);
+border: 1px solid rgba(0, 174, 255, 0.25);
+font-size: 10px;
+font-weight: 900;
+}
+
+.demand-status-dot {
+display: inline-block;
+width: 8px;
+height: 8px;
+margin-right: 7px;
+border-radius: 50%;
+background: #52ddff;
+box-shadow: 0 0 15px #52ddff;
+}
+
+/* ================= STATS ================= */
+
+.demand-stats {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 24px;
+}
+
+.demand-stat-card {
+position: relative;
+overflow: hidden;
+padding: 25px;
+border-radius: 21px;
+background: linear-gradient(145deg, #09243f, #041426);
+border: 1px solid rgba(0, 174, 255, 0.18);
+transition: 0.25s ease;
+}
+
+.demand-stat-card::after {
+content: "";
+position: absolute;
+width: 90px;
+height: 90px;
+right: -35px;
+bottom: -40px;
+border-radius: 50%;
+border: 1px solid rgba(0, 174, 255, 0.13);
+}
+
+.demand-stat-card:hover {
+transform: translateY(-5px);
+border-color: rgba(0, 174, 255, 0.45);
+box-shadow: 0 15px 40px rgba(0, 174, 255, 0.08);
+}
+
+.demand-stat-card span {
+color: #718fa5;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.1px;
+}
+
+.demand-stat-card strong {
+display: block;
+margin: 13px 0 6px;
+color: #f0fbff;
+font-size: 31px;
+}
+
+.demand-stat-card small {
+color: #708da1;
+}
+
+/* ================= CARD HEADING ================= */
+
+.demand-card-heading {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+}
+
+.demand-card-heading h2 {
+margin: 9px 0;
+}
+
+.demo-data-badge {
+padding: 9px 13px;
+border-radius: 50px;
+color: #67ddff;
+background: rgba(0, 174, 255, 0.07);
+border: 1px solid rgba(0, 174, 255, 0.25);
+font-size: 9px;
+font-weight: 900;
+}
+
+/* ================= ROUTE DEMAND ================= */
+
+.route-demand-list {
+display: grid;
+gap: 17px;
+margin-top: 25px;
+}
+
+.route-demand-item {
+padding: 20px;
+border-radius: 17px;
+background: rgba(0, 174, 255, 0.035);
+border: 1px solid rgba(0, 174, 255, 0.12);
+}
+
+.route-info {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 15px;
+}
+
+.route-info strong {
+color: #e9f9ff;
+}
+
+.route-info span {
+color: #7896aa;
+font-size: 12px;
+}
+
+.demand-level {
+display: inline-block;
+margin-top: 12px;
+padding: 6px 10px;
+border-radius: 50px;
+font-size: 9px;
+font-weight: 900;
+}
+
+.demand-level.high {
+color: #73e7ff;
+background: rgba(0, 174, 255, 0.09);
+}
+
+.demand-level.medium {
+color: #c4e7f2;
+background: rgba(100, 170, 200, 0.08);
+}
+
+.demand-level.low {
+color: #7899aa;
+background: rgba(100, 140, 155, 0.07);
+}
+
+.demand-bar {
+height: 7px;
+margin-top: 13px;
+overflow: hidden;
+border-radius: 20px;
+background: rgba(255, 255, 255, 0.06);
+}
+
+.demand-fill {
+height: 100%;
+border-radius: inherit;
+box-shadow: 0 0 14px rgba(0, 174, 255, 0.3);
+}
+
+.high-fill {
+background: linear-gradient(90deg, #159ee1, #68e5ff);
+}
+
+.medium-fill {
+background: linear-gradient(90deg, #287ba2, #63c5df);
+}
+
+.low-fill {
+background: #356277;
+}
+
+/* ================= PEAK HOURS ================= */
+
+.peak-hours {
+display: grid;
+gap: 16px;
+margin-top: 25px;
+}
+
+.peak-item {
+display: grid;
+grid-template-columns: 115px 1fr 90px;
+align-items: center;
+gap: 15px;
+}
+
+.peak-item > span {
+color: #9db7c8;
+font-size: 12px;
+font-weight: 700;
+}
+
+.peak-item strong {
+color: #67dfff;
+font-size: 10px;
+text-align: right;
+letter-spacing: 1px;
+}
+
+.peak-bar {
+height: 9px;
+overflow: hidden;
+border-radius: 20px;
+background: rgba(255, 255, 255, 0.055);
+}
+
+.peak-bar div {
+height: 100%;
+border-radius: inherit;
+background: linear-gradient(90deg, #0b76ae, #65e1ff);
+box-shadow: 0 0 15px rgba(0, 174, 255, 0.3);
+}
+
+/* ================= RECOMMENDATION ================= */
+
+.recommendation-card {
+display: flex;
+align-items: center;
+gap: 22px;
+border-color: rgba(0, 174, 255, 0.3);
+background:
+radial-gradient(circle at 0% 50%, rgba(0, 174, 255, 0.1), transparent 35%),
+linear-gradient(145deg, #082644, #031321);
+}
+
+.recommendation-icon {
+flex-shrink: 0;
+width: 65px;
+height: 65px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 18px;
+color: #5de2ff;
+background: rgba(0, 174, 255, 0.08);
+border: 1px solid rgba(0, 174, 255, 0.3);
+box-shadow: 0 0 25px rgba(0, 174, 255, 0.12);
+font-weight: 900;
+}
+
+.recommendation-content {
+flex: 1;
+}
+
+.recommendation-content h2 {
+margin: 7px 0;
+}
+
+.recommendation-btn {
+flex-shrink: 0;
+border: 1px solid rgba(0, 174, 255, 0.35);
+color: #c8f1ff;
+background: rgba(0, 174, 255, 0.08);
+}
+
+.recommendation-btn:hover {
+transform: translateY(-3px);
+background: rgba(0, 174, 255, 0.15);
+}
+
+/* ================= EXPLANATION ================= */
+
+.explanation-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+margin-top: 25px;
+}
+
+.explanation-grid > div {
+padding: 20px;
+border-radius: 16px;
+background: rgba(0, 174, 255, 0.035);
+border: 1px solid rgba(0, 174, 255, 0.11);
+}
+
+.explanation-grid strong {
+color: #55ddff;
+font-size: 24px;
+}
+
+.explanation-grid p {
+margin-bottom: 0;
+}
+
+/* ================= NOTICE ================= */
+
+.demand-notice {
+display: flex;
+align-items: flex-start;
+gap: 18px;
+}
+
+.demand-notice .notice-line {
+width: 4px;
+min-height: 65px;
+flex-shrink: 0;
+border-radius: 10px;
+background: #4ddcff;
+box-shadow: 0 0 18px rgba(77, 220, 255, 0.5);
+}
+
+.demand-notice strong {
+color: #bfefff;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+
+.demand-hero {
+    padding: 40px;
+}
+
+.demand-ai-core {
+    display: none;
+}
+
+.demand-stats,
+.explanation-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+}
+
+@media (max-width: 650px) {
+
+.demand-page {
+    padding: 25px 14px 55px;
+}
+
+.demand-hero {
+    padding: 30px 22px;
+    border-radius: 22px;
+}
+
+.demand-hero h1 {
+    font-size: 40px;
+}
+
+.demand-status-card,
+.recommendation-card,
+.demand-card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.demand-stats,
+.explanation-grid {
+    grid-template-columns: 1fr;
+}
+
+.demand-status-card,
+.demand-card,
+.recommendation-card,
+.demand-explanation,
+.demand-notice {
+    padding: 22px;
+}
+
+.route-info {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.peak-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.peak-item strong {
+    text-align: left;
+}
+
+
+}
+/* =========================================================
+GUZO PLUS — SMART ROUTES AI
+FUTURISTIC BLUE ROUTE INTELLIGENCE DESIGN
+========================================================= */
+
+.routes-page {
+max-width: 1250px;
+margin: 0 auto;
+padding: 45px 22px 80px;
+color: #eaf8ff;
+}
+
+/* ================= HERO ================= */
+
+.routes-hero {
+position: relative;
+overflow: hidden;
+min-height: 390px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 55px;
+border-radius: 30px;
+background:
+radial-gradient(circle at 80% 45%, rgba(0, 190, 255, .18), transparent 28%),
+linear-gradient(135deg, #041326, #082746 55%, #020d19);
+border: 1px solid rgba(35, 195, 255, .3);
+box-shadow:
+0 25px 70px rgba(0, 0, 0, .38),
+inset 0 0 45px rgba(0, 180, 255, .035);
+}
+
+.routes-hero::before {
+content: "";
+position: absolute;
+width: 500px;
+height: 500px;
+right: -190px;
+top: -190px;
+border: 1px solid rgba(70, 220, 255, .12);
+border-radius: 50%;
+}
+
+.routes-hero::after {
+content: "";
+position: absolute;
+width: 720px;
+height: 720px;
+right: -300px;
+top: -300px;
+border: 1px solid rgba(70, 220, 255, .06);
+border-radius: 50%;
+}
+
+.routes-hero-content {
+position: relative;
+z-index: 3;
+max-width: 720px;
+}
+
+.routes-badge {
+display: inline-block;
+padding: 9px 16px;
+border-radius: 50px;
+color: #63e4ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 180, 255, .32);
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.5px;
+}
+
+.routes-hero h1 {
+margin: 18px 0 15px;
+font-size: clamp(38px, 5vw, 64px);
+line-height: 1;
+letter-spacing: -2px;
+}
+
+.routes-hero p {
+max-width: 650px;
+color: #94afc3;
+line-height: 1.8;
+}
+
+/* ================= BUTTONS ================= */
+
+.routes-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+margin-top: 28px;
+}
+
+.route-primary-btn,
+.route-secondary-btn {
+padding: 14px 23px;
+border-radius: 15px;
+font-size: 12px;
+font-weight: 900;
+cursor: pointer;
+transition: .25s ease;
+}
+
+.route-primary-btn {
+color: #02111d;
+background: linear-gradient(135deg, #70e8ff, #119bdc);
+border: none;
+box-shadow: 0 10px 30px rgba(0, 174, 255, .25);
+}
+
+.route-primary-btn:hover {
+transform: translateY(-4px);
+box-shadow: 0 17px 42px rgba(0, 174, 255, .42);
+}
+
+.route-secondary-btn {
+color: #c9f2ff;
+background: rgba(255, 255, 255, .035);
+border: 1px solid rgba(0, 180, 255, .3);
+}
+
+.route-secondary-btn:hover {
+transform: translateY(-4px);
+background: rgba(0, 180, 255, .1);
+}
+
+/* ================= AI CORE ================= */
+
+.route-ai-core {
+position: relative;
+width: 290px;
+height: 290px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.route-ring {
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(65, 220, 255, .32);
+}
+
+.ring-a {
+width: 250px;
+height: 250px;
+animation: routeSpin 13s linear infinite;
+}
+
+.ring-b {
+width: 190px;
+height: 190px;
+border-style: dashed;
+animation: routeSpinReverse 9s linear infinite;
+}
+
+.ring-c {
+width: 125px;
+height: 125px;
+box-shadow: 0 0 40px rgba(0, 180, 255, .15);
+}
+
+.route-core-center {
+position: relative;
+z-index: 5;
+width: 92px;
+height: 92px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+color: #67e5ff;
+background: #061a2f;
+border: 1px solid rgba(0, 180, 255, .5);
+box-shadow:
+0 0 35px rgba(0, 180, 255, .28),
+inset 0 0 25px rgba(0, 180, 255, .1);
+font-size: 24px;
+font-weight: 900;
+}
+
+@keyframes routeSpin {
+from {
+transform: rotate(0);
+}
+
+
+to {
+    transform: rotate(360deg);
+}
+```
+
+}
+
+@keyframes routeSpinReverse {
+from {
+transform: rotate(360deg);
+}
+
+
+to {
+    transform: rotate(0);
+}
+
+
+}
+
+/* ================= GENERAL CARDS ================= */
+
+.route-search-card,
+.route-status-card,
+.best-route-card,
+.route-card,
+.route-tip-card,
+.route-map-card,
+.route-notice {
+margin-top: 24px;
+padding: 30px;
+border-radius: 24px;
+background:
+linear-gradient(145deg, rgba(7, 30, 54, .98), rgba(2, 14, 27, .99));
+border: 1px solid rgba(0, 180, 255, .19);
+box-shadow:
+0 18px 50px rgba(0, 0, 0, .27),
+inset 0 0 35px rgba(0, 180, 255, .025);
+}
+
+.route-section-label {
+color: #55dcff;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.5px;
+}
+
+.route-search-card h2,
+.route-card h2,
+.best-route-card h2,
+.route-map-card h2 {
+margin: 9px 0;
+}
+
+.route-search-card p,
+.route-card-heading p,
+.route-status-card p,
+.route-notice p {
+color: #8da9bb;
+line-height: 1.7;
+}
+
+/* ================= SEARCH ================= */
+
+.route-input-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+margin-top: 25px;
+}
+
+.route-input-group label {
+display: block;
+margin-bottom: 9px;
+color: #a8c4d5;
+font-size: 11px;
+font-weight: 800;
+}
+
+.route-input-group input {
+width: 100%;
+box-sizing: border-box;
+padding: 15px 17px;
+border-radius: 14px;
+color: #e9faff;
+background: rgba(0, 174, 255, .035);
+border: 1px solid rgba(0, 180, 255, .18);
+outline: none;
+transition: .2s ease;
+}
+
+.route-input-group input:focus {
+border-color: rgba(0, 205, 255, .55);
+box-shadow: 0 0 20px rgba(0, 180, 255, .1);
+}
+
+/* ================= STATUS ================= */
+
+.route-status-card {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+}
+
+.route-ai-status {
+white-space: nowrap;
+padding: 10px 15px;
+border-radius: 50px;
+color: #61e1ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 180, 255, .25);
+font-size: 10px;
+font-weight: 900;
+}
+
+.route-ai-status span {
+display: inline-block;
+width: 8px;
+height: 8px;
+margin-right: 7px;
+border-radius: 50%;
+background: #58ddff;
+box-shadow: 0 0 15px #58ddff;
+}
+
+/* ================= STATS ================= */
+
+.route-stats {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 24px;
+}
+
+.route-stat-card {
+position: relative;
+overflow: hidden;
+padding: 25px;
+border-radius: 21px;
+background: linear-gradient(145deg, #082540, #031425);
+border: 1px solid rgba(0, 180, 255, .17);
+transition: .25s ease;
+}
+
+.route-stat-card:hover {
+transform: translateY(-5px);
+border-color: rgba(0, 200, 255, .45);
+box-shadow: 0 15px 40px rgba(0, 180, 255, .08);
+}
+
+.route-stat-card span,
+.route-details span {
+color: #718fa4;
+font-size: 9px;
+font-weight: 900;
+letter-spacing: 1.1px;
+}
+
+.route-stat-card strong {
+display: block;
+margin: 12px 0 5px;
+color: #eefbff;
+font-size: 29px;
+}
+
+.route-stat-card small {
+color: #708da1;
+}
+
+/* ================= BEST ROUTE ================= */
+
+.best-route-card {
+border-color: rgba(0, 195, 255, .3);
+background:
+radial-gradient(circle at 0 50%, rgba(0, 180, 255, .1), transparent 35%),
+linear-gradient(145deg, #082744, #031422);
+}
+
+.best-route-heading,
+.route-card-heading {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+}
+
+.route-demo-badge {
+padding: 8px 13px;
+border-radius: 50px;
+color: #64e2ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 180, 255, .25);
+font-size: 9px;
+font-weight: 900;
+}
+
+.recommended-route {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 35px;
+margin: 30px 0;
+padding: 28px;
+border-radius: 20px;
+background: rgba(0, 180, 255, .045);
+border: 1px solid rgba(0, 180, 255, .13);
+}
+
+.route-location {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.route-location span {
+color: #6f8da2;
+font-size: 9px;
+font-weight: 900;
+}
+
+.route-location strong {
+color: #effbff;
+font-size: 22px;
+}
+
+.route-arrow {
+color: #55ddff;
+font-size: 30px;
+text-shadow: 0 0 15px rgba(0, 200, 255, .5);
+}
+
+.route-details {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 14px;
+}
+
+.route-details > div {
+padding: 18px;
+border-radius: 15px;
+background: rgba(0, 180, 255, .035);
+border: 1px solid rgba(0, 180, 255, .1);
+}
+
+.route-details strong {
+display: block;
+margin-top: 8px;
+color: #dff8ff;
+}
+
+/* ================= ALTERNATIVE ROUTES ================= */
+
+.alternative-routes {
+display: grid;
+gap: 14px;
+margin-top: 24px;
+}
+
+.alternative-route {
+display: grid;
+grid-template-columns: 1fr 130px 90px;
+align-items: center;
+gap: 20px;
+padding: 19px;
+border-radius: 17px;
+background: rgba(0, 180, 255, .035);
+border: 1px solid rgba(0, 180, 255, .11);
+transition: .2s ease;
+}
+
+.alternative-route:hover,
+.alternative-route.selected {
+border-color: rgba(0, 200, 255, .32);
+background: rgba(0, 180, 255, .06);
+}
+
+.alternative-main {
+display: flex;
+flex-direction: column;
+gap: 7px;
+}
+
+.alternative-main strong {
+color: #eafaff;
+}
+
+.alternative-main span,
+.alternative-route > div:nth-child(2) span {
+color: #7895a8;
+font-size: 11px;
+}
+
+.alternative-route > div:nth-child(2) {
+display: flex;
+flex-direction: column;
+gap: 7px;
+}
+
+.alternative-route > div:nth-child(2) strong {
+color: #dff8ff;
+}
+
+.route-good,
+.route-medium,
+.route-busy {
+justify-self: end;
+padding: 7px 10px;
+border-radius: 50px;
+font-size: 9px;
+font-weight: 900;
+}
+
+.route-good {
+color: #62e4ff;
+background: rgba(0, 180, 255, .09);
+}
+
+.route-medium {
+color: #a5cedc;
+background: rgba(100, 170, 200, .08);
+}
+
+.route-busy {
+color: #7898aa;
+background: rgba(100, 140, 155, .07);
+}
+
+/* ================= TIP ================= */
+
+.route-tip-card {
+display: flex;
+align-items: center;
+gap: 22px;
+background:
+radial-gradient(circle at 0 50%, rgba(0, 180, 255, .1), transparent 32%),
+linear-gradient(145deg, #082640, #031321);
+}
+
+.tip-icon {
+width: 65px;
+height: 65px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 18px;
+color: #60e3ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 180, 255, .28);
+box-shadow: 0 0 25px rgba(0, 180, 255, .1);
+font-size: 11px;
+font-weight: 900;
+}
+
+.route-tip-card h3 {
+margin: 7px 0;
+}
+
+.route-tip-card p {
+margin-bottom: 0;
+color: #8daabd;
+line-height: 1.7;
+}
+
+/* ================= FAKE MAP ================= */
+
+.fake-route-map {
+position: relative;
+height: 300px;
+margin-top: 25px;
+overflow: hidden;
+border-radius: 20px;
+background:
+linear-gradient(rgba(0, 174, 255, .035) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0, 174, 255, .035) 1px, transparent 1px),
+#031321;
+background-size: 35px 35px;
+border: 1px solid rgba(0, 180, 255, .14);
+}
+
+.route-map-line {
+position: absolute;
+left: 14%;
+top: 50%;
+width: 72%;
+height: 3px;
+transform: rotate(-7deg);
+background: linear-gradient(90deg, #168fc5, #62e4ff, #168fc5);
+box-shadow: 0 0 18px rgba(0, 200, 255, .45);
+}
+
+.route-map-point {
+position: absolute;
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+color: #67e5ff;
+background: #06213a;
+border: 1px solid rgba(0, 200, 255, .45);
+box-shadow: 0 0 25px rgba(0, 180, 255, .25);
+font-size: 12px;
+font-weight: 900;
+}
+
+.start-point {
+left: 10%;
+top: 43%;
+}
+
+.middle-point {
+left: 47%;
+top: 36%;
+}
+
+.end-point {
+right: 10%;
+top: 54%;
+}
+
+.map-route-label {
+position: absolute;
+padding: 6px 9px;
+border-radius: 8px;
+color: #9fc2d3;
+background: rgba(3, 19, 33, .9);
+border: 1px solid rgba(0, 180, 255, .15);
+font-size: 10px;
+}
+
+.start-route-label {
+left: 8%;
+top: 62%;
+}
+
+.middle-route-label {
+left: 44%;
+top: 28%;
+}
+
+.end-route-label {
+right: 7%;
+top: 68%;
+}
+
+/* ================= NOTICE ================= */
+
+.route-notice {
+display: flex;
+align-items: flex-start;
+gap: 17px;
+}
+
+.route-notice-line {
+width: 4px;
+min-height: 65px;
+flex-shrink: 0;
+border-radius: 10px;
+background: #52ddff;
+box-shadow: 0 0 18px rgba(82, 221, 255, .5);
+}
+
+.route-notice strong {
+color: #c5f1ff;
+}
+
+.route-notice p {
+margin-bottom: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+
+.routes-hero {
+    padding: 40px;
+}
+
+.route-ai-core {
+    display: none;
+}
+
+.route-stats,
+.route-details {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+}
+
+@media (max-width: 650px) {
+
+
+.routes-page {
+    padding: 25px 14px 55px;
+}
+
+.routes-hero {
+    padding: 30px 22px;
+    border-radius: 22px;
+}
+
+.routes-hero h1 {
+    font-size: 40px;
+}
+
+.route-input-grid,
+.route-stats,
+.route-details {
+    grid-template-columns: 1fr;
+}
+
+.route-status-card,
+.route-tip-card,
+.best-route-heading,
+.route-card-heading {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.recommended-route {
+    gap: 18px;
+    padding: 20px;
+}
+
+.route-location strong {
+    font-size: 17px;
+}
+
+.alternative-route {
+    grid-template-columns: 1fr;
+}
+
+.route-good,
+.route-medium,
+.route-busy {
+    justify-self: start;
+}
+
+.route-search-card,
+.route-status-card,
+.best-route-card,
+.route-card,
+.route-tip-card,
+.route-map-card,
+.route-notice {
+    padding: 22px;
+}
+
+
+}
+
+/* =========================================================
+GUZO PLUS — SMART VEHICLE CONTROL
+FUTURISTIC BLUE AI DESIGN
+========================================================= */
+
+.vehicle-page {
+max-width: 1250px;
+margin: 0 auto;
+padding: 45px 22px 80px;
+color: #eaf9ff;
+}
+
+/* ================= HERO ================= */
+
+.vehicle-hero {
+position: relative;
+overflow: hidden;
+min-height: 390px;
+padding: 55px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+border-radius: 30px;
+background:
+radial-gradient(circle at 85% 45%, rgba(0, 205, 255, .18), transparent 28%),
+linear-gradient(135deg, #031224, #082b49 55%, #020b16);
+border: 1px solid rgba(45, 210, 255, .32);
+box-shadow:
+0 25px 70px rgba(0, 0, 0, .42),
+inset 0 0 50px rgba(0, 180, 255, .035);
+}
+
+.vehicle-hero::before {
+content: "";
+position: absolute;
+width: 560px;
+height: 560px;
+right: -220px;
+top: -230px;
+border-radius: 50%;
+border: 1px solid rgba(70, 220, 255, .12);
+}
+
+.vehicle-hero::after {
+content: "";
+position: absolute;
+width: 760px;
+height: 760px;
+right: -320px;
+top: -330px;
+border-radius: 50%;
+border: 1px solid rgba(70, 220, 255, .055);
+}
+
+.vehicle-hero-content {
+position: relative;
+z-index: 3;
+max-width: 720px;
+}
+
+.vehicle-badge {
+display: inline-block;
+padding: 9px 16px;
+border-radius: 50px;
+color: #62e5ff;
+background: rgba(0, 190, 255, .07);
+border: 1px solid rgba(0, 190, 255, .3);
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.6px;
+}
+
+.vehicle-hero h1 {
+margin: 19px 0 15px;
+font-size: clamp(38px, 5vw, 64px);
+line-height: 1;
+letter-spacing: -2px;
+}
+
+.vehicle-hero p {
+max-width: 650px;
+color: #91aec1;
+line-height: 1.8;
+}
+
+/* ================= BUTTONS ================= */
+
+.vehicle-actions {
+display: flex;
+flex-wrap: wrap;
+gap: 14px;
+margin-top: 29px;
+}
+
+.vehicle-primary-btn,
+.vehicle-secondary-btn {
+padding: 15px 24px;
+border-radius: 15px;
+font-size: 11px;
+font-weight: 900;
+cursor: pointer;
+transition: .25s ease;
+}
+
+.vehicle-primary-btn {
+color: #02111c;
+background: linear-gradient(135deg, #72eaff, #119bda);
+border: none;
+box-shadow: 0 12px 32px rgba(0, 180, 255, .25);
+}
+
+.vehicle-primary-btn:hover {
+transform: translateY(-4px);
+box-shadow: 0 18px 42px rgba(0, 190, 255, .42);
+}
+
+.vehicle-secondary-btn {
+color: #c7f3ff;
+background: rgba(255, 255, 255, .035);
+border: 1px solid rgba(0, 190, 255, .3);
+}
+
+.vehicle-secondary-btn:hover {
+transform: translateY(-4px);
+background: rgba(0, 190, 255, .1);
+}
+
+/* ================= AI CORE ================= */
+
+.vehicle-ai-core {
+position: relative;
+width: 300px;
+height: 300px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.vehicle-orbit {
+position: absolute;
+border-radius: 50%;
+border: 1px solid rgba(70, 225, 255, .3);
+}
+
+.orbit-one {
+width: 260px;
+height: 260px;
+animation: vehicleSpin 14s linear infinite;
+}
+
+.orbit-two {
+width: 200px;
+height: 200px;
+border-style: dashed;
+animation: vehicleSpinReverse 9s linear infinite;
+}
+
+.orbit-three {
+width: 140px;
+height: 140px;
+box-shadow: 0 0 45px rgba(0, 190, 255, .14);
+}
+
+.vehicle-core {
+position: relative;
+z-index: 5;
+width: 95px;
+height: 95px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+color: #68e6ff;
+background: #061b31;
+border: 1px solid rgba(0, 205, 255, .5);
+box-shadow:
+0 0 38px rgba(0, 190, 255, .3),
+inset 0 0 25px rgba(0, 190, 255, .1);
+font-size: 23px;
+font-weight: 900;
+}
+
+@keyframes vehicleSpin {
+from {
+transform: rotate(0);
+}
+
+
+to {
+    transform: rotate(360deg);
+}
+
+
+}
+
+@keyframes vehicleSpinReverse {
+from {
+transform: rotate(360deg);
+}
+
+
+to {
+    transform: rotate(0);
+}
+
+
+}
+
+/* ================= CARDS ================= */
+
+.vehicle-search-card,
+.vehicle-status-card,
+.operating-card,
+.vehicle-result-card,
+.vehicle-tip-card,
+.vehicle-notice {
+margin-top: 24px;
+padding: 30px;
+border-radius: 24px;
+background:
+linear-gradient(145deg, rgba(7, 31, 55, .98), rgba(2, 14, 27, .99));
+border: 1px solid rgba(0, 190, 255, .19);
+box-shadow:
+0 18px 50px rgba(0, 0, 0, .28),
+inset 0 0 35px rgba(0, 190, 255, .025);
+}
+
+.vehicle-section-label {
+color: #58e1ff;
+font-size: 10px;
+font-weight: 900;
+letter-spacing: 1.5px;
+}
+
+.vehicle-search-card h2,
+.vehicle-status-card h2,
+.operating-card h2,
+.vehicle-result-card h2 {
+margin: 9px 0;
+}
+
+.vehicle-search-card p,
+.vehicle-status-card p,
+.operating-card p {
+color: #8ca8ba;
+line-height: 1.75;
+}
+
+/* ================= INPUTS ================= */
+
+.vehicle-input-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 18px;
+margin-top: 25px;
+}
+
+.vehicle-input-group label {
+display: block;
+margin-bottom: 9px;
+color: #aac5d5;
+font-size: 11px;
+font-weight: 800;
+}
+
+.vehicle-input-group input,
+.vehicle-input-group select {
+width: 100%;
+box-sizing: border-box;
+padding: 15px 17px;
+border-radius: 14px;
+color: #e8faff;
+background: rgba(0, 180, 255, .035);
+border: 1px solid rgba(0, 190, 255, .19);
+outline: none;
+transition: .2s ease;
+}
+
+.vehicle-input-group select option {
+color: #061522;
+}
+
+.vehicle-input-group input:focus,
+.vehicle-input-group select:focus {
+border-color: rgba(0, 210, 255, .6);
+box-shadow: 0 0 22px rgba(0, 190, 255, .1);
+}
+
+/* ================= STATUS ================= */
+
+.vehicle-status-card {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+}
+
+.vehicle-ai-status {
+white-space: nowrap;
+padding: 10px 16px;
+border-radius: 50px;
+color: #62e3ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 190, 255, .25);
+font-size: 10px;
+font-weight: 900;
+}
+
+.vehicle-ai-status span {
+display: inline-block;
+width: 8px;
+height: 8px;
+margin-right: 7px;
+border-radius: 50%;
+background: #58ddff;
+box-shadow: 0 0 15px #58ddff;
+}
+
+/* ================= STATISTICS ================= */
+
+.vehicle-stats {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 18px;
+margin-top: 24px;
+}
+
+.vehicle-stat-card {
+position: relative;
+overflow: hidden;
+padding: 25px;
+border-radius: 21px;
+background: linear-gradient(145deg, #082742, #031425);
+border: 1px solid rgba(0, 190, 255, .17);
+transition: .25s ease;
+}
+
+.vehicle-stat-card::after {
+content: "";
+position: absolute;
+width: 100px;
+height: 100px;
+right: -55px;
+top: -55px;
+border-radius: 50%;
+border: 1px solid rgba(0, 210, 255, .12);
+}
+
+.vehicle-stat-card:hover {
+transform: translateY(-5px);
+border-color: rgba(0, 205, 255, .45);
+box-shadow: 0 15px 40px rgba(0, 180, 255, .09);
+}
+
+.vehicle-stat-card span,
+.decision-grid span {
+color: #7190a5;
+font-size: 9px;
+font-weight: 900;
+letter-spacing: 1.1px;
+}
+
+.vehicle-stat-card strong {
+display: block;
+margin: 12px 0 5px;
+color: #edfaff;
+font-size: 29px;
+}
+
+.vehicle-stat-card small {
+color: #718da0;
+}
+
+/* ================= OPERATING TIME ================= */
+
+.operating-heading,
+.vehicle-result-heading {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 20px;
+}
+
+.vehicle-demo-badge {
+padding: 8px 13px;
+border-radius: 50px;
+color: #65e3ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 190, 255, .25);
+font-size: 9px;
+font-weight: 900;
+}
+
+.time-schedule {
+display: grid;
+gap: 12px;
+margin-top: 25px;
+}
+
+.time-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 20px;
+padding: 19px 21px;
+border-radius: 16px;
+background: rgba(0, 180, 255, .035);
+border: 1px solid rgba(0, 190, 255, .1);
+transition: .2s ease;
+}
+
+.time-row:hover {
+border-color: rgba(0, 205, 255, .3);
+background: rgba(0, 180, 255, .06);
+}
+
+.time-row strong,
+.time-row span {
+display: block;
+}
+
+.time-row strong {
+color: #e6faff;
+margin-bottom: 6px;
+}
+
+.time-row span {
+color: #7897aa;
+font-size: 11px;
+}
+
+.time-allowed,
+.time-restricted {
+padding: 8px 13px;
+border-radius: 50px;
+font-size: 9px;
+font-weight: 900;
+}
+
+.time-allowed {
+color: #62e4ff;
+background: rgba(0, 190, 255, .09);
+border: 1px solid rgba(0, 190, 255, .18);
+}
+
+.time-restricted {
+color: #9bb1bd;
+background: rgba(120, 150, 165, .08);
+border: 1px solid rgba(120, 150, 165, .12);
+}
+
+/* ================= DECISION ================= */
+
+.vehicle-result-card {
+border-color: rgba(0, 195, 255, .28);
+background:
+radial-gradient(circle at 0 50%, rgba(0, 180, 255, .09), transparent 32%),
+linear-gradient(145deg, #082844, #031422);
+}
+
+.decision-badge {
+padding: 9px 15px;
+border-radius: 50px;
+font-size: 9px;
+font-weight: 900;
+}
+
+.decision-allowed {
+color: #62e4ff;
+background: rgba(0, 190, 255, .1);
+border: 1px solid rgba(0, 190, 255, .3);
+box-shadow: 0 0 20px rgba(0, 190, 255, .08);
+}
+
+.decision-restricted {
+color: #a7bbc5;
+background: rgba(110, 145, 160, .08);
+border: 1px solid rgba(120, 155, 170, .18);
+}
+
+.decision-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 14px;
+margin-top: 25px;
+}
+
+.decision-grid > div {
+padding: 19px;
+border-radius: 15px;
+background: rgba(0, 180, 255, .035);
+border: 1px solid rgba(0, 190, 255, .1);
+}
+
+.decision-grid strong {
+display: block;
+margin-top: 9px;
+color: #dff8ff;
+}
+
+/* ================= WARNING ================= */
+
+.vehicle-warning {
+margin-top: 20px;
+padding: 19px 21px;
+border-radius: 16px;
+background: rgba(70, 120, 145, .08);
+border: 1px solid rgba(100, 160, 180, .2);
+}
+
+.vehicle-warning strong {
+color: #c7e5ee;
+}
+
+.vehicle-warning p {
+margin-bottom: 0;
+color: #8da7b3;
+}
+
+/* ================= TIP ================= */
+
+.vehicle-tip-card {
+display: flex;
+align-items: center;
+gap: 22px;
+background:
+radial-gradient(circle at 0 50%, rgba(0, 180, 255, .1), transparent 30%),
+linear-gradient(145deg, #082640, #031321);
+}
+
+.vehicle-tip-icon {
+width: 65px;
+height: 65px;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 18px;
+color: #61e3ff;
+background: rgba(0, 180, 255, .07);
+border: 1px solid rgba(0, 190, 255, .28);
+box-shadow: 0 0 25px rgba(0, 180, 255, .1);
+font-size: 10px;
+font-weight: 900;
+}
+
+.vehicle-tip-card h3 {
+margin: 7px 0;
+}
+
+.vehicle-tip-card p {
+margin-bottom: 0;
+color: #8caabd;
+line-height: 1.7;
+}
+
+/* ================= NOTICE ================= */
+
+.vehicle-notice {
+display: flex;
+align-items: flex-start;
+gap: 17px;
+}
+
+.vehicle-notice-line {
+width: 4px;
+min-height: 65px;
+flex-shrink: 0;
+border-radius: 10px;
+background: #55ddff;
+box-shadow: 0 0 18px rgba(85, 221, 255, .45);
+}
+
+.vehicle-notice strong {
+color: #c6efff;
+}
+
+.vehicle-notice p {
+margin-bottom: 0;
+color: #829eaf;
+line-height: 1.7;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+
+.vehicle-hero {
+    padding: 40px;
+}
+
+.vehicle-ai-core {
+    display: none;
+}
+
+.vehicle-stats,
+.decision-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+```
+
+}
+
+@media (max-width: 650px) {
+
+
+.vehicle-page {
+    padding: 25px 14px 55px;
+}
+
+.vehicle-hero {
+    padding: 30px 22px;
+    border-radius: 22px;
+}
+
+.vehicle-hero h1 {
+    font-size: 40px;
+}
+
+.vehicle-input-grid,
+.vehicle-stats,
+.decision-grid {
+    grid-template-columns: 1fr;
+}
+
+.vehicle-status-card,
+.vehicle-tip-card,
+.operating-heading,
+.vehicle-result-heading {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.time-row {
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.vehicle-search-card,
+.vehicle-status-card,
+.operating-card,
+.vehicle-result-card,
+.vehicle-tip-card,
+.vehicle-notice {
+    padding: 22px;
+}
+
+
+}

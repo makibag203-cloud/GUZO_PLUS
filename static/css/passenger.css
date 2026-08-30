@@ -1,0 +1,967 @@
+/* =========================================
+   GUZO PLUS — PASSENGER PAGE
+   BLUE AI FUTURISTIC DESIGN
+   ========================================= */
+
+.passenger-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+    color: #eaf7ff;
+}
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.passenger-hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding: 45px;
+    margin-bottom: 30px;
+
+    border: 1px solid rgba(73, 190, 255, 0.35);
+    border-radius: 30px;
+
+    background:
+        radial-gradient(circle at 85% 20%,
+        rgba(0, 195, 255, 0.18),
+        transparent 30%),
+        linear-gradient(135deg,
+        #061b35,
+        #082b52 55%,
+        #063d68);
+
+    box-shadow:
+        0 25px 60px rgba(0, 60, 120, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.passenger-hero::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    right: -80px;
+    top: -100px;
+
+    border: 1px solid rgba(61, 204, 255, 0.25);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 40px rgba(0, 200, 255, 0.12),
+        0 0 80px rgba(0, 200, 255, 0.08);
+}
+
+.ai-badge,
+.small-label {
+    display: inline-block;
+
+    color: #55dfff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.passenger-hero h1 {
+    margin: 10px 0;
+    color: white;
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.passenger-hero p {
+    max-width: 650px;
+    margin: 0;
+
+    color: #b9d5e8;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.passenger-hero-icon {
+    width: 115px;
+    height: 115px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 30px;
+
+    font-size: 52px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 210, 255, 0.20),
+            rgba(20, 80, 160, 0.35)
+        );
+
+    border: 1px solid rgba(79, 214, 255, 0.45);
+
+    box-shadow:
+        0 0 25px rgba(0, 200, 255, 0.22),
+        inset 0 0 25px rgba(0, 200, 255, 0.08);
+
+    animation: floatBus 3s ease-in-out infinite;
+}
+
+@keyframes floatBus {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* =========================================
+   MAIN CARD
+   ========================================= */
+
+.passenger-card,
+.bus-result {
+    position: relative;
+
+    padding: 38px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid rgba(65, 184, 255, 0.28);
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 34, 65, 0.97),
+            rgba(5, 24, 48, 0.98)
+        );
+
+    box-shadow:
+        0 25px 60px rgba(0, 25, 60, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.passenger-card::after,
+.bus-result::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #36dfff,
+        transparent
+    );
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   CARD HEADING
+   ========================================= */
+
+.card-heading,
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card-heading h2,
+.result-header h2 {
+    margin: 7px 0;
+
+    color: white;
+    font-size: 28px;
+}
+
+.card-heading p {
+    margin: 0;
+    color: #8eabc0;
+}
+
+.live-dot {
+    display: flex;
+/* =========================================
+   GUZO PLUS — PASSENGER PAGE
+   BLUE AI FUTURISTIC DESIGN
+   ========================================= */
+
+.passenger-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px 70px;
+    color: #eaf7ff;
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.passenger-hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+
+    padding: 45px;
+    margin-bottom: 30px;
+
+    border: 1px solid rgba(65, 190, 255, 0.35);
+    border-radius: 30px;
+
+    background:
+        radial-gradient(circle at 85% 20%,
+        rgba(0, 195, 255, 0.22),
+        transparent 35%),
+        linear-gradient(135deg,
+        #061b35,
+        #083b68 55%,
+        #075f88);
+
+    box-shadow:
+        0 25px 70px rgba(0, 80, 150, 0.30);
+}
+
+.passenger-hero::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -100px;
+    top: -100px;
+
+    border: 1px solid rgba(95, 220, 255, 0.25);
+    border-radius: 50%;
+}
+
+.passenger-hero h1 {
+    margin: 10px 0;
+    font-size: 42px;
+    color: white;
+}
+
+.passenger-hero p {
+    max-width: 650px;
+    margin: 0;
+
+    color: #b9d8ec;
+    line-height: 1.7;
+}
+
+.passenger-hero-icon {
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 30px;
+
+    font-size: 50px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(104,220,255,0.45);
+
+    box-shadow:
+        0 0 35px rgba(0,190,255,0.30),
+        inset 0 0 25px rgba(0,190,255,0.08);
+}
+
+
+/* =========================================
+   BADGES
+   ========================================= */
+
+.badge {
+    color: #54d9ff;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   MAIN CARD
+   ========================================= */
+
+.passenger-card,
+.trip-result {
+    padding: 35px;
+    margin-bottom: 30px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 38, 70, 0.97),
+            rgba(4, 24, 48, 0.97)
+        );
+
+    border: 1px solid rgba(72, 197, 255, 0.30);
+
+    box-shadow:
+        0 20px 60px rgba(0, 60, 120, 0.25),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
+.card-heading,
+.result-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.small-label {
+    color: #4ed5ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.card-heading h2,
+.result-heading h2 {
+    margin: 7px 0;
+
+    color: white;
+    font-size: 28px;
+}
+
+.card-heading p,
+.result-heading p {
+    margin: 0;
+    color: #91b5cd;
+}
+
+
+/* =========================================
+   AI STATUS
+   ========================================= */
+
+.ai-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 20px;
+
+    color: #61f5c1;
+    background: rgba(50, 220, 160, 0.10);
+    border: 1px solid rgba(50, 220, 160, 0.25);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.ai-status span,
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: #45f0b0;
+
+    box-shadow: 0 0 12px #45f0b0;
+}
+
+
+/* =========================================
+   FORM GRID
+   ========================================= */
+
+.passenger-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    color: #ccecff;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px 15px;
+
+    color: white;
+
+    background: rgba(3, 20, 40, 0.85);
+
+    border: 1px solid rgba(91, 193, 239, 0.30);
+    border-radius: 13px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+.input-group input::placeholder {
+    color: #64869d;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #35cfff;
+
+    box-shadow:
+        0 0 0 4px rgba(53, 207, 255, 0.10),
+        0 0 25px rgba(53, 207, 255, 0.12);
+}
+
+
+/* =========================================
+   FIND BUS BUTTON
+   ========================================= */
+
+.find-bus-btn {
+    margin-top: 28px;
+
+    padding: 15px 32px;
+
+    border: 0;
+    border-radius: 14px;
+
+    color: white;
+
+    background:
+        linear-gradient(135deg,
+        #009ee8,
+        #0068d9);
+
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 145, 235, 0.30);
+
+    transition: 0.25s ease;
+}
+
+.find-bus-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 180, 255, 0.45);
+}
+
+
+/* =========================================
+   DEMO BADGE
+   ========================================= */
+
+.demo-badge,
+.fake-tag {
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    color: #68dcff;
+
+    background: rgba(0, 174, 255, 0.10);
+
+    border: 1px solid rgba(0, 174, 255, 0.30);
+
+    font-size: 10px;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   BUS CARD
+   ========================================= */
+
+.bus-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 156, 222, 0.13),
+            rgba(0, 83, 160, 0.10)
+        );
+
+    border: 1px solid rgba(57, 193, 255, 0.25);
+}
+
+.bus-main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.bus-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 28px;
+
+    background: rgba(0, 183, 255, 0.12);
+
+    border: 1px solid rgba(0, 183, 255, 0.30);
+}
+
+.bus-label {
+    color: #58d9ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.bus-main h3 {
+    margin: 5px 0;
+
+    color: white;
+    font-size: 20px;
+}
+
+.bus-main p {
+    margin: 0;
+    color: #91b5cd;
+}
+
+.bus-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: #6af2be;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+/* =========================================
+   TRIP STATS
+   ========================================= */
+
+.trip-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(103, 197, 239, 0.18);
+
+    transition: 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(70, 205, 255, 0.45);
+
+    background: rgba(0, 173, 255, 0.07);
+}
+
+.stat-icon {
+    font-size: 23px;
+}
+
+.stat-card span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #6f9ab5;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.stat-card strong {
+    color: white;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   GPS CARD
+   ========================================= */
+
+.gps-card {
+    padding: 22px;
+
+    margin-bottom: 22px;
+
+    border-radius: 22px;
+
+    background: rgba(0, 15, 35, 0.60);
+
+    border: 1px solid rgba(68, 194, 255, 0.22);
+}
+
+.gps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.gps-header h3 {
+    margin: 7px 0 0;
+
+    color: white;
+}
+
+
+/* =========================================
+   FAKE MAP
+   ========================================= */
+
+.fake-map {
+    position: relative;
+
+    height: 260px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            30deg,
+            transparent 47%,
+            rgba(48, 166, 220, 0.12) 48%,
+            rgba(48, 166, 220, 0.12) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            120deg,
+            transparent 47%,
+            rgba(48, 166, 220, 0.10) 48%,
+            rgba(48, 166, 220, 0.10) 52%,
+            transparent 53%
+        ),
+        #061b32;
+
+    border: 1px solid rgba(70, 191, 240, 0.18);
+}
+
+.map-line {
+    position: absolute;
+
+    width: 75%;
+    height: 4px;
+
+    top: 52%;
+    left: 12%;
+
+    transform: rotate(-10deg);
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #27d8ff,
+        #4977ff,
+        #27d8ff
+    );
+
+    box-shadow: 0 0 15px rgba(39,216,255,0.7);
+}
+
+.location-point,
+.bus-point,
+.destination-point {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    background: #082a4a;
+
+    border: 2px solid #35cfff;
+
+    box-shadow:
+        0 0 25px rgba(40, 205, 255, 0.45);
+
+    font-size: 20px;
+}
+
+.passenger-point {
+    left: 8%;
+    top: 40%;
+}
+
+.bus-point {
+    left: 46%;
+    top: 47%;
+
+    border-color: #54f0bd;
+    box-shadow: 0 0 25px rgba(84,240,189,0.45);
+}
+
+.destination-point {
+    right: 8%;
+    top: 29%;
+
+    border-color: #7aa6ff;
+}
+
+.map-label {
+    position: absolute;
+
+    padding: 5px 9px;
+
+    border-radius: 8px;
+
+    background: rgba(2, 18, 35, 0.85);
+
+    color: #c8eaff;
+
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.start-label {
+    left: 7%;
+    top: 65%;
+}
+
+.bus-label-map {
+    left: 47%;
+    top: 68%;
+}
+
+.destination-label {
+    right: 5%;
+    top: 53%;
+}
+
+
+/* =========================================
+   SUMMARY
+   ========================================= */
+
+.summary-card {
+    padding: 24px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 150, 230, 0.08),
+            rgba(0, 60, 150, 0.08)
+        );
+
+    border: 1px solid rgba(65, 193, 255, 0.18);
+}
+
+.summary-card h3 {
+    margin-top: 0;
+
+    color: white;
+}
+
+.summary-route {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 18px;
+
+    margin: 15px 0;
+
+    border-radius: 15px;
+
+    background: rgba(0,0,0,0.18);
+}
+
+.summary-route span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #6f9ab5;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.summary-route strong {
+    color: white;
+}
+
+.arrow {
+    color: #4ed5ff;
+    font-size: 25px;
+}
+
+.summary-card > p {
+    color: #8eafc5;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .trip-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .passenger-hero h1 {
+        font-size: 34px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .passenger-page {
+        padding: 25px 15px 50px;
+    }
+
+    .passenger-hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 30px 25px;
+    }
+
+    .passenger-hero-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 38px;
+    }
+
+    .passenger-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-heading,
+    .result-heading,
+    .bus-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .passenger-card,
+    .trip-result {
+        padding: 25px 20px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .passenger-hero h1 {
+        font-size: 29px;
+    }
+
+    .trip-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-route {
+        grid-template-columns: 1fr;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .fake-map {
+        height: 220px;
+    }
+}

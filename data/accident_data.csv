@@ -1,0 +1,16 @@
+id,hour,day_of_week,location,vehicles_nearby,avg_speed,rain,traffic_level,road_condition,visibility,vehicle_type,severity,nearby_help,accident_detected
+ACC001,8,Monday,Bole Road,7,25,0,72,Dry,Good,Minibus,Moderate,3,1
+ACC002,9,Monday,Mexico Square,4,30,0,60,Dry,Good,Taxi,Minor,2,1
+ACC003,17,Monday,CMC Road,9,20,0,82,Dry,Good,Bus,Severe,5,1
+ACC004,18,Monday,Bole Road,12,16,1,92,Wet,Moderate,Truck,Severe,7,1
+ACC005,8,Tuesday,Piassa Road,5,27,0,68,Dry,Good,Taxi,Moderate,3,1
+ACC006,17,Tuesday,22 Mazoria,8,22,0,80,Dry,Good,Minibus,Moderate,4,1
+ACC007,18,Tuesday,Megenagna,10,18,1,90,Wet,Moderate,Bus,Severe,6,1
+ACC008,9,Wednesday,Mexico Square,6,29,0,63,Dry,Good,Taxi,Minor,3,1
+ACC009,16,Wednesday,Bole Road,7,26,0,70,Dry,Good,Minibus,Moderate,3,1
+ACC010,18,Wednesday,CMC Road,11,15,1,94,Wet,Poor,Truck,Severe,7,1
+ACC011,8,Thursday,Megenagna,5,26,0,70,Dry,Good,Minibus,Moderate,3,1
+ACC012,17,Thursday,Bole Road,9,21,0,81,Dry,Good,Bus,Severe,5,1
+ACC013,18,Thursday,Mexico Square,8,17,1,91,Wet,Moderate,Truck,Severe,6,1
+ACC014,10,Thursday,Piassa Road,3,38,0,37,Dry,Good,Taxi,Minor,1,0
+ACC015,11,Thursday,CMC Road,4,41,0,32,Dry,Good,Minibus,Minor,2,0

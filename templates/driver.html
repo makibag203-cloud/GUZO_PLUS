@@ -1,0 +1,306 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="driver-page">
+
+<!-- DRIVER HEADER -->
+<div class="driver-header">
+    <div>
+        <span class="badge">DRIVER PORTAL</span>
+
+        <h1>Driver Registration</h1>
+
+        <p>
+            Register transportation drivers and vehicles
+            for the GUZO PLUS smart transportation system.
+        </p>
+    </div>
+
+    <div class="driver-icon"></div>
+</div>
+
+
+<!-- REGISTRATION CARD -->
+<div class="registration-card">
+
+    <h2>Register a Driver</h2>
+
+    <p class="subtitle">
+        Enter the driver's information below.
+    </p>
+
+    <form method="POST" action="/driver">
+
+        <div class="form-grid">
+
+            <!-- DRIVER NAME -->
+            <div class="form-group">
+                <label>Driver Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter full name"
+                    required
+                >
+            </div>
+
+
+            <!-- PHONE -->
+            <div class="form-group">
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    required
+                >
+            </div>
+
+
+            <!-- LICENSE -->
+            <div class="form-group">
+                <label>License Number</label>
+
+                <input
+                    type="text"
+                    name="license"
+                    placeholder="Enter license number"
+                    required
+                >
+            </div>
+
+
+            <!-- PLATE -->
+            <div class="form-group">
+                <label>Vehicle Plate Number</label>
+
+                <input
+                    type="text"
+                    name="plate"
+                    placeholder="Enter plate number"
+                    required
+                >
+            </div>
+
+
+            <!-- VEHICLE TYPE -->
+            <div class="form-group">
+                <label>Vehicle Type</label>
+
+                <select name="vehicle_type" required>
+
+                    <option value="">
+                        Select vehicle type
+                    </option>
+
+                    <option value="Taxi">
+                        Taxi
+                    </option>
+
+                    <option value="Minibus">
+                        Minibus
+                    </option>
+
+                    <option value="Bus">
+                        Bus
+                    </option>
+
+                    <option value="Truck">
+                        Truck
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+            </div>
+
+
+            <!-- CAPACITY -->
+            <div class="form-group">
+                <label>Vehicle Capacity</label>
+
+                <input
+                    type="number"
+                    name="capacity"
+                    placeholder="Number of passengers"
+                    min="1"
+                    required
+                >
+            </div>
+
+
+            <!-- ROUTE -->
+            <div class="form-group">
+                <label>Route / Service Area</label>
+
+                <input
+                    type="text"
+                    name="route"
+                    placeholder="Example: Bole → Piazza"
+                    required
+                >
+            </div>
+
+
+            <!-- EXPERIENCE -->
+            <div class="form-group">
+                <label>Driving Experience</label>
+
+                <select name="experience" required>
+
+                    <option value="">
+                        Select experience
+                    </option>
+
+                    <option value="Less than 1 year">
+                        Less than 1 year
+                    </option>
+
+                    <option value="1-3 years">
+                        1–3 years
+                    </option>
+
+                    <option value="3-5 years">
+                        3–5 years
+                    </option>
+
+                    <option value="5+ years">
+                        5+ years
+                    </option>
+
+                </select>
+            </div>
+
+        </div>
+
+
+        <!-- REGISTER BUTTON -->
+        <button
+            type="submit"
+            class="register-btn"
+        >
+            Register Driver
+        </button>
+
+    </form>
+
+</div>
+
+
+<!-- REGISTERED DRIVERS -->
+<div class="drivers-section">
+
+    <div class="section-title">
+
+        <div>
+
+            <span class="badge">
+                DRIVER DATABASE
+            </span>
+
+            <h2>
+                Registered Drivers
+            </h2>
+
+            <p>
+                Drivers currently registered in GUZO PLUS.
+            </p>
+
+        </div>
+
+
+        <div class="driver-count">
+            {{ drivers|length if drivers else 0 }}
+        </div>
+
+    </div>
+
+
+    {% if drivers %}
+
+    <!-- DRIVER TABLE -->
+    <div class="driver-table">
+
+        <div class="table-header">
+
+            <span>Name</span>
+
+            <span>License</span>
+
+            <span>Plate</span>
+
+            <span>Status</span>
+
+        </div>
+
+
+        {% for driver in drivers %}
+
+        <div class="table-row">
+
+            <span>
+                {{ driver.name }}
+            </span>
+
+            <span>
+                {{ driver.license }}
+            </span>
+
+            <span>
+                {{ driver.plate }}
+            </span>
+
+
+            {% if driver.verified %}
+
+                <span class="verified">
+                    Verified
+                </span>
+
+            {% else %}
+
+                <span class="pending">
+                    Pending
+                </span>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    {% else %}
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state">
+
+        <div class="empty-icon">
+            
+        </div>
+
+        <h3>
+            No drivers registered yet
+        </h3>
+
+        <p>
+            Register the first driver to start building
+            the GUZO PLUS transportation network.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</section>
+
+{% endblock %}

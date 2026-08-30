@@ -1,0 +1,708 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Smart Vehicle Control{% endblock %}
+
+{% block content %}
+
+<section class="vehicle-page">
+
+
+<!-- HERO -->
+<div class="vehicle-hero">
+
+    <div class="vehicle-hero-content">
+
+        <span class="vehicle-badge">
+            GUZO PLUS • VEHICLE AI
+        </span>
+
+        <h1>
+            Smart Vehicle Control
+        </h1>
+
+        <p>
+            GUZO PLUS የትልልቅ መኪኖችን የመንቀሳቀሻ ሰዓት፣
+            Route እና Traffic በመተንተን የተፈቀደውን
+            የመንቀሳቀሻ ጊዜ ይቆጣጠራል።
+        </p>
+
+        <div class="vehicle-actions">
+
+            <button
+                class="vehicle-primary-btn"
+                onclick="checkVehicle()">
+                Check Vehicle
+            </button>
+
+            <button
+                class="vehicle-secondary-btn"
+                onclick="refreshVehicle()">
+                Refresh Data
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI CORE -->
+    <div class="vehicle-ai-core">
+
+        <div class="vehicle-orbit orbit-one"></div>
+        <div class="vehicle-orbit orbit-two"></div>
+        <div class="vehicle-orbit orbit-three"></div>
+
+        <div class="vehicle-core">
+            AI
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- VEHICLE SEARCH -->
+<div class="vehicle-search-card">
+
+    <span class="vehicle-section-label">
+        VEHICLE VERIFICATION
+    </span>
+
+    <h2>
+        Check Vehicle Operating Permission
+    </h2>
+
+    <p>
+        የመኪናውን መረጃ ያስገቡ። AI የመንቀሳቀሻ
+        ሰዓቱን እና Route ፈቃዱን ይፈትሻል።
+    </p>
+
+
+    <div class="vehicle-input-grid">
+
+        <div class="vehicle-input-group">
+
+            <label>
+                Vehicle ID
+            </label>
+
+            <input
+                id="vehicleId"
+                type="text"
+                value="TRUCK-024"
+                placeholder="Example: TRUCK-024">
+
+        </div>
+
+
+        <div class="vehicle-input-group">
+
+            <label>
+                Vehicle Type
+            </label>
+
+            <select id="vehicleType">
+
+                <option value="heavy">
+                    Heavy Truck
+                </option>
+
+                <option value="bus">
+                    Large Bus
+                </option>
+
+                <option value="minibus">
+                    Minibus
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="vehicle-input-group">
+
+            <label>
+                Current Route
+            </label>
+
+            <input
+                id="vehicleRoute"
+                type="text"
+                value="Bole → Ring Road"
+                placeholder="Example: Bole → Ring Road">
+
+        </div>
+
+
+        <div class="vehicle-input-group">
+
+            <label>
+                Current Time
+            </label>
+
+            <select id="vehicleTime">
+
+                <option value="morning">
+                    06:00 – 10:00
+                </option>
+
+                <option value="midday">
+                    10:00 – 16:00
+                </option>
+
+                <option value="evening">
+                    16:00 – 20:00
+                </option>
+
+                <option value="night">
+                    20:00 – 06:00
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AI STATUS -->
+<div class="vehicle-status-card">
+
+    <div>
+
+        <span class="vehicle-section-label">
+            AI CONTROL STATUS
+        </span>
+
+        <h2 id="vehicleStatus">
+            READY FOR VERIFICATION
+        </h2>
+
+        <p id="vehicleMessage">
+            የመኪናውን የስራ ሰዓት ለመፈተሽ
+            system ዝግጁ ነው።
+        </p>
+
+    </div>
+
+
+    <div class="vehicle-ai-status">
+
+        <span></span>
+        AI READY
+
+    </div>
+
+</div>
+
+
+<!-- STATISTICS -->
+<div class="vehicle-stats">
+
+    <div class="vehicle-stat-card">
+
+        <span>
+            ACTIVE HEAVY VEHICLES
+        </span>
+
+        <strong id="activeVehicles">
+            42
+        </strong>
+
+        <small>
+            Simulated vehicles
+        </small>
+
+    </div>
+
+
+    <div class="vehicle-stat-card">
+
+        <span>
+            ALLOWED VEHICLES
+        </span>
+
+        <strong id="allowedVehicles">
+            31
+        </strong>
+
+        <small>
+            Current period
+        </small>
+
+    </div>
+
+
+    <div class="vehicle-stat-card">
+
+        <span>
+            RESTRICTED
+        </span>
+
+        <strong id="restrictedVehicles">
+            11
+        </strong>
+
+        <small>
+            Outside operating time
+        </small>
+
+    </div>
+
+
+    <div class="vehicle-stat-card">
+
+        <span>
+            COMPLIANCE
+        </span>
+
+        <strong id="complianceRate">
+            86%
+        </strong>
+
+        <small>
+            Simulated compliance
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- OPERATING TIME -->
+<div class="operating-card">
+
+    <div class="operating-heading">
+
+        <div>
+
+            <span class="vehicle-section-label">
+                OPERATING TIME CONTROL
+            </span>
+
+            <h2>
+                Legal Vehicle Schedule
+            </h2>
+
+            <p>
+                ትልልቅ መኪኖች በተፈቀደው የስራ ሰዓት
+                ብቻ እንዲንቀሳቀሱ የሚረዳ የDemo Schedule።
+            </p>
+
+        </div>
+
+        <span class="vehicle-demo-badge">
+            DEMO RULES
+        </span>
+
+    </div>
+
+
+    <div class="time-schedule">
+
+        <div class="time-row">
+
+            <div>
+                <strong>
+                    Morning
+                </strong>
+
+                <span>
+                    06:00 – 10:00
+                </span>
+            </div>
+
+            <div class="time-allowed">
+                ALLOWED
+            </div>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <div>
+                <strong>
+                    Midday
+                </strong>
+
+                <span>
+                    10:00 – 16:00
+                </span>
+            </div>
+
+            <div class="time-restricted">
+                RESTRICTED
+            </div>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <div>
+                <strong>
+                    Evening
+                </strong>
+
+                <span>
+                    16:00 – 20:00
+                </span>
+            </div>
+
+            <div class="time-allowed">
+                ALLOWED
+            </div>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <div>
+                <strong>
+                    Night
+                </strong>
+
+                <span>
+                    20:00 – 06:00
+                </span>
+            </div>
+
+            <div class="time-restricted">
+                RESTRICTED
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- VEHICLE RESULT -->
+<div class="vehicle-result-card">
+
+    <div class="vehicle-result-heading">
+
+        <div>
+
+            <span class="vehicle-section-label">
+                AI VEHICLE DECISION
+            </span>
+
+            <h2 id="decisionTitle">
+                Vehicle Verification Result
+            </h2>
+
+        </div>
+
+        <span
+            id="decisionBadge"
+            class="decision-badge">
+            WAITING
+        </span>
+
+    </div>
+
+
+    <div class="decision-grid">
+
+        <div>
+
+            <span>
+                VEHICLE
+            </span>
+
+            <strong id="resultVehicle">
+                TRUCK-024
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                ROUTE
+            </span>
+
+            <strong id="resultRoute">
+                Bole → Ring Road
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                PERMITTED TIME
+            </span>
+
+            <strong>
+                06:00 – 10:00
+            </strong>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                STATUS
+            </span>
+
+            <strong id="resultStatus">
+                Pending
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="vehicleWarning"
+        class="vehicle-warning"
+        style="display:none;">
+
+        <strong>
+            Operating Time Warning
+        </strong>
+
+        <p>
+            ይህ ተሽከርካሪ በDemo Rule መሠረት
+            በአሁኑ የጊዜ ክፍል ላይ አይፈቀድለትም።
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- AI TIP -->
+<div class="vehicle-tip-card">
+
+    <div class="vehicle-tip-icon">
+        TIP
+    </div>
+
+    <div>
+
+        <span class="vehicle-section-label">
+            GUZO PLUS SAFETY TIP
+        </span>
+
+        <h3>
+            Smart Vehicle Tip
+        </h3>
+
+        <p id="vehicleTip">
+            ትልልቅ መኪኖችን በTraffic ከፍተኛ ሰዓት
+            መቆጣጠር የመንገድ ፍሰትን ለማሻሻል ይረዳል።
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- DEMO NOTICE -->
+<div class="vehicle-notice">
+
+    <div class="vehicle-notice-line"></div>
+
+    <div>
+
+        <strong>
+            GUZO PLUS Prototype / Demo
+        </strong>
+
+        <p>
+            ይህ page የሚጠቀመው Fake/Demo Data ብቻ ነው።
+            እውነተኛ GPS፣ Traffic Camera ወይም
+            Vehicle Tracking API አልተገናኘም።
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<script>
+
+function checkVehicle() {
+
+    const vehicleId =
+        document.getElementById("vehicleId").value;
+
+    const route =
+        document.getElementById("vehicleRoute").value;
+
+    const time =
+        document.getElementById("vehicleTime").value;
+
+
+    const status =
+        document.getElementById("vehicleStatus");
+
+    const message =
+        document.getElementById("vehicleMessage");
+
+    const badge =
+        document.getElementById("decisionBadge");
+
+    const resultStatus =
+        document.getElementById("resultStatus");
+
+    const warning =
+        document.getElementById("vehicleWarning");
+
+
+    status.textContent =
+        "ANALYZING VEHICLE...";
+
+    message.textContent =
+        "AI የVehicle እና Operating Time መረጃን እያረጋገጠ ነው።";
+
+
+    warning.style.display = "none";
+
+
+    document.getElementById("resultVehicle")
+        .textContent = vehicleId;
+
+    document.getElementById("resultRoute")
+        .textContent = route;
+
+
+    setTimeout(function() {
+
+        /*
+        Demo Rule:
+        Morning and Evening = Allowed
+        Midday and Night = Restricted
+        */
+
+        const allowed =
+            time === "morning" ||
+            time === "evening";
+
+
+        if (allowed) {
+
+            status.textContent =
+                "VEHICLE APPROVED";
+
+            message.textContent =
+                "AI በDemo Rule መሠረት ይህ መኪና በአሁኑ ጊዜ እንዲንቀሳቀስ ፈቅዷል።";
+
+            badge.textContent =
+                "ALLOWED";
+
+            badge.className =
+                "decision-badge decision-allowed";
+
+            resultStatus.textContent =
+                "Allowed";
+
+        } else {
+
+            status.textContent =
+                "OPERATING TIME RESTRICTED";
+
+            message.textContent =
+                "AI በDemo Rule መሠረት ይህ መኪና በአሁኑ ጊዜ መንቀሳቀስ አይፈቀድለትም።";
+
+            badge.textContent =
+                "RESTRICTED";
+
+            badge.className =
+                "decision-badge decision-restricted";
+
+            resultStatus.textContent =
+                "Restricted";
+
+            warning.style.display =
+                "block";
+
+        }
+
+    }, 1200);
+
+}
+
+
+function refreshVehicle() {
+
+    const active =
+        Math.floor(Math.random() * 15) + 35;
+
+    const restricted =
+        Math.floor(Math.random() * 8) + 7;
+
+    const allowed =
+        active - restricted;
+
+    const compliance =
+        Math.floor(Math.random() * 11) + 82;
+
+
+    document.getElementById("activeVehicles")
+        .textContent = active;
+
+    document.getElementById("allowedVehicles")
+        .textContent = allowed;
+
+    document.getElementById("restrictedVehicles")
+        .textContent = restricted;
+
+    document.getElementById("complianceRate")
+        .textContent = compliance + "%";
+
+
+    document.getElementById("vehicleStatus")
+        .textContent = "DATA REFRESHED";
+
+}
+
+
+const vehicleTips = [
+
+    "ትልልቅ መኪኖችን በTraffic ከፍተኛ ሰዓት መቆጣጠር የመንገድ ፍሰትን ሊያሻሽል ይችላል።",
+
+    "የHeavy Vehicle የመንቀሳቀሻ ሰዓት በቅድሚያ ማዘጋጀት የTraffic ጫናን ለመቀነስ ይረዳል።",
+
+    "Vehicle Schedule ከTraffic Prediction ጋር ሲጣመር የተሻለ የመንገድ አጠቃቀም ሊፈጥር ይችላል።",
+
+    "GUZO PLUS Vehicle Control በዚህ prototype ላይ Fake/Demo Data ብቻ ይጠቀማል።"
+
+];
+
+
+function changeVehicleTip() {
+
+    const tip =
+        vehicleTips[
+            Math.floor(
+                Math.random() * vehicleTips.length
+            )
+        ];
+
+    document.getElementById("vehicleTip")
+        .textContent = tip;
+
+}
+
+
+changeVehicleTip();
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        GUZO PLUS
+        {% endblock %}
+    </title>
+
+    <!-- MAIN WEBSITE CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- PASSENGER PAGE CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/passenger.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- =====================================
+         NAVIGATION
+         ===================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <span>GUZO</span> PLUS
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/driver">
+                Drivers
+            </a>
+
+            <a href="/passenger">
+                Passengers
+            </a>
+
+            <a href="/traffic">
+                Traffic AI
+            </a>
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+         ===================================== -->
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+         ===================================== -->
+
+    <footer>
+
+        <div>
+
+            <strong>GUZO PLUS</strong>
+
+            <p>
+                Smart Transportation •
+                Better Routes •
+                Better Tomorrow.
+            </p>
+
+        </div>
+
+
+        <div>
+            © 2026 GUZO PLUS
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

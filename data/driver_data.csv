@@ -1,0 +1,17 @@
+driver_id,driver_name,vehicle_id,vehicle_type,experience_years,rating,hour,day_of_week,area,passengers,traffic_level,scheduled,large_vehicle,driver_status
+DRV001,Makiba,GZ-214,Minibus,5,4.8,6,Monday,Bole,12,25,1,0,Active
+DRV002,Eliyana,GZ-102,Bus,8,4.6,7,Monday,Megenagna,35,45,1,1,Active
+DRV003,Girma,GZ-305,Taxi,3,4.7,8,Monday,Mexico,3,72,1,0,Active
+DRV004,Yonas,GZ-417,Minibus,6,4.9,9,Monday,Piassa,10,60,1,0,Active
+DRV005,Sisay,GZ-221,Minibus,4,4.5,10,Tuesday,Bole,8,38,1,0,Active
+DRV006,Rediat,GZ-118,Bus,10,4.8,11,Tuesday,CMC,30,30,1,1,Active
+DRV007,Abebe,GZ-309,Taxi,2,4.4,12,Tuesday,Megenagna,4,45,1,0,Active
+DRV008,Hana,GZ-425,Minibus,7,4.9,13,Tuesday,Mexico,14,52,1,0,Active
+DRV009,Dawit,GZ-230,Minibus,5,4.6,14,Wednesday,Bole,11,46,1,0,Active
+DRV010,Samuel,GZ-125,Bus,9,4.7,15,Wednesday,Piassa,32,53,1,1,Active
+DRV011,Rahel,GZ-318,Taxi,3,4.5,16,Wednesday,CMC,3,70,1,0,Active
+DRV012,Daniel,GZ-430,Minibus,6,4.8,17,Wednesday,Megenagna,13,84,1,0,Active
+DRV013,Mimi,GZ-240,Minibus,4,4.6,18,Thursday,Bole,15,91,1,0,Active
+DRV014,Meron,GZ-130,Bus,11,4.9,18,Thursday,Mexico,40,91,1,1,Active
+DRV015,Selam,GZ-322,Taxi,2,4.3,19,Thursday,Piassa,4,74,0,0,Off-Duty
+DRV016,Bereket,GZ-440,Minibus,7,4.7,20,Thursday,CMC,9,51,1,0,Active

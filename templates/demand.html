@@ -1,0 +1,641 @@
+{% extends "base.html" %}
+
+{% block title %}GUZO PLUS • Passenger Demand AI{% endblock %}
+
+{% block content %}
+
+<section class="demand-page">
+
+
+<!-- HERO -->
+<div class="demand-hero">
+
+    <div class="demand-hero-content">
+
+        <span class="demand-badge">
+            GUZO PLUS • DEMAND AI
+        </span>
+
+        <h1>
+            Passenger Demand Prediction
+        </h1>
+
+        <p>
+            AI analyzes simulated passenger requests,
+            routes and travel periods to predict where
+            transportation demand may increase.
+        </p>
+
+        <div class="demand-actions">
+
+            <button
+                class="demand-primary-btn"
+                onclick="runDemandAnalysis()">
+                Run AI Analysis
+            </button>
+
+            <button
+                class="demand-secondary-btn"
+                onclick="refreshDemand()">
+                Refresh Data
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- AI CORE -->
+    <div class="demand-ai-core">
+
+        <div class="core-ring ring-one"></div>
+        <div class="core-ring ring-two"></div>
+        <div class="core-ring ring-three"></div>
+
+        <div class="core-center">
+            AI
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ANALYSIS STATUS -->
+<div class="demand-status-card">
+
+    <div>
+
+        <span class="demand-section-label">
+            AI ANALYSIS STATUS
+        </span>
+
+        <h2 id="demandStatus">
+            READY FOR ANALYSIS
+        </h2>
+
+        <p id="demandMessage">
+            The system is ready to analyze simulated
+            passenger demand data.
+        </p>
+
+    </div>
+
+    <div class="demand-live-status">
+
+        <span class="demand-status-dot"></span>
+
+        AI ACTIVE
+
+    </div>
+
+</div>
+
+
+<!-- OVERVIEW -->
+<div class="demand-stats">
+
+    <div class="demand-stat-card">
+
+        <span>
+            EXPECTED PASSENGERS
+        </span>
+
+        <strong id="passengerPrediction">
+            428
+        </strong>
+
+        <small>
+            Simulated prediction
+        </small>
+
+    </div>
+
+
+    <div class="demand-stat-card">
+
+        <span>
+            ACTIVE REQUESTS
+        </span>
+
+        <strong id="activeRequests">
+            126
+        </strong>
+
+        <small>
+            Demo requests
+        </small>
+
+    </div>
+
+
+    <div class="demand-stat-card">
+
+        <span>
+            HIGH DEMAND ROUTES
+        </span>
+
+        <strong id="highRoutes">
+            04
+        </strong>
+
+        <small>
+            Routes requiring attention
+        </small>
+
+    </div>
+
+
+    <div class="demand-stat-card">
+
+        <span>
+            PEAK HOUR
+        </span>
+
+        <strong>
+            17:00
+        </strong>
+
+        <small>
+            Estimated peak period
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- ROUTE DEMAND -->
+<div class="demand-card">
+
+    <div class="demand-card-heading">
+
+        <div>
+
+            <span class="demand-section-label">
+                ROUTE INTELLIGENCE
+            </span>
+
+            <h2>
+                Demand by Route
+            </h2>
+
+            <p>
+                Simulated AI predictions for major
+                transportation routes.
+            </p>
+
+        </div>
+
+        <span class="demo-data-badge">
+            DEMO DATA
+        </span>
+
+    </div>
+
+
+    <div class="route-demand-list">
+
+        <!-- ROUTE 1 -->
+        <div class="route-demand-item">
+
+            <div class="route-info">
+
+                <strong>
+                    Bole → Piazza
+                </strong>
+
+                <span>
+                    128 predicted passengers
+                </span>
+
+            </div>
+
+            <div class="demand-level high">
+                HIGH
+            </div>
+
+            <div class="demand-bar">
+                <div
+                    class="demand-fill high-fill"
+                    style="width: 92%;">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ROUTE 2 -->
+        <div class="route-demand-item">
+
+            <div class="route-info">
+
+                <strong>
+                    Mercato → Bole
+                </strong>
+
+                <span>
+                    84 predicted passengers
+                </span>
+
+            </div>
+
+            <div class="demand-level medium">
+                MEDIUM
+            </div>
+
+            <div class="demand-bar">
+                <div
+                    class="demand-fill medium-fill"
+                    style="width: 66%;">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ROUTE 3 -->
+        <div class="route-demand-item">
+
+            <div class="route-info">
+
+                <strong>
+                    CMC → Mexico
+                </strong>
+
+                <span>
+                    115 predicted passengers
+                </span>
+
+            </div>
+
+            <div class="demand-level high">
+                HIGH
+            </div>
+
+            <div class="demand-bar">
+                <div
+                    class="demand-fill high-fill"
+                    style="width: 84%;">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- ROUTE 4 -->
+        <div class="route-demand-item">
+
+            <div class="route-info">
+
+                <strong>
+                    Piassa → Airport
+                </strong>
+
+                <span>
+                    42 predicted passengers
+                </span>
+
+            </div>
+
+            <div class="demand-level low">
+                LOW
+            </div>
+
+            <div class="demand-bar">
+                <div
+                    class="demand-fill low-fill"
+                    style="width: 35%;">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PEAK HOURS -->
+<div class="demand-card">
+
+    <div class="demand-card-heading">
+
+        <div>
+
+            <span class="demand-section-label">
+                TIME ANALYSIS
+            </span>
+
+            <h2>
+                Passenger Demand by Time
+            </h2>
+
+            <p>
+                Simulated demand levels throughout
+                the transportation operating day.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="peak-hours">
+
+        <div class="peak-item">
+
+            <span>
+                06:00–09:00
+            </span>
+
+            <div class="peak-bar">
+                <div style="width: 82%;"></div>
+            </div>
+
+            <strong>
+                HIGH
+            </strong>
+
+        </div>
+
+
+        <div class="peak-item">
+
+            <span>
+                09:00–12:00
+            </span>
+
+            <div class="peak-bar">
+                <div style="width: 58%;"></div>
+            </div>
+
+            <strong>
+                MEDIUM
+            </strong>
+
+        </div>
+
+
+        <div class="peak-item">
+
+            <span>
+                12:00–15:00
+            </span>
+
+            <div class="peak-bar">
+                <div style="width: 63%;"></div>
+            </div>
+
+            <strong>
+                MEDIUM
+            </strong>
+
+        </div>
+
+
+        <div class="peak-item">
+
+            <span>
+                15:00–19:00
+            </span>
+
+            <div class="peak-bar">
+                <div style="width: 97%;"></div>
+            </div>
+
+            <strong>
+                VERY HIGH
+            </strong>
+
+        </div>
+
+
+        <div class="peak-item">
+
+            <span>
+                19:00–22:00
+            </span>
+
+            <div class="peak-bar">
+                <div style="width: 38%;"></div>
+            </div>
+
+            <strong>
+                LOW
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- AI RECOMMENDATION -->
+<div class="recommendation-card">
+
+    <div class="recommendation-icon">
+        AI
+    </div>
+
+    <div class="recommendation-content">
+
+        <span class="demand-section-label">
+            AI RECOMMENDATION
+        </span>
+
+        <h2>
+            High Demand Detected
+        </h2>
+
+        <p id="recommendationText">
+            Increase vehicle availability on
+            Bole → Piazza during peak hours.
+            This recommendation is generated
+            from simulated demand data.
+        </p>
+
+    </div>
+
+    <button
+        class="recommendation-btn"
+        onclick="applyRecommendation()">
+        Apply Recommendation
+    </button>
+
+</div>
+
+
+<!-- AI EXPLANATION -->
+<div class="demand-explanation">
+
+    <div>
+
+        <span class="demand-section-label">
+            HOW GUZO PLUS WORKS
+        </span>
+
+        <h2>
+            Demand Intelligence
+        </h2>
+
+    </div>
+
+
+    <div class="explanation-grid">
+
+        <div>
+            <strong>
+                01
+            </strong>
+
+            <p>
+                Collect simulated passenger requests.
+            </p>
+        </div>
+
+
+        <div>
+            <strong>
+                02
+            </strong>
+
+            <p>
+                Analyze routes and travel periods.
+            </p>
+        </div>
+
+
+        <div>
+            <strong>
+                03
+            </strong>
+
+            <p>
+                Predict future transportation demand.
+            </p>
+        </div>
+
+
+        <div>
+            <strong>
+                04
+            </strong>
+
+            <p>
+                Recommend vehicle allocation.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PROTOTYPE NOTICE -->
+<div class="demand-notice">
+
+    <div class="notice-line"></div>
+
+    <div>
+
+        <strong>
+            GUZO PLUS Prototype / Demo
+        </strong>
+
+        <p>
+            All passenger numbers, routes,
+            predictions and recommendations
+            on this page use simulated data.
+            No real-time passenger or GPS system
+            is connected.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<script>
+
+function runDemandAnalysis() {
+
+    const status =
+        document.getElementById("demandStatus");
+
+    const message =
+        document.getElementById("demandMessage");
+
+    status.textContent =
+        "ANALYZING DEMO DATA...";
+
+    message.textContent =
+        "AI is analyzing simulated passenger requests and routes.";
+
+    setTimeout(function() {
+
+        status.textContent =
+            "ANALYSIS COMPLETE";
+
+        message.textContent =
+            "High passenger demand detected on selected routes.";
+
+        document.getElementById("passengerPrediction")
+            .textContent = "451";
+
+        document.getElementById("activeRequests")
+            .textContent = "139";
+
+    }, 1200);
+
+}
+
+
+function refreshDemand() {
+
+    const passengers =
+        Math.floor(Math.random() * 100) + 380;
+
+    const requests =
+        Math.floor(Math.random() * 50) + 100;
+
+    document.getElementById("passengerPrediction")
+        .textContent = passengers;
+
+    document.getElementById("activeRequests")
+        .textContent = requests;
+
+    document.getElementById("demandStatus")
+        .textContent = "DATA REFRESHED";
+
+}
+
+
+function applyRecommendation() {
+
+    document.getElementById("recommendationText")
+        .textContent =
+        "Demo recommendation applied: additional vehicles are assigned to Bole → Piazza during the simulated peak period.";
+
+}
+function applyRecommendation() {
+
+    const text = document.getElementById("recommendationText");
+    const button = document.querySelector(".recommendation-btn");
+
+    text.textContent =
+        "Recommendation applied successfully. Demo vehicles have been allocated to Bole → Piazza during the simulated peak period.";
+
+    button.textContent = "Recommendation Applied";
+
+    button.disabled = true;
+
+    button.style.opacity = "0.7";
+    button.style.cursor = "default";
+}
+</script>
+
+{% endblock %}
