@@ -1,0 +1,407 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #08111f;
+    color: white;
+    overflow: hidden;
+}
+
+.gps-app {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 75px 90px 1fr;
+    position: relative;
+}
+
+/* TOP BAR */
+
+.topbar {
+    background: rgba(8, 17, 31, 0.97);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.brand h1 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: #8fa4bd;
+    font-size: 12px;
+}
+
+.live {
+    background: rgba(0, 220, 130, .12);
+    border: 1px solid rgba(0, 220, 130, .35);
+    color: #32e69a;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #32e69a;
+    border-radius: 50%;
+    margin-right: 7px;
+    animation: pulse 1.2s infinite;
+}
+
+/* STAT CARDS */
+
+.dashboard {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 20px;
+    background: #0c1828;
+    overflow-x: auto;
+    z-index: 5;
+}
+
+.stat {
+    min-width: 150px;
+    height: 65px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+}
+
+.stat > span {
+    font-size: 27px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 20px;
+}
+
+.stat small {
+    color: #8fa4bd;
+    font-size: 11px;
+}
+
+/* MAP */
+
+.map-container {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 50%, #182d40 0%, #0a1725 65%);
+}
+
+/* MAP GRID */
+
+.map-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .16;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+}
+
+/* ROADS */
+
+.road {
+    position: absolute;
+    background: #263849;
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.025),
+        inset 0 0 0 2px rgba(255,255,255,.025);
+}
+
+.road::after {
+    content: "";
+    position: absolute;
+    background: repeating-linear-gradient(
+        90deg,
+        #81909e 0 30px,
+        transparent 30px 55px
+    );
+    opacity: .35;
+}
+
+.road1 {
+    width: 120%;
+    height: 70px;
+    top: 35%;
+    left: -10%;
+    transform: rotate(-8deg);
+}
+
+.road1::after {
+    inset: 33px 0;
+}
+
+.road2 {
+    width: 120%;
+    height: 60px;
+    top: 65%;
+    left: -10%;
+    transform: rotate(10deg);
+}
+
+.road2::after {
+    inset: 28px 0;
+}
+
+.road3 {
+    width: 65px;
+    height: 120%;
+    left: 38%;
+    top: -10%;
+    transform: rotate(12deg);
+}
+
+.road3::after {
+    inset: 0 28px;
+    background: repeating-linear-gradient(
+        0deg,
+        #81909e 0 30px,
+        transparent 30px 55px
+    );
+}
+
+.road4 {
+    width: 55px;
+    height: 120%;
+    left: 73%;
+    top: -10%;
+    transform: rotate(-20deg);
+}
+
+.road4::after {
+    inset: 0 25px;
+    background: repeating-linear-gradient(
+        0deg,
+        #81909e 0 30px,
+        transparent 30px 55px
+    );
+}
+
+/* LOCATION LABELS */
+
+.map-label {
+    position: absolute;
+    color: #91a6bc;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background: rgba(5,12,21,.65);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.label1 {
+    top: 20%;
+    left: 15%;
+}
+
+.label2 {
+    top: 24%;
+    right: 15%;
+}
+
+.label3 {
+    bottom: 22%;
+    left: 25%;
+}
+
+.label4 {
+    bottom: 15%;
+    right: 22%;
+}
+
+/* CENTER */
+
+.map-center {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+}
+
+.map-center span {
+    font-size: 30px;
+    z-index: 2;
+}
+
+.center-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(50,230,154,.5);
+    border-radius: 50%;
+    animation: ring 2s infinite;
+}
+
+/* VEHICLE */
+
+.vehicle {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    background: #101d2b;
+    border: 2px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    font-size: 18px;
+    z-index: 4;
+    box-shadow: 0 4px 15px rgba(0,0,0,.5);
+    transition: left 1s linear, top 1s linear;
+}
+
+.vehicle:hover {
+    transform: scale(1.25);
+    z-index: 20;
+}
+
+.vehicle.bus {
+    border-color: #4da3ff;
+}
+
+.vehicle.mini {
+    border-color: #ffd166;
+}
+
+.vehicle.truck {
+    border-color: #ff7b7b;
+}
+
+.vehicle.motor {
+    border-color: #b58cff;
+}
+
+.vehicle.car {
+    border-color: #32e69a;
+}
+
+/* SIDE LIST */
+
+.vehicle-panel {
+    position: absolute;
+    top: 105px;
+    right: 18px;
+    width: 245px;
+    max-height: calc(100vh - 125px);
+    background: rgba(7,16,28,.91);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 8;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.panel-header h2 {
+    font-size: 15px;
+}
+
+.panel-header span {
+    color: #32e69a;
+    font-size: 11px;
+}
+
+.vehicle-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 7px;
+    background: rgba(255,255,255,.04);
+    border-radius: 10px;
+}
+
+.vehicle-icon {
+    font-size: 20px;
+}
+
+.vehicle-info strong {
+    display: block;
+    font-size: 12px;
+}
+
+.vehicle-info small {
+    color: #8fa4bd;
+    font-size: 10px;
+}
+
+/* ANIMATION */
+
+@keyframes pulse {
+    50% {
+        opacity: .35;
+    }
+}
+
+@keyframes ring {
+    0% {
+        transform: scale(.6);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.7);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .vehicle-panel {
+        width: 190px;
+    }
+
+    .stat {
+        min-width: 125px;
+    }
+
+    .brand h1 {
+        font-size: 16px;
+    }
+}

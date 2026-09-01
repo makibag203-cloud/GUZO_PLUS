@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUZO PLUS - Live GPS</title>
+    <link rel="stylesheet" href="/static/gps/gps.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUZO PLUS — Live GPS</title>
+    <link rel="stylesheet" href="/static/gps/gps.css">
+</head>
+
+<body>
+
+    <div class="gps-app">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="brand">
+                <img src="/static/assets/guzo_plus_logo.png" alt="GUZO PLUS">
+                <div>
+                    <h1>GUZO PLUS</h1>
+                    <span>Smart Transportation</span>
+                </div>
+            </div>
+
+            <div class="live">
+                <span class="live-dot"></span>
+                LIVE GPS
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section class="dashboard">
+
+            <div class="stat">
+                <span>🚗</span>
+                <div>
+                    <strong id="total">19</strong>
+                    <small>Total Vehicles</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🚌</span>
+                <div>
+                    <strong>7</strong>
+                    <small>Buses</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🚐</span>
+                <div>
+                    <strong>3</strong>
+                    <small>Minibuses</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🚛</span>
+                <div>
+                    <strong>2</strong>
+                    <small>Trucks</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🏍️</span>
+                <div>
+                    <strong>3</strong>
+                    <small>Motorcycles</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span>🚙</span>
+                <div>
+                    <strong>4</strong>
+                    <small>Cars</small>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- MAP -->
+        <main class="map-container">
+
+            <div class="map-grid"></div>
+
+            <div class="road road1"></div>
+            <div class="road road2"></div>
+            <div class="road road3"></div>
+            <div class="road road4"></div>
+
+            <div id="vehicles"></div>
+
+            <div class="map-label label1">BOLE</div>
+            <div class="map-label label2">PIASSA</div>
+            <div class="map-label label3">MEXICO</div>
+            <div class="map-label label4">KALITI</div>
+
+            <div class="map-center">
+                <div class="center-ring"></div>
+                <span>📍</span>
+            </div>
+
+        </main>
+
+        <!-- VEHICLE PANEL -->
+        <aside class="vehicle-panel">
+
+            <div class="panel-header">
+                <h2>Live Vehicles</h2>
+                <span id="activeCount">19 Active</span>
+            </div>
+
+            <div id="vehicleList"></div>
+
+        </aside>
+
+    </div>
+
+    <script src="/static/gps/gps.js"></script>
+</body>
+</html>
