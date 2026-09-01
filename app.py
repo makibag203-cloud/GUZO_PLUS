@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import sqlite3
 import math
 import random
+from database import init_db
+
+init_db()
 
 app = Flask(__name__)
 
