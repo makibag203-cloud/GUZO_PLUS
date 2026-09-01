@@ -3,6 +3,542 @@
 {% block title %}GUZO PLUS • AI Traffic{% endblock %}
 
 {% block content %}
+<style>
+/* GUZO PLUS — AI TRAFFIC PREMIUM DESIGN */
+/* ==========================================
+   GUZO PLUS — AI TRAFFIC PREMIUM DESIGN
+========================================== */
+
+.ai-page {
+    position: relative;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 45px 5% 80px;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #fff;
+}
+
+.ai-page::before {
+    content: "";
+    position: fixed;
+    width: 650px;
+    height: 650px;
+    top: -250px;
+    right: -180px;
+    border-radius: 50%;
+    background: rgba(0,229,255,.08);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.ai-page::after {
+    content: "";
+    position: fixed;
+    width: 550px;
+    height: 550px;
+    bottom: -250px;
+    left: -180px;
+    border-radius: 50%;
+    background: rgba(124,77,255,.10);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+/* HERO */
+
+.ai-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 45px;
+    margin-bottom: 25px;
+    border-radius: 28px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,229,255,.10),
+            rgba(124,77,255,.08)
+        ),
+        rgba(255,255,255,.035);
+    border: 1px solid rgba(0,229,255,.18);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+.ai-hero::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -120px;
+    top: -120px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,229,255,.15);
+    box-shadow:
+        0 0 0 35px rgba(0,229,255,.025),
+        0 0 0 70px rgba(0,229,255,.018);
+}
+
+.ai-badge {
+    display: inline-flex;
+    padding: 8px 13px;
+    margin-bottom: 16px;
+    border-radius: 30px;
+    color: #00e5ff;
+    background: rgba(0,229,255,.09);
+    border: 1px solid rgba(0,229,255,.25);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.ai-hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(34px, 5vw, 58px);
+    line-height: 1;
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #00e5ff,
+        #9b7cff
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ai-hero p {
+    max-width: 720px;
+    color: #aebbd2;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.ai-hero-icon {
+    min-width: 120px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-size: 60px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,229,255,.15),
+            rgba(124,77,255,.15)
+        );
+    border: 1px solid rgba(0,229,255,.25);
+    box-shadow:
+        0 0 45px rgba(0,229,255,.12),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    animation: trafficFloat 4s ease-in-out infinite;
+}
+
+@keyframes trafficFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* STATUS */
+
+.ai-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.045);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow: 0 15px 40px rgba(0,0,0,.18);
+    backdrop-filter: blur(14px);
+}
+
+.small-label {
+    display: block;
+    color: #74849f;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    margin-bottom: 6px;
+}
+
+.ai-status-card h2 {
+    margin: 0 0 5px;
+}
+
+.ai-status-card p {
+    margin: 0;
+    color: #8998b0;
+}
+
+.status-online {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    color: #00ff9d;
+    background: rgba(0,255,157,.08);
+    border: 1px solid rgba(0,255,157,.25);
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.status-online span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #00ff9d;
+    box-shadow: 0 0 14px #00ff9d;
+    animation: onlinePulse 1.5s infinite;
+}
+
+@keyframes onlinePulse {
+    50% { opacity: .35; transform: scale(.75); }
+}
+
+/* TRAFFIC CARDS */
+
+.traffic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.traffic-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 55px 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 23px;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .3s ease;
+    overflow: hidden;
+}
+
+.traffic-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #00e5ff;
+    opacity: .65;
+}
+
+.traffic-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,229,255,.30);
+    box-shadow: 0 18px 45px rgba(0,0,0,.25);
+}
+
+.traffic-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(255,255,255,.06);
+    font-size: 27px;
+}
+
+.area-label {
+    color: #71819b;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.traffic-card h3 {
+    margin: 3px 0;
+    font-size: 19px;
+}
+
+.traffic-card p {
+    margin: 0;
+    color: #8190a8;
+    font-size: 12px;
+}
+
+.traffic-card strong {
+    padding: 7px 10px;
+    border-radius: 9px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.low {
+    color: #00ff9d;
+    background: rgba(0,255,157,.08);
+    border: 1px solid rgba(0,255,157,.2);
+}
+
+.medium {
+    color: #ffd166;
+    background: rgba(255,209,102,.08);
+    border: 1px solid rgba(255,209,102,.2);
+}
+
+.high {
+    color: #ff6688;
+    background: rgba(255,70,100,.08);
+    border: 1px solid rgba(255,70,100,.2);
+}
+
+/* PREDICTION */
+
+.prediction-card {
+    padding: 32px;
+    margin-bottom: 25px;
+    border-radius: 24px;
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(124,77,255,.12),
+            transparent 35%
+        ),
+        rgba(255,255,255,.045);
+    border: 1px solid rgba(124,77,255,.25);
+    box-shadow: 0 20px 55px rgba(0,0,0,.22);
+}
+
+.prediction-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.prediction-header h2 {
+    margin: 5px 0 7px;
+}
+
+.prediction-header p {
+    margin: 0;
+    color: #8796ae;
+}
+
+.demo-tag {
+    padding: 8px 12px;
+    border-radius: 9px;
+    color: #b9a7ff;
+    background: rgba(124,77,255,.10);
+    border: 1px solid rgba(124,77,255,.25);
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.prediction-content {
+    display: grid;
+    grid-template-columns: .65fr 1.35fr;
+    gap: 45px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.prediction-number {
+    padding: 25px;
+    text-align: center;
+    border-radius: 20px;
+    background: rgba(0,229,255,.045);
+    border: 1px solid rgba(0,229,255,.12);
+}
+
+.prediction-number strong {
+    display: block;
+    font-size: 60px;
+    line-height: 1;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg,#00e5ff,#9b7cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.prediction-number span {
+    color: #8796ae;
+    font-size: 12px;
+}
+
+.prediction-bars {
+    display: grid;
+    gap: 20px;
+}
+
+.bar-row {
+    display: grid;
+    grid-template-columns: 65px 1fr 45px;
+    gap: 12px;
+    align-items: center;
+    color: #aab7ca;
+    font-size: 12px;
+}
+
+.bar {
+    height: 9px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.07);
+    overflow: hidden;
+}
+
+.bar div {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg,#00e5ff,#7c4dff);
+    box-shadow: 0 0 12px rgba(0,229,255,.3);
+    animation: barGrow 1s ease-out both;
+}
+
+@keyframes barGrow {
+    from { width: 0 !important; }
+}
+
+.bar-row b {
+    color: #fff;
+}
+
+/* RECOMMENDATION */
+
+.recommendation-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 22px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,255,157,.07),
+            rgba(0,229,255,.04)
+        );
+    border: 1px solid rgba(0,255,157,.18);
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+
+.recommendation-icon {
+    min-width: 65px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: rgba(0,255,157,.09);
+    border: 1px solid rgba(0,255,157,.20);
+    font-size: 31px;
+}
+
+.recommendation-card h2 {
+    margin: 4px 0 8px;
+}
+
+.recommendation-card p {
+    margin: 0;
+    color: #91a0b7;
+    line-height: 1.6;
+}
+
+/* NOTICE */
+
+.demo-notice {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.demo-notice > span {
+    font-size: 20px;
+}
+
+.demo-notice p {
+    margin: 0;
+    color: #7f8da5;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.demo-notice strong {
+    color: #b7c5df;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .traffic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prediction-content {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-hero {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ai-page {
+        padding: 25px 4% 55px;
+    }
+
+    .ai-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    .ai-hero-icon {
+        width: 85px;
+        min-width: 85px;
+        height: 85px;
+        font-size: 42px;
+    }
+
+    .ai-status-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .prediction-card {
+        padding: 22px;
+    }
+
+    .prediction-header {
+        flex-direction: column;
+    }
+
+    .recommendation-card {
+        align-items: flex-start;
+    }
+}
+
+</style>
+
 
 <section class="ai-page">
 

@@ -3,6 +3,503 @@
 {% block title %}GUZO PLUS • Dashboard{% endblock %}
 
 {% block content %}
+<style>
+/* =========================================
+   GUZO PLUS — PREMIUM SMART DASHBOARD
+   ========================================= */
+
+.page-header {
+    position: relative;
+    margin-bottom: 32px;
+    padding: 42px;
+    border-radius: 28px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(0,229,255,.16), transparent 32%),
+        radial-gradient(circle at 90% 10%, rgba(124,77,255,.18), transparent 30%),
+        linear-gradient(135deg, #030712, #07152b 55%, #061c22);
+    border: 1px solid rgba(0,229,255,.14);
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
+}
+
+.page-header::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    right: -100px;
+    top: -130px;
+    border: 1px solid rgba(0,229,255,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 80px rgba(0,229,255,.08);
+}
+
+.page-header > * {
+    position: relative;
+    z-index: 1;
+}
+
+.page-label {
+    color: #00e5ff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.page-header h1 {
+    margin: 10px 0 12px;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -2px;
+}
+
+.page-header h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin: 8px 0;
+}
+
+.page-header p {
+    max-width: 760px;
+    color: #9fb1c8;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   MAIN GRIDS
+   ========================================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   PREMIUM CARDS
+   ========================================= */
+
+.card,
+.big-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12,25,48,.96),
+            rgba(5,13,28,.98)
+        );
+    box-shadow:
+        0 18px 55px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.035);
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.card {
+    padding: 28px;
+}
+
+.card::before,
+.big-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -100px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(0,229,255,.07);
+    filter: blur(5px);
+}
+
+.card:hover,
+.big-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,229,255,.30);
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        0 0 35px rgba(0,229,255,.07);
+}
+
+.card > *,
+.big-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.card h2 {
+    margin: 12px 0;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.card p {
+    color: #91a4bc;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   SYSTEM STATISTICS
+   ========================================= */
+
+.grid:first-of-type .card {
+    min-height: 190px;
+}
+
+.stat-label {
+    color: #7f93ad;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.stat-value {
+    margin: 12px 0 8px;
+    font-size: 46px;
+    line-height: 1;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .8px;
+}
+
+.status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.status-warning {
+    color: #ffd166;
+    background: rgba(255,209,102,.10);
+    border: 1px solid rgba(255,209,102,.20);
+}
+
+.status-warning::before {
+    background: #ffd166;
+    box-shadow: 0 0 12px rgba(255,209,102,.8);
+}
+
+.status-good {
+    color: #00ff9d;
+    background: rgba(0,255,157,.08);
+    border: 1px solid rgba(0,255,157,.18);
+}
+
+.status-good::before {
+    background: #00ff9d;
+    box-shadow: 0 0 12px rgba(0,255,157,.8);
+}
+
+
+/* =========================================
+   TRAFFIC PROGRESS
+   ========================================= */
+
+.progress {
+    width: 100%;
+    height: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255,255,255,.07);
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(
+        90deg,
+        #00e5ff,
+        #7c4dff,
+        #00ff9d
+    );
+    box-shadow: 0 0 18px rgba(0,229,255,.35);
+}
+
+
+/* =========================================
+   FEATURE SECTION
+   ========================================= */
+
+.grid:nth-of-type(2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid:nth-of-type(2) .card {
+    min-height: 260px;
+}
+
+.grid:nth-of-type(2) .page-label {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    margin-bottom: 14px;
+    color: #00e5ff;
+    background: rgba(0,229,255,.08);
+    border: 1px solid rgba(0,229,255,.16);
+}
+
+
+/* =========================================
+   PREMIUM BUTTONS
+   ========================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 155px;
+    padding: 13px 20px;
+    border-radius: 13px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+}
+
+.btn-blue {
+    color: #00151b;
+    background: linear-gradient(135deg, #00e5ff, #00b8d4);
+    box-shadow: 0 8px 25px rgba(0,229,255,.18);
+}
+
+.btn-purple {
+    color: #ffffff;
+    background: linear-gradient(135deg, #7c4dff, #5e35b1);
+    box-shadow: 0 8px 25px rgba(124,77,255,.22);
+}
+
+.btn-green {
+    color: #001b12;
+    background: linear-gradient(135deg, #00ff9d, #00c878);
+    box-shadow: 0 8px 25px rgba(0,255,157,.16);
+}
+
+.btn-orange {
+    color: #241300;
+    background: linear-gradient(135deg, #ffb74d, #ff8f00);
+    box-shadow: 0 8px 25px rgba(255,143,0,.18);
+}
+
+
+/* =========================================
+   SMART MAP
+   ========================================= */
+
+.big-card {
+    padding: 32px;
+    min-height: 430px;
+}
+
+.big-card h2 {
+    color: #ffffff;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.big-card > p {
+    color: #8ea2bb;
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-top: 22px;
+    border-radius: 22px;
+    border: 1px solid rgba(0,229,255,.13);
+    background:
+        linear-gradient(
+            90deg,
+            transparent 49%,
+            rgba(0,229,255,.08) 50%,
+            transparent 51%
+        ),
+        linear-gradient(
+            transparent 49%,
+            rgba(0,229,255,.08) 50%,
+            transparent 51%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(0,229,255,.10),
+            transparent 55%
+        ),
+        #050d1b;
+    background-size: 55px 55px;
+    box-shadow:
+        inset 0 0 70px rgba(0,0,0,.45),
+        0 15px 45px rgba(0,0,0,.3);
+}
+
+.map-road {
+    position: absolute;
+    width: 120%;
+    height: 13px;
+    left: -10%;
+    top: 48%;
+    transform: rotate(-14deg);
+    background: rgba(120,145,170,.22);
+    box-shadow: 0 0 20px rgba(0,229,255,.06);
+}
+
+.map-road.two {
+    top: 63%;
+    transform: rotate(20deg);
+    height: 9px;
+}
+
+.map-road::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    border-top: 2px dashed rgba(0,229,255,.25);
+}
+
+.map-dot {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid #06101f;
+    background: #00e5ff;
+    box-shadow:
+        0 0 0 7px rgba(0,229,255,.10),
+        0 0 25px rgba(0,229,255,.75);
+    animation: dashboardPulse 2s infinite;
+}
+
+.dot-one {
+    left: 22%;
+    top: 36%;
+}
+
+.dot-two {
+    left: 54%;
+    top: 62%;
+    background: #00ff9d;
+    box-shadow:
+        0 0 0 7px rgba(0,255,157,.10),
+        0 0 25px rgba(0,255,157,.75);
+    animation-delay: .5s;
+}
+
+.dot-three {
+    left: 77%;
+    top: 29%;
+    background: #7c4dff;
+    box-shadow:
+        0 0 0 7px rgba(124,77,255,.10),
+        0 0 25px rgba(124,77,255,.75);
+    animation-delay: 1s;
+}
+
+@keyframes dashboardPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.25);
+        opacity: .7;
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 950px) {
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid:first-of-type {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid:nth-of-type(2) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .page-header {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    .page-header h1 {
+        font-size: 40px;
+    }
+
+    .grid,
+    .grid:first-of-type,
+    .grid:nth-of-type(2) {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .big-card {
+        padding: 23px;
+        border-radius: 20px;
+    }
+
+    .big-card {
+        min-height: 380px;
+    }
+
+    .map {
+        height: 240px;
+    }
+
+}
+
+</style>
+
 
 <div class="page-header">
 
