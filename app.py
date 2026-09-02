@@ -346,6 +346,7 @@ VEHICLES = [
         "speed": 37,
         "route": "Piassa → Bole",
     },
+    
     {
         "id": "CAR-04",
         "type": "Private Car",
@@ -354,8 +355,31 @@ VEHICLES = [
         "lng": 38.7440,
         "speed": 39,
         "route": "Merkato → Mexico",
+    },
+
+    {
+        "id": "AMB-01",
+        "type": "Ambulance",
+        "icon": "🚑",
+        "lat": 9.0260,
+        "lng": 38.7460,
+        "speed": 60,
+        "route": "Merkato → Bole",
+        "emergency": True
+    },
+
+    {
+        "id": "FIRE-01",
+        "type": "Fire Truck",
+        "icon": "🚒",
+        "lat": 9.0340,
+        "lng": 38.7540,
+        "speed": 55,
+        "route": "Mexico → Piassa",
+        "emergency": True
     }
 ]
+
 
 
 # ==========================================
@@ -414,7 +438,84 @@ def vehicle_summary():
         summary[vehicle["type"]] += 1
 
     return jsonify(summary)
+# ==========================================
+# ACCIDENT DETECTION API
+# ==========================================
 
+@app.route("/api/accident-detection")
+def accident_detection():
+
+    # Simulated accident location
+    incident_lat = 9.0240
+    incident_lng = 38.7440
+
+    nearby = []
+
+    for vehicle in VEHICLES:
+
+        # Skip emergency vehicles
+        if vehicle.get("emergency"):
+            continue
+
+        # Calculate approximate distance
+        lat_diff = vehicle["lat"] - incident_lat
+        lng_diff = vehicle["lng"] - incident_lng
+
+        distance_km = math.sqrt(
+            lat_diff ** 2 + lng_diff ** 2
+        ) * 111
+
+        distance_m = distance_km * 1000
+
+        item = dict(vehicle)
+
+        item["distance_m"] = round(distance_m)
+
+        # Simulated AI involvement score
+        distance_score = max(
+            1,
+            100 - (distance_m / 500) * 100
+        )
+
+        speed_score = min(
+            100,
+            (vehicle["speed"] / 70) * 100
+        )
+
+        item["involvement_score"] = round(
+            distance_score * 0.7 +
+            speed_score * 0.3
+        )
+
+        nearby.append(item)
+
+    # Sort by highest AI involvement score
+    nearby.sort(
+        key=lambda x: x["involvement_score"],
+        reverse=True
+    )
+
+    # Always show the TOP 4 vehicles
+    top_four = nearby[:4]
+
+    return jsonify({
+        "incident": {
+            "detected": True,
+            "location": "Bole Road",
+            "lat": incident_lat,
+            "lng": incident_lng,
+            "type": "Vehicle Collision",
+            "priority": "HIGH"
+        },
+
+        "vehicles": top_four,
+
+        "emergency_vehicles": [
+            vehicle
+            for vehicle in VEHICLES
+            if vehicle.get("emergency")
+        ]
+    })
 
 # ==========================================
 # HEALTH CHECK

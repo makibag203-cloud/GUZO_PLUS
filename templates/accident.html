@@ -1496,107 +1496,107 @@
 
     </div>
 
+<div class="vehicle-list" id="detectedVehicles"></div>
+
+</div>
+
+
+<!-- EMERGENCY RESPONSE -->
+<div class="nearby-card">
+
+    <div class="card-heading">
+
+        <div>
+            <span class="section-label">
+                EMERGENCY RESPONSE
+            </span>
+
+            <h2>
+                Emergency Services
+            </h2>
+
+            <p>
+                AI has prepared simulated alerts for
+                emergency response teams.
+            </p>
+        </div>
+
+        <span class="priority-badge">
+            HIGH PRIORITY
+        </span>
+
+    </div>
+
 
     <div class="vehicle-list">
 
+        <!-- AMBULANCE -->
         <div class="nearby-vehicle">
 
             <div class="vehicle-number">
-                01
+                🚑
             </div>
 
             <div class="vehicle-information">
 
                 <strong>
-                    GUZO BUS 101
+                    Ambulance — AMB-01
                 </strong>
 
                 <span>
-                    0.8 km • Bole Road
+                    Emergency Medical Response •
+                    Merkato → Bole • 60 km/h
                 </span>
 
             </div>
 
-            <span class="available-status">
-                AVAILABLE
+            <span
+                class="available-status"
+                id="ambulanceStatus">
+                ALERT READY
             </span>
 
         </div>
 
 
+        <!-- FIRE -->
         <div class="nearby-vehicle">
 
             <div class="vehicle-number">
-                02
+                🚒
             </div>
 
             <div class="vehicle-information">
 
                 <strong>
-                    GUZO MINIBUS 204
+                    Fire & Rescue — FIRE-01
                 </strong>
 
                 <span>
-                    1.2 km • Main Road
+                    Fire & Rescue Response •
+                    Mexico → Piassa • 55 km/h
                 </span>
 
             </div>
 
-            <span class="available-status">
-                AVAILABLE
+            <span
+                class="available-status"
+                id="fireStatus">
+                ALERT READY
             </span>
 
         </div>
 
-
-        <div class="nearby-vehicle">
-
-            <div class="vehicle-number">
-                03
-            </div>
-
-            <div class="vehicle-information">
-
-                <strong>
-                    GUZO TAXI 087
-                </strong>
-
-                <span>
-                    1.6 km • Bole Area
-                </span>
-
-            </div>
-
-            <span class="busy-status">
-                BUSY
-            </span>
-
-        </div>
+    </div>
 
 
-        <div class="nearby-vehicle">
+    <div class="incident-actions">
 
-            <div class="vehicle-number">
-                04
-            </div>
-
-            <div class="vehicle-information">
-
-                <strong>
-                    GUZO BUS 118
-                </strong>
-
-                <span>
-                    2.1 km • Airport Road
-                </span>
-
-            </div>
-
-            <span class="available-status">
-                AVAILABLE
-            </span>
-
-        </div>
+        <button
+            class="alert-button"
+            onclick="sendEmergencyAlerts()">
+            🚨 Send Emergency Alerts
+        </button>
 
     </div>
 
@@ -1654,60 +1654,262 @@
 
 
 </section>
-
 <script>
 
-function runDetection() {
+window.runDetection = async function () {
 
     const monitorText =
         document.getElementById("monitorText");
 
-    monitorText.textContent =
-        "ANALYZING DEMO DATA...";
+    const alertCount =
+        document.getElementById("alertCount");
 
-    setTimeout(function() {
+    const container =
+        document.getElementById("detectedVehicles");
 
+    if (monitorText) {
         monitorText.textContent =
-            "AI MONITORING";
+            "ANALYZING DEMO DATA...";
+    }
 
-        document.getElementById("alertCount")
-            .textContent = "01";
+    try {
 
-    }, 1200);
+        const response =
+            await fetch("/api/accident-detection");
 
-}
+        const data =
+            await response.json();
+
+        const vehicles =
+            data.vehicles || [];
+
+        if (container) {
+
+            container.innerHTML = "";
+
+            vehicles.forEach(function(vehicle, index) {
+
+                const confidence =
+                    Math.round(
+                        vehicle.involvement_score || 0
+                    );
+
+                const item =
+                    document.createElement("div");
+
+                item.className =
+                    "nearby-vehicle";
+
+                item.innerHTML = `
+                    <div class="vehicle-number">
+                        ${String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <div class="vehicle-information">
+
+                        <strong>
+                            ${vehicle.icon || "🚗"}
+                            ${vehicle.id}
+                        </strong>
+
+                        <span>
+                            ${vehicle.type}
+                            • ${vehicle.distance_m} m
+                            • ${vehicle.speed} km/h
+                        </span>
+
+                    </div>
+
+                    <span class="available-status">
+                        ${confidence}% AI
+                    </span>
+                `;
+
+                container.appendChild(item);
+            });
+        }
+
+        if (monitorText) {
+            monitorText.textContent =
+                vehicles.length +
+                " VEHICLES IDENTIFIED";
+        }
+
+        if (alertCount) {
+            alertCount.textContent =
+                vehicles.length > 0 ? "01" : "00";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Detection error:",
+            error
+        );
+
+        if (monitorText) {
+            monitorText.textContent =
+                "DETECTION ERROR";
+        }
+    }
+};
 
 
-function refreshSimulation() {
+/* 🚨 EMERGENCY ALERTS */
 
-    const vehicleCount =
-        Math.floor(Math.random() * 8) + 8;
+window.sendEmergencyAlerts = function () {
 
-    document.getElementById("vehicleCount")
-        .textContent = vehicleCount;
+    const ambulance =
+        document.getElementById("ambulanceStatus");
 
-}
+    const fire =
+        document.getElementById("fireStatus");
+
+    const response =
+        document.getElementById("responseMessage");
+
+    const monitor =
+        document.getElementById("monitorText");
+
+    if (ambulance) {
+        ambulance.textContent = "ALERT SENT";
+    }
+
+    if (fire) {
+        fire.textContent = "ALERT SENT";
+    }
+
+    if (response) {
+        response.textContent =
+            "🚑 Ambulance alert sent successfully. " +
+            "🚒 Fire & Rescue alert sent successfully. " +
+            "This is a simulated emergency response.";
+    }
+
+    if (monitor) {
+        monitor.textContent =
+            "EMERGENCY ALERTS SENT";
+    }
+};
 
 
-function sendAlert() {
+/* 🔄 REFRESH SIMULATION */
 
-    document.getElementById("responseMessage")
-        .textContent =
-        "Safety alert prepared successfully using simulated response data.";
+window.refreshSimulation = async function () {
 
-}
+    try {
+
+        const response =
+            await fetch("/api/refresh");
+
+        const data =
+            await response.json();
+
+        if (data.success) {
+
+            const vehicleCount =
+                document.getElementById("vehicleCount");
+
+            if (vehicleCount) {
+                vehicleCount.textContent =
+                    data.vehicles.length;
+            }
+
+            runDetection();
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Refresh error:",
+            error
+        );
+    }
+};
 
 
-function viewNearbyVehicles() {
+/* 👀 VIEW NEARBY VEHICLES */
 
-    document.querySelector(".nearby-card")
-        .scrollIntoView({
-            behavior: "smooth"
+window.viewNearbyVehicles = function () {
+
+    const section =
+        document.getElementById("detectedVehicles");
+
+    if (section) {
+
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
         });
 
+        runDetection();
+    }
+};
+
+
+/* 🚨 SAFETY ALERT */
+
+window.sendAlert = function () {
+
+    const response =
+        document.getElementById("responseMessage");
+
+    if (response) {
+
+        response.textContent =
+            "Accident alert prepared. " +
+            "Ambulance and Fire & Rescue teams " +
+            "are ready for simulated response.";
+    }
+};
+
+
+/* 🚗 ACTIVE VEHICLE COUNT */
+
+async function loadVehicleCount() {
+
+    try {
+
+        const response =
+            await fetch("/api/vehicles");
+
+        const data =
+            await response.json();
+
+        const vehicles =
+            data.vehicles || [];
+
+        const vehicleCount =
+            document.getElementById("vehicleCount");
+
+        if (vehicleCount) {
+            vehicleCount.textContent =
+                vehicles.length;
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Vehicle loading error:",
+            error
+        );
+    }
 }
+
+
+/* ▶️ START AUTOMATICALLY */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        loadVehicleCount();
+
+        runDetection();
+
+    }
+);
 
 </script>
 
 {% endblock %}
-
