@@ -1,148 +1,772 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-GUZO PLUS — Passenger Portal
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{% block content %}
+    <title>GUZO PLUS - Passenger AI</title>
 
-<section class="passenger-page">
+    <style>
 
-    <!-- HEADER -->
-    <div class="passenger-hero">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        <div>
-            <span class="badge">GUZO PLUS • PASSENGER AI</span>
+        body {
+            font-family: Arial, sans-serif;
+            background: #07111f;
+            color: white;
+            min-height: 100vh;
+        }
 
-            <h1>Where do you want to go?</h1>
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
 
-            <p>
-                Enter your starting point and destination.
-                GUZO PLUS will show your bus, distance,
-                estimated time and fare using demo AI data.
-            </p>
+
+        /* =========================
+           AI HERO BOX
+        ========================= */
+
+        .ai-hero-box {
+            background: rgba(13, 27, 45, 0.95);
+            border: 1px solid rgba(104, 220, 255, 0.20);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .ai-badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 20px;
+
+            color: #68dcff;
+
+            background: rgba(0, 174, 255, 0.10);
+
+            border: 1px solid rgba(0, 174, 255, 0.30);
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+        .ai-hero-box h1 {
+            font-size: 34px;
+            font-weight: 900;
+            color: #68dcff;
+            margin-bottom: 12px;
+        }
+
+        .ai-hero-box h2 {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .ai-hero-box p {
+            max-width: 720px;
+            margin: auto;
+
+            color: #c8d5e3;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           MOVING BUS
+        ========================= */
+
+        .bus-animation {
+            position: relative;
+
+            width: 180px;
+            height: 55px;
+
+            margin: 15px auto 0;
+
+            overflow: hidden;
+        }
+
+        .moving-bus {
+            position: absolute;
+
+            left: 0;
+
+            font-size: 38px;
+
+            animation:
+                driveBus 3s linear infinite;
+        }
+
+        @keyframes driveBus {
+
+            0% {
+                left: -50px;
+            }
+
+            50% {
+                left: 130px;
+            }
+
+            100% {
+                left: -50px;
+            }
+
+        }
+
+
+        /* =========================
+           MAIN GRID
+        ========================= */
+
+        .main-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 22px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background:
+                rgba(13, 27, 45, 0.95);
+
+            border:
+                1px solid rgba(104, 220, 255, 0.18);
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .card h2 {
+            color: #68dcff;
+
+            font-size: 20px;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+
+            color: #c8d5e3;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(104, 220, 255, 0.22);
+
+            background: #0a192b;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #68dcff;
+        }
+
+        input::placeholder {
+            color: #71869b;
+        }
+
+
+        /* =========================
+           DATE / TIME ROW
+        ========================= */
+
+        .row {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        /* =========================
+           PEOPLE COUNTER
+        ========================= */
+
+        .counter {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .counter button {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid rgba(104, 220, 255, 0.30);
+
+            background:
+                rgba(0, 174, 255, 0.10);
+
+            color: #68dcff;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .counter button:hover {
+            background:
+                rgba(0, 174, 255, 0.20);
+        }
+
+        .counter span {
+            min-width: 45px;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================
+           FIND BUTTON
+        ========================= */
+
+        .find-btn {
+            width: 100%;
+
+            margin-top: 8px;
+
+            padding: 17px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aef0,
+                    #68dcff
+                );
+
+            color: #04101c;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .find-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 174, 255, 0.25);
+        }
+
+
+        /* =========================
+           RESULT HEADER
+        ========================= */
+
+        .result-header {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .status {
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            color: #68dcff;
+
+            background:
+                rgba(0, 174, 255, 0.10);
+
+            border:
+                1px solid rgba(0, 174, 255, 0.30);
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+
+        /* =========================
+           RESULT BOXES
+        ========================= */
+
+        .bus-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+        .info-box {
+            background: #0a192b;
+
+            border-radius: 14px;
+
+            padding: 17px;
+
+            border:
+                1px solid
+                rgba(104, 220, 255, 0.12);
+        }
+
+        .info-box .title {
+            color: #8da2b8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+        }
+
+        .info-box .value {
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: 900;
+        }
+
+        .highlight {
+            color: #68dcff !important;
+        }
+
+
+        /* =========================
+           CAPACITY
+        ========================= */
+
+        .capacity {
+            margin-top: 20px;
+        }
+
+        .capacity-label {
+            color: #8da2b8;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .capacity-text {
+            margin-top: 6px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .capacity-bar {
+            width: 100%;
+
+            height: 9px;
+
+            background: #14283d;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-top: 9px;
+        }
+
+        .capacity-fill {
+            height: 100%;
+
+            width: 0%;
+
+            background: #68dcff;
+
+            border-radius: 20px;
+
+            transition:
+                width 0.5s ease;
+        }
+
+
+        /* =========================
+           ROUTE
+        ========================= */
+
+        .route-box {
+            margin-top: 18px;
+
+            padding: 17px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(0, 174, 255, 0.07);
+
+            border:
+                1px solid
+                rgba(104, 220, 255, 0.15);
+        }
+
+        .route-box strong {
+            color: #68dcff;
+
+            font-weight: 900;
+        }
+
+        .route-box p {
+            margin-top: 8px;
+
+            color: #b8c7d6;
+
+            font-weight: 700;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           DEMO NOTE
+        ========================= */
+
+        .demo-note {
+            margin-top: 15px;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255, 193, 7, 0.07);
+
+            border:
+                1px solid
+                rgba(255, 193, 7, 0.18);
+
+            color: #c9b878;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           CURRENT RESULT
+        ========================= */
+
+        .result-card {
+            margin-top: 22px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer-note {
+            text-align: center;
+
+            color: #71869b;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-top: 25px;
+
+            padding-bottom: 20px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-hero-box h1 {
+                font-size: 28px;
+            }
+
+            .ai-hero-box h2 {
+                font-size: 20px;
+            }
+
+            .ai-hero-box p {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         AI HERO
+    ========================= -->
+
+    <div class="ai-hero-box">
+
+        <div class="ai-badge">
+            GUZO PLUS • PASSENGER AI
         </div>
 
-        <div class="passenger-hero-icon">
-            🚌
+        <h1>
+            GUZO PLUS
+        </h1>
+
+        <h2>
+            Where do you want to go?
+        </h2>
+
+        <p>
+            Enter your starting point and destination.
+            GUZO PLUS will show your bus, distance,
+            estimated time and fare using demo AI data.
+        </p>
+
+        <div class="bus-animation">
+
+            <div class="moving-bus">
+                🚌
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- TRIP REQUEST -->
-    <div class="passenger-card">
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
 
-        <div class="card-heading">
-            <div>
-                <span class="small-label">SMART TRIP PLANNER</span>
-                <h2>Plan Your Journey</h2>
-                <p>Tell us about your trip.</p>
+    <div class="main-grid">
+
+
+        <!-- =========================
+             TRIP INFORMATION
+        ========================= -->
+
+        <div class="card">
+
+            <h2>
+                Trip Information
+            </h2>
+
+
+            <div class="form-group">
+
+                <label for="from">
+                    From
+                </label>
+
+                <input
+                    type="text"
+                    id="from"
+                    placeholder="Enter starting location"
+                >
+
             </div>
 
-            <div class="ai-status">
-                <span></span>
-                AI READY
+
+            <div class="form-group">
+
+                <label for="to">
+                    To
+                </label>
+
+                <input
+                    type="text"
+                    id="to"
+                    placeholder="Enter destination"
+                >
+
             </div>
-        </div>
 
 
-        <form id="passengerForm">
+            <div class="form-group">
 
-            <div class="passenger-grid">
+                <label>
+                    Number of People
+                </label>
 
-                <!-- INITIAL LOCATION -->
-                <div class="input-group">
+                <div class="counter">
 
-                    <label for="start">
-                        📍 Initial Location
+                    <button
+                        type="button"
+                        onclick="changePeople(-1)"
+                    >
+                        −
+                    </button>
+
+                    <span id="peopleCount">
+                        2
+                    </span>
+
+                    <button
+                        type="button"
+                        onclick="changePeople(1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="priority">
+                    Priority Assistance
+                </label>
+
+                <select id="priority">
+
+                    <option value="No">
+                        No assistance needed
+                    </option>
+
+                    <option value="Wheelchair">
+                        Wheelchair assistance
+                    </option>
+
+                    <option value="Elderly">
+                        Elderly assistance
+                    </option>
+
+                    <option value="Other">
+                        Other assistance
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="row">
+
+
+                <div class="form-group">
+
+                    <label for="travelDate">
+                        Travel Date
                     </label>
 
                     <input
-                        type="text"
-                        id="start"
-                        name="start"
-                        placeholder="Example: Bole"
-                        required
+                        type="date"
+                        id="travelDate"
                     >
 
                 </div>
 
 
-                <!-- DESTINATION -->
-                <div class="input-group">
+                <div class="form-group">
 
-                    <label for="destination">
-                        🎯 Destination
+                    <label for="travelTime">
+                        Travel Time
                     </label>
 
                     <input
-                        type="text"
-                        id="destination"
-                        name="destination"
-                        placeholder="Example: Piazza"
-                        required
+                        type="time"
+                        id="travelTime"
                     >
-
-                </div>
-
-
-                <!-- PASSENGER TYPE -->
-                <div class="input-group">
-
-                    <label for="passenger_type">
-                        👤 Passenger Type
-                    </label>
-
-                    <select id="passenger_type">
-
-                        <option value="">
-                            Select passenger type
-                        </option>
-
-                        <option>
-                            Student
-                        </option>
-
-                        <option>
-                            Adult
-                        </option>
-
-                        <option>
-                            Senior
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- TRAVEL TIME -->
-                <div class="input-group">
-
-                    <label for="travel_time">
-                        🕐 Preferred Travel Time
-                    </label>
-
-                    <select id="travel_time">
-
-                        <option value="">
-                            Select time
-                        </option>
-
-                        <option>
-                            Morning
-                        </option>
-
-                        <option>
-                            Afternoon
-                        </option>
-
-                        <option>
-                            Evening
-                        </option>
-
-                    </select>
 
                 </div>
 
@@ -150,319 +774,723 @@ GUZO PLUS — Passenger Portal
 
 
             <button
-                type="submit"
-                class="find-bus-btn">
-
-                🔎 Find My Bus
-
+                type="button"
+                class="find-btn"
+                onclick="findBus()"
+            >
+                FIND MY BUS
             </button>
 
-        </form>
-
-    </div>
+        </div>
 
 
-    <!-- RESULT -->
-    <div
-        id="tripResult"
-        class="trip-result"
-        style="display:none;">
+        <!-- =========================
+             RECOMMENDED BUS
+        ========================= -->
 
-        <div class="result-heading">
+        <div class="card">
 
-            <div>
-                <span class="small-label">
-                    AI TRIP RESULT
+            <div class="result-header">
+
+                <h2>
+                    Recommended Bus
+                </h2>
+
+                <span
+                    class="status"
+                    id="busStatus"
+                >
+                    WAITING
                 </span>
 
-                <h2>Your Recommended Trip</h2>
-
-                <p>
-                    Demo information generated by GUZO PLUS.
-                </p>
-            </div>
-
-            <div class="demo-badge">
-                DEMO DATA
-            </div>
-
-        </div>
-
-
-        <!-- BUS CARD -->
-        <div class="bus-card">
-
-            <div class="bus-main">
-
-                <div class="bus-icon">
-                    🚌
-                </div>
-
-                <div>
-
-                    <span class="bus-label">
-                        RECOMMENDED BUS
-                    </span>
-
-                    <h3 id="busName">
-                        GUZO BUS 101
-                    </h3>
-
-                    <p id="busRoute">
-                        Bole → Piazza
-                    </p>
-
-                </div>
-
             </div>
 
 
-            <div class="bus-status">
-
-                <span class="live-dot"></span>
-
-                On Route
-
-            </div>
-
-        </div>
+            <div class="bus-info">
 
 
-        <!-- TRIP INFORMATION -->
-        <div class="trip-stats">
+                <div class="info-box">
 
+                    <div class="title">
+                        BUS
+                    </div>
 
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    📍
-                </div>
-
-                <div>
-
-                    <span>
-                        BUS LOCATION
-                    </span>
-
-                    <strong>
-                        1.8 km away
-                    </strong>
+                    <div
+                        class="value highlight"
+                        id="busNumber"
+                    >
+                        —
+                    </div>
 
                 </div>
 
-            </div>
 
+                <div class="info-box">
 
-            <div class="stat-card">
+                    <div class="title">
+                        ETA
+                    </div>
 
-                <div class="stat-icon">
-                    📏
+                    <div class="value">
+
+                        <span id="eta">
+                            —
+                        </span>
+
+                    </div>
+
                 </div>
 
-                <div>
 
-                    <span>
+                <div class="info-box">
+
+                    <div class="title">
                         DISTANCE
-                    </span>
+                    </div>
 
-                    <strong>
-                        6.4 km
-                    </strong>
+                    <div class="value">
 
-                </div>
+                        <span id="distance">
+                            —
+                        </span>
 
-            </div>
-
-
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    ⏱️
-                </div>
-
-                <div>
-
-                    <span>
-                        ARRIVAL
-                    </span>
-
-                    <strong>
-                        12 minutes
-                    </strong>
+                    </div>
 
                 </div>
 
-            </div>
 
+                <div class="info-box">
 
-            <div class="stat-card">
-
-                <div class="stat-icon">
-                    💰
-                </div>
-
-                <div>
-
-                    <span>
+                    <div class="title">
                         ESTIMATED FARE
+                    </div>
+
+                    <div class="value">
+
+                        <span id="fare">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="title">
+                        TRAFFIC
+                    </div>
+
+                    <div class="value highlight">
+
+                        <span id="traffic">
+                            —
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <div class="title">
+                        GROUP SIZE
+                    </div>
+
+                    <div class="value">
+
+                        <span id="groupSize">
+                            2
+                        </span>
+
+                        people
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 CAPACITY
+            ========================= -->
+
+            <div class="capacity">
+
+                <div class="capacity-label">
+                    BUS CAPACITY
+                </div>
+
+                <div class="capacity-text">
+
+                    <span
+                        id="availableSeats"
+                        class="highlight"
+                    >
+                        —
                     </span>
 
-                    <strong>
-                        25 ETB
-                    </strong>
+                    available /
 
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- FAKE GPS -->
-        <div class="gps-card">
-
-            <div class="gps-header">
-
-                <div>
-
-                    <span class="small-label">
-                        GPS SIMULATION
+                    <span id="totalSeats">
+                        —
                     </span>
 
-                    <h3>
-                        Live Bus Tracking
-                    </h3>
+                    seats
 
                 </div>
 
-                <span class="fake-tag">
-                    FAKE GPS
-                </span>
 
-            </div>
+                <div class="capacity-bar">
 
+                    <div
+                        class="capacity-fill"
+                        id="capacityFill"
+                    ></div>
 
-            <div class="fake-map">
-
-                <div class="map-line"></div>
-
-                <div class="location-point passenger-point">
-                    📍
-                </div>
-
-                <div class="bus-point">
-                    🚌
-                </div>
-
-                <div class="destination-point">
-                    🎯
-                </div>
-
-                <div class="map-label start-label">
-                    You
-                </div>
-
-                <div class="map-label bus-label-map">
-                    Bus
-                </div>
-
-                <div class="map-label destination-label">
-                    Destination
                 </div>
 
             </div>
 
-        </div>
 
+            <!-- =========================
+                 ROUTE
+            ========================= -->
 
-        <!-- TRIP SUMMARY -->
-        <div class="summary-card">
+            <div class="route-box">
 
-            <h3>
-                ✨ Journey Summary
-            </h3>
+                <strong>
+                    Route
+                </strong>
 
-            <div class="summary-route">
+                <p id="routeText">
 
-                <div>
-                    <span>FROM</span>
-                    <strong id="resultStart">
-                        Bole
-                    </strong>
-                </div>
+                    Enter your trip information
+                    and find your bus.
 
-                <div class="arrow">
-                    →
-                </div>
-
-                <div>
-                    <span>TO</span>
-                    <strong id="resultDestination">
-                        Piazza
-                    </strong>
-                </div>
+                </p>
 
             </div>
 
-            <p>
-                GUZO PLUS recommends this bus based on
-                simulated traffic, distance and estimated
-                passenger demand.
-            </p>
+
+            <div class="demo-note">
+
+                DEMO / SIMULATED RESULT —
+                Values will be replaced by live
+                GPS and AI data in the full system.
+
+            </div>
 
         </div>
 
     </div>
 
-</section>
+
+    <!-- =========================
+         CURRENT RESULT
+    ========================= -->
+
+    <div class="card result-card">
+
+
+        <div class="result-header">
+
+            <h2>
+                Current Result
+            </h2>
+
+            <span
+                class="status"
+                id="resultStatus"
+            >
+                WAITING
+            </span>
+
+        </div>
+
+
+        <div class="bus-info">
+
+
+            <div class="info-box">
+
+                <div class="title">
+                    PREDICTED ETA
+                </div>
+
+                <div class="value highlight">
+
+                    <span id="resultEta">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="title">
+                    BUS DISTANCE
+                </div>
+
+                <div class="value">
+
+                    <span id="resultDistance">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="title">
+                    AVAILABLE SEATS
+                </div>
+
+                <div class="value">
+
+                    <span id="resultSeats">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="title">
+                    TRAFFIC PREDICTION
+                </div>
+
+                <div class="value highlight">
+
+                    <span id="resultTraffic">
+                        —
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <div class="footer-note">
+
+        GUZO PLUS — Better Routes. Better Tomorrow.
+
+    </div>
+
+</div>
 
 
 <script>
 
-document
-    .getElementById("passengerForm")
-    .addEventListener("submit", function(event) {
 
-        event.preventDefault();
+    /* =========================
+       PASSENGER COUNT
+    ========================= */
 
-        const start =
-            document.getElementById("start").value;
-
-        const destination =
-            document.getElementById("destination").value;
+    let people = 2;
 
 
-        /*
-        ==========================================
-        GUZO PLUS FAKE AI DATA
-        ==========================================
-        This is only a prototype.
-        No real GPS or live transportation API.
-        ==========================================
-        */
+    function changePeople(amount) {
 
-        document.getElementById("busRoute")
-            .textContent =
-            start + " → " + destination;
-
-        document.getElementById("resultStart")
-            .textContent = start;
-
-        document.getElementById("resultDestination")
-            .textContent = destination;
+        people += amount;
 
 
-        document.getElementById("tripResult")
-            .style.display = "block";
+        if (people < 1) {
+            people = 1;
+        }
 
 
-        document.getElementById("tripResult")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+        if (people > 20) {
+            people = 20;
+        }
 
-    });
+
+        document.getElementById(
+            "peopleCount"
+        ).textContent = people;
+
+
+        document.getElementById(
+            "groupSize"
+        ).textContent = people;
+
+    }
+
+
+    /* =========================
+       FIND MY BUS
+    ========================= */
+
+    function findBus() {
+
+
+        const from =
+            document.getElementById(
+                "from"
+            ).value.trim();
+
+
+        const to =
+            document.getElementById(
+                "to"
+            ).value.trim();
+
+
+        const priority =
+            document.getElementById(
+                "priority"
+            ).value;
+
+
+        /* CHECK LOCATIONS */
+
+        if (!from || !to) {
+
+            alert(
+                "Please enter both From and To locations."
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           DEMO AI CALCULATION
+        ========================= */
+
+
+        const routeSeed =
+            from.length +
+            to.length;
+
+
+        let distance =
+            1.2 +
+            (
+                (routeSeed * 0.37)
+                % 8
+            );
+
+
+        distance =
+            Math.round(
+                distance * 10
+            ) / 10;
+
+
+        let traffic =
+            35 +
+            (
+                (routeSeed * 7)
+                % 55
+            );
+
+
+        let eta =
+            Math.max(
+                5,
+
+                Math.round(
+                    distance * 3 +
+                    traffic / 12
+                )
+            );
+
+
+        let fare =
+            Math.max(
+                15,
+
+                Math.round(
+                    15 +
+                    distance * 5
+                )
+            );
+
+
+        let busNumber =
+            "GUZO-" +
+            String(
+                10 +
+                (routeSeed % 90)
+            );
+
+
+        let totalSeats = 35;
+
+
+        let occupiedSeats =
+            8 +
+            (
+                (routeSeed * 3)
+                % 18
+            );
+
+
+        let availableSeats =
+            totalSeats -
+            occupiedSeats;
+
+
+        /* MAKE SPACE FOR GROUP */
+
+        if (
+            availableSeats <
+            people
+        ) {
+
+            totalSeats = 45;
+
+            availableSeats =
+                totalSeats -
+                occupiedSeats;
+        }
+
+
+        let capacityPercent =
+            (
+                (
+                    totalSeats -
+                    availableSeats
+                )
+                /
+                totalSeats
+            ) * 100;
+
+
+        /* =========================
+           PRIORITY ASSISTANCE
+        ========================= */
+
+        if (
+            priority !== "No"
+        ) {
+
+            eta += 2;
+
+            fare += 5;
+        }
+
+
+        /* =========================
+           UPDATE BUS RESULT
+        ========================= */
+
+
+        document.getElementById(
+            "busNumber"
+        ).textContent =
+            busNumber;
+
+
+        document.getElementById(
+            "eta"
+        ).textContent =
+            eta + " min";
+
+
+        document.getElementById(
+            "distance"
+        ).textContent =
+            distance + " km";
+
+
+        document.getElementById(
+            "fare"
+        ).textContent =
+            fare + " ETB";
+
+
+        document.getElementById(
+            "traffic"
+        ).textContent =
+            traffic +
+            "% congestion";
+
+
+        document.getElementById(
+            "groupSize"
+        ).textContent =
+            people;
+
+
+        document.getElementById(
+            "availableSeats"
+        ).textContent =
+            availableSeats;
+
+
+        document.getElementById(
+            "totalSeats"
+        ).textContent =
+            totalSeats;
+
+
+        document.getElementById(
+            "capacityFill"
+        ).style.width =
+            capacityPercent +
+            "%";
+
+
+        document.getElementById(
+            "routeText"
+        ).textContent =
+            from +
+            " → " +
+            to;
+
+
+        document.getElementById(
+            "busStatus"
+        ).textContent =
+            "AVAILABLE";
+
+
+        /* =========================
+           CURRENT RESULT
+        ========================= */
+
+
+        document.getElementById(
+            "resultEta"
+        ).textContent =
+            eta +
+            " min";
+
+
+        document.getElementById(
+            "resultDistance"
+        ).textContent =
+            distance +
+            " km";
+
+
+        document.getElementById(
+            "resultSeats"
+        ).textContent =
+            availableSeats;
+
+
+        document.getElementById(
+            "resultTraffic"
+        ).textContent =
+            traffic +
+            "% congestion";
+
+
+        document.getElementById(
+            "resultStatus"
+        ).textContent =
+            "BUS FOUND";
+
+
+        /* =========================
+           SUCCESS MESSAGE
+        ========================= */
+
+        alert(
+            "GUZO PLUS found a recommended bus for " +
+            people +
+            " passenger(s)."
+        );
+
+    }
+
+
+    /* =========================
+       ETHIOPIA DATE & TIME
+    ========================= */
+
+    function setEthiopiaDateTime() {
+
+
+        const now =
+            new Date();
+
+
+        const dateFormatter =
+            new Intl.DateTimeFormat(
+                "en-CA",
+                {
+                    timeZone:
+                        "Africa/Addis_Ababa",
+
+                    year:
+                        "numeric",
+
+                    month:
+                        "2-digit",
+
+                    day:
+                        "2-digit"
+                }
+            );
+
+
+        const timeFormatter =
+            new Intl.DateTimeFormat(
+                "en-GB",
+                {
+                    timeZone:
+                        "Africa/Addis_Ababa",
+
+                    hour:
+                        "2-digit",
+
+                    minute:
+                        "2-digit",
+
+                    hour12:
+                        false
+                }
+            );
+
+
+        document.getElementById(
+            "travelDate"
+        ).value =
+            dateFormatter.format(now);
+
+
+        document.getElementById(
+            "travelTime"
+        ).value =
+            timeFormatter.format(now);
+
+    }
+
+
+    /* =========================
+       START DATE / TIME
+    ========================= */
+
+    setEthiopiaDateTime();
+
 
 </script>
 
-{% endblock %}
+</body>
+
+</html>
+
